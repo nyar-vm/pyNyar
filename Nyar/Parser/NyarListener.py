@@ -98,6 +98,24 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#moduleLanguage.
+    def enterModuleLanguage(self, ctx:NyarParser.ModuleLanguageContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#moduleLanguage.
+    def exitModuleLanguage(self, ctx:NyarParser.ModuleLanguageContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#moduleScope.
+    def enterModuleScope(self, ctx:NyarParser.ModuleScopeContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#moduleScope.
+    def exitModuleScope(self, ctx:NyarParser.ModuleScopeContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#idTuples.
     def enterIdTuples(self, ctx:NyarParser.IdTuplesContext):
         pass

@@ -59,6 +59,16 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#moduleLanguage.
+    def visitModuleLanguage(self, ctx:NyarParser.ModuleLanguageContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#moduleScope.
+    def visitModuleScope(self, ctx:NyarParser.ModuleScopeContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#idTuples.
     def visitIdTuples(self, ctx:NyarParser.IdTuplesContext):
         return self.visitChildren(ctx)
