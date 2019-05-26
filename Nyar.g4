@@ -44,7 +44,7 @@ Power            : '^';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 blockStatement: '{' statement* '}' | Colon expression | Colon statement* End;
-blockNonEnd: '{' statement* '}' | Colon expression | Colon statement*;
+blockNonEnd: '{' statement* '}' | expression;
 // $antlr-format alignColons trailing;
 End   : 'end';
 Colon : ':' | '\uFF1A'; //U+FF1A ：
@@ -111,7 +111,7 @@ parameter
     : typeExpression? symbol
     | typeExpression? symbol Times
     | typeExpression? symbol Keywords
-    | typeExpression? symbol Nullable;
+    | typeExpression? symbol Nullable symbol;
 // $antlr-format alignColons trailing;
 Type      : 'type';
 BitOr     : '|';
@@ -136,12 +136,13 @@ assignLHS
     | symbols                          # LHSMaybeSetter
     | symbols index                    # LHSMaybeIndex;
 assignRHS
-    : expression           # RHSExpression
-    | data                 # RHSExpression
-    | '{' statement* '}'   # RHSStatement
-    | Colon statement* End # RHSStatement
-    | expressionStatement  # RHSTuple
-    | statement            # RHSStatement;
+    : expression                  # RHSExpression
+    | Colon expression            # RHSExpression
+    | '{' statement* '}'          # RHSStatement
+    | Colon statement* End        # RHSStatement
+    | expressionStatement         # RHSTuple
+    | '(' expressionStatement ')' # RHSTuple
+    | statement                   # RHSStatement;
 maybeSymbol: symbols typeSuffix? | head = Tilde;
 symbols: (symbol | symbolName) (Dot symbol)*;
 symbolName: symbol (Name symbol)*;
@@ -173,15 +174,15 @@ Minus      : '-';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 branchStatement
-    : If condition blockNonEnd else?               # IfSingle
-    | If condition blockNonEnd elseIf* else?       # IfNested
-    | Switch (Pass | Return)? condition switchBody # SwitchStatement
-    | Match condition matchBody                    # MatchStatement;
+    : If condition (Then | Colon)? blockNonEnd else?         # IfSingle
+    | If condition (Then | Colon)? blockNonEnd elseIf* else? # IfNested
+    | Switch (Pass | Return)? condition switchBody           # SwitchStatement
+    | Match condition matchBody                              # MatchStatement;
 switchBody: expression | blockStatement;
 matchBody: expression | blockStatement;
 condition: expression | '(' expression ')';
 else: Else expression | Else blockStatement;
-elseIf: Else If condition Then? blockNonEnd;
+elseIf: Else If condition (Then | Colon)? blockNonEnd;
 // $antlr-format alignColons trailing;
 If     : 'if';
 Else   : 'else';
@@ -202,11 +203,10 @@ Final : 'final';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 loopStatement
-    : For '(' for_inline ')' blockStatement       # ForLoop
-    | For identifier In expression blockStatement # ForInLoop
-    | While condition blockStatement              # WhileLoop
-    | Do blockStatement                           # DoLoop;
-for_inline: init = expression Comma cond = expression Comma inc = expression;
+    : For '(' expressionStatement ')' blockStatement # ForLoop
+    | For identifier In expression blockStatement    # ForInLoop
+    | While condition blockStatement                 # WhileLoop
+    | Do blockStatement                              # DoLoop;
 // $antlr-format alignColons trailing;
 In    : 'in';
 For   : 'for';
@@ -231,11 +231,13 @@ classExpression
     | identifier* symbol '(' parameter* ')' typeSuffix? (Colon 'pass')?
     | identifier* symbol '(' parameter* ')' typeSuffix? blockStatement;
 // $antlr-format alignColons trailing;
-Tilde   : '~';
 Trait   : 'trait';
 Class   : 'class';
 Extends : 'extends';
 Meets   : 'meets';
+Tilde   : '~';
+Suffix  : '$';
+Prefix  : '@';
 /*====================================================================================================================*/
 complex        : (Decimal | Integer) identifier;
 decimal        : Decimal | DecimalBad;
@@ -248,23 +250,26 @@ Hexadecimal    : Zero X Hex+;
 Integer        : Zero+ | [1-9] Digit*;
 Exponent       : '*^';
 Base           : '/^';
+fragment Bin   : Zero | [1];
+fragment Oct   : Zero | [1-7];
+fragment Digit : Zero | [1-9];
+fragment Hex   : Zero | [1-9a-fA-F];
 fragment Zero  : [0];
-fragment Bin   : [0]| [1];
-fragment Oct   : [0]| [1-7];
-fragment Digit : [0]| [1-9];
-fragment Hex   : [0]| [1-9a-fA-F];
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 string
     : StringEscapeBlock  # StringEscapeBlock
     | StringEscapeSingle # StringEscapeSingle
+    | StringLiteral      # StringLiteral
     | StringEmpty        # StringEmpty;
 // $antlr-format alignColons trailing;
 StringEscapeBlock   : S6 CharLevel1+? S6;
-StringEscapeSingle  : S2 CharLevel2+? S2 | '＂' ~[＂]+? '＂';
-StringEmpty         : S6 S6 | S2 S2 | '＂' '＂';
+StringEscapeSingle  : S2 CharLevel2+? S2;
+StringLiteral       : S4 ~[\uFF02]+? S4;
+StringEmpty         : S6 S6 | S2 S2 | S4 S4;
 Escape              : '\\';
 fragment S6         : '"""';
+fragment S4         : '\uFF02'; //U+FF02 ＂
 fragment S2         : '"';
 fragment CharLevel1 : Escape . | ~[\\];
 fragment CharLevel2 : Escape . | ~["\\];
@@ -390,11 +395,9 @@ BitNot     : '!' | '\uFF01'; //U+FF01 ！
 LogicNot   : DoubleBang | '\u00AC'; //U+00AC ¬
 Elvis      : ':?';
 /* $ @ */
-PostfixFunction : '$';
-Curry           : '@@@';
-Apply           : '@@';
-LetAssign       : '@=';
-At              : '@';
+Curry     : '@@@';
+Apply     : '@@';
+LetAssign : '@=';
 /* upper lower*/
 Quote     : '`';
 Acute     : '\u00B4'; // U+00B4 ´
