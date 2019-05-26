@@ -44,7 +44,7 @@ Power            : '^';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 blockStatement: '{' statement* '}' | Colon expression | Colon statement* End;
-blockNonEnd: '{' statement* '}' | expression;
+blockNonEnd: '{' statement* '}' | statement*;
 // $antlr-format alignColons trailing;
 End   : 'end';
 Colon : ':' | '\uFF1A'; //U+FF1A ：
@@ -176,19 +176,32 @@ Minus      : '-';
 branchStatement
     : If condition (Then | Colon)? blockNonEnd else?         # IfSingle
     | If condition (Then | Colon)? blockNonEnd elseIf* else? # IfNested
-    | Switch (Pass | Return)? condition switchBody           # SwitchStatement
+    | Switch condition switchController? switchBody          # SwitchStatement
     | Match condition matchBody                              # MatchStatement;
-switchBody: expression | blockStatement;
-matchBody: expression | blockStatement;
-condition: expression | '(' expression ')';
-else: Else expression | Else blockStatement;
-elseIf: Else If condition (Then | Colon)? blockNonEnd;
 // $antlr-format alignColons trailing;
+else   : Else expression | Else blockStatement;
+elseIf : Else If condition (Then | Colon)? blockNonEnd;
 If     : 'if';
 Else   : 'else';
 Then   : 'then';
-Switch : 'switch';
-Match  : 'match';
+// $antlr-format alignColons hanging;
+caseBody //if no expr, must default
+    : Case expression Colon blockNonEnd
+    | expression Rule blockNonEnd
+    | Default Colon blockNonEnd
+    | Case Times Colon blockNonEnd
+    | Times Rule blockNonEnd;
+// $antlr-format alignColons trailing;
+switchBody       : '{' caseBody* '}' | Colon caseBody* End;
+switchController : Pass | Return | Break;
+Switch           : 'switch';
+Case             : 'case';
+Default          : 'default';
+// $antlr-format alignColons trailing;
+matchBody : expression | blockStatement;
+condition : expression | '(' expression ')';
+Match     : 'match';
+Rule      : '=>' | '\u27F9'; //U+27F9 ⟹;
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 tryStatement
@@ -383,7 +396,6 @@ Mod           : '%';
 Equivalent    : '===';
 NotEquivalent : '=!=';
 Equal         : '=='; //≡
-Infer         : '=>' | '\u27F9'; //U+27F9 ⟹
 Concat        : '~~';
 Destruct      : '~=';
 /* |&! */
