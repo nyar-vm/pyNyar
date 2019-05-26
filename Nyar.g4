@@ -237,25 +237,22 @@ Class   : 'class';
 Extends : 'extends';
 Meets   : 'meets';
 /*====================================================================================================================*/
-complex          : (Decimal | Integer) identifier;
-decimal          : Decimal | DecimalBad;
-integer          : Integer;
-Decimal          : Integer Dot Digit;
-DecimalBad       : Integer Dot | Dot Digit+;
-Binary           : BinHead Bin+;
-Octal            : OcHead Oct+;
-Hexadecimal      : HexHead Hex+;
-Integer          : [0]+ | [1-9] Digit*;
-Exponent         : '*^';
-Base             : '/^';
-Surd             : '\u221A'; //U+221A √
-fragment Bin     : [01];
-fragment BinHead : '0b';
-fragment Oct     : [0-7];
-fragment OcHead  : '0o';
-fragment Digit   : [0-9];
-fragment Hex     : [0-9a-fA-F];
-fragment HexHead : '0x';
+complex        : (Decimal | Integer) identifier;
+decimal        : Decimal | DecimalBad;
+integer        : Integer;
+Decimal        : Integer Dot Digit;
+DecimalBad     : Integer Dot | Dot Digit+;
+Binary         : Zero B Bin+;
+Octal          : Zero O Oct+;
+Hexadecimal    : Zero H Hex+;
+Integer        : Zero+ | [1-9] Digit*;
+Exponent       : '*^';
+Base           : '/^';
+fragment Zero  : [0];
+fragment Bin   : [01];
+fragment Oct   : [0-7];
+fragment Digit : [0-9];
+fragment Hex   : [0-9a-fA-F];
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 string
@@ -404,6 +401,7 @@ Quotation : '\'';
 Ellipsis  : '...'; //…
 DOT       : '\u22C5'; //U+22C5 ⋅
 /* Prefix */
+Surd       : '\u221A'; //U+221A √
 Reciprocal : '\u215F'; //U+215F ⅟
 /* Postfix */
 Degree    : '\u00B0'; //U+00B0 °
