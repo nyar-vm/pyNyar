@@ -157,7 +157,7 @@ Name  : '::' | '\u2237'; //U+2237 ∷
 Delay : ':=' | '\u2254'; //U+2254 ≔
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-data: number | string | special | symbols | list | matrix | dict | index | solt;
+data: number | string | special | symbols | list | dict | index | solt;
 number: complex | decimal | integer | Binary | Octal | Hexadecimal;
 index
     : '[' indexValid (Comma? indexValid)* ']'
@@ -169,7 +169,6 @@ keyValid   : integer | symbol | string;
 list       : '[' listLine? Comma? ']';
 listLine   : element (Comma? element)*;
 element    : data | expression | blockStatement;
-matrix     : '[' listLine (eos listLine)* eos? ']';
 indexValid : (symbol | integer) Colon?;
 Plus       : '+';
 Minus      : '-';
