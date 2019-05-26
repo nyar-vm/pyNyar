@@ -64,13 +64,13 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#importController.
-    def visitImportController(self, ctx:NyarParser.ImportControllerContext):
+    # Visit a parse tree produced by NyarParser#blockStatement.
+    def visitBlockStatement(self, ctx:NyarParser.BlockStatementContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#blockStatement.
-    def visitBlockStatement(self, ctx:NyarParser.BlockStatementContext):
+    # Visit a parse tree produced by NyarParser#blockNonEnd.
+    def visitBlockNonEnd(self, ctx:NyarParser.BlockNonEndContext):
         return self.visitChildren(ctx)
 
 
@@ -189,28 +189,23 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#controller.
-    def visitController(self, ctx:NyarParser.ControllerContext):
+    # Visit a parse tree produced by NyarParser#controlFlow.
+    def visitControlFlow(self, ctx:NyarParser.ControlFlowContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#tri_or_expr.
-    def visitTri_or_expr(self, ctx:NyarParser.Tri_or_exprContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#sym_or_num.
-    def visitSym_or_num(self, ctx:NyarParser.Sym_or_numContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#expr_or_block.
-    def visitExpr_or_block(self, ctx:NyarParser.Expr_or_blockContext):
+    # Visit a parse tree produced by NyarParser#trinocularNest.
+    def visitTrinocularNest(self, ctx:NyarParser.TrinocularNestContext):
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by NyarParser#functionCall.
     def visitFunctionCall(self, ctx:NyarParser.FunctionCallContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#flowController.
+    def visitFlowController(self, ctx:NyarParser.FlowControllerContext):
         return self.visitChildren(ctx)
 
 
@@ -344,11 +339,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#listLine.
-    def visitListLine(self, ctx:NyarParser.ListLineContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#element.
     def visitElement(self, ctx:NyarParser.ElementContext):
         return self.visitChildren(ctx)
@@ -379,18 +369,38 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#else.
+    def visitElse(self, ctx:NyarParser.ElseContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#elseIf.
+    def visitElseIf(self, ctx:NyarParser.ElseIfContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#caseBody.
+    def visitCaseBody(self, ctx:NyarParser.CaseBodyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#switchBody.
+    def visitSwitchBody(self, ctx:NyarParser.SwitchBodyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#switchController.
+    def visitSwitchController(self, ctx:NyarParser.SwitchControllerContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#matchBody.
+    def visitMatchBody(self, ctx:NyarParser.MatchBodyContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#condition.
     def visitCondition(self, ctx:NyarParser.ConditionContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#ElseStatement.
-    def visitElseStatement(self, ctx:NyarParser.ElseStatementContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#ElseIfStatement.
-    def visitElseIfStatement(self, ctx:NyarParser.ElseIfStatementContext):
         return self.visitChildren(ctx)
 
 
@@ -429,8 +439,8 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#for_inline.
-    def visitFor_inline(self, ctx:NyarParser.For_inlineContext):
+    # Visit a parse tree produced by NyarParser#loopController.
+    def visitLoopController(self, ctx:NyarParser.LoopControllerContext):
         return self.visitChildren(ctx)
 
 
@@ -479,11 +489,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#StringRaw.
-    def visitStringRaw(self, ctx:NyarParser.StringRawContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#StringEscapeBlock.
     def visitStringEscapeBlock(self, ctx:NyarParser.StringEscapeBlockContext):
         return self.visitChildren(ctx)
@@ -494,8 +499,18 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#StringLiteral.
+    def visitStringLiteral(self, ctx:NyarParser.StringLiteralContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#StringEmpty.
     def visitStringEmpty(self, ctx:NyarParser.StringEmptyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#controller.
+    def visitController(self, ctx:NyarParser.ControllerContext):
         return self.visitChildren(ctx)
 
 
