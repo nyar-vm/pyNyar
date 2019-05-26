@@ -31,7 +31,14 @@ importStatement
     | Using source = moduleName With? idTuples          # ModuleSymbols
     | Using source = moduleName Dot idTuples            # ModuleSymbols
     | Using dict                                        # ModuleResolve;
-moduleName: symbol | symbol (Dot symbol);
+moduleName
+    : string
+    | symbol
+    | symbol (Dot symbol)
+    | moduleLanguage moduleScope?
+    | moduleScope?;
+moduleLanguage: Suffix symbol;
+moduleScope: Prefix symbol;
 // $antlr-format alignColons trailing;
 idTuples : '{' identifier (Comma identifier)* '}';
 As       : 'as';
