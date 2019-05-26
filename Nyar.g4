@@ -111,14 +111,15 @@ typeSuffix: (Tilde | Meets) typeExpression;
 parameter
     : typeExpression? symbol
     | typeExpression? symbol Times
-    | typeExpression? symbol KeyValues
+    | typeExpression? symbol Keywords
     | typeExpression? symbol Nullable;
 // $antlr-format alignColons trailing;
 Type      : 'type';
 BitOr     : '|';
 BitAnd    : '&';
 Nullable  : '?';
-KeyValues : '**';
+Keywords  : '**';
+BaseInput : '^^';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 assignStatment
@@ -131,17 +132,17 @@ assignStatment
     | assignLHS Vable assignRHS                                             # AssignVariable
     | assignLHS Delay assignRHS                                             # AssignDefer;
 assignLHS
-    : symbol typeSuffix?               # LHSSingleSymbol
-    | maybeSymbol (Comma maybeSymbol)* # LHSTupleSymbol
+    : symbol typeSuffix?               # LHSSingle
+    | maybeSymbol (Comma maybeSymbol)* # LHSTuple
     | symbols                          # LHSMaybeSetter
     | symbols index                    # LHSMaybeIndex;
 assignRHS
-    : expression
-    | data
-    | '{' statement* '}'
-    | Colon statement* End
-    | expressionStatement
-    | statement;
+    : expression           # RHSExpression
+    | data                 # RHSExpression
+    | '{' statement* '}'   # RHSStatement
+    | Colon statement* End # RHSStatement
+    | expressionStatement  # RHSTuple
+    | statement            # RHSStatement;
 maybeSymbol: symbols typeSuffix? | head = Tilde;
 symbols: (symbol | symbolName) (Dot symbol)*;
 symbolName: symbol (Name symbol)*;
@@ -202,10 +203,10 @@ Final : 'final';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 loopStatement
-    : id = identifier? For '(' for_inline ')' expr_or_block       # ForLoop
-    | id = identifier? For identifier In expression expr_or_block # ForInLoop
-    | id = identifier? While condition expr_or_block              # WhileLoop
-    | id = identifier? Do expr_or_block                           # DoLoop;
+    : For '(' for_inline ')' expr_or_block       # ForLoop
+    | For identifier In expression expr_or_block # ForInLoop
+    | While condition expr_or_block              # WhileLoop
+    | Do expr_or_block                           # DoLoop;
 for_inline: init = expression Comma cond = expression Comma inc = expression;
 // $antlr-format alignColons trailing;
 In    : 'in';
@@ -248,7 +249,6 @@ Hexadecimal      : HexHead Hex+;
 Integer          : [0]+ | [1-9] Digit*;
 Exponent         : '*^';
 Base             : '/^';
-BaseInput        : '^^';
 Surd             : '\u221A'; //U+221A √
 fragment Bin     : [01];
 fragment BinHead : '0b';
