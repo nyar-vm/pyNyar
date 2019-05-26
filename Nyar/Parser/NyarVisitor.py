@@ -479,6 +479,11 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#StringRaw.
+    def visitStringRaw(self, ctx:NyarParser.StringRawContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#StringEscapeBlock.
     def visitStringEscapeBlock(self, ctx:NyarParser.StringEscapeBlockContext):
         return self.visitChildren(ctx)

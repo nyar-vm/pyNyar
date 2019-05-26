@@ -854,6 +854,15 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#StringRaw.
+    def enterStringRaw(self, ctx:NyarParser.StringRawContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#StringRaw.
+    def exitStringRaw(self, ctx:NyarParser.StringRawContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#StringEscapeBlock.
     def enterStringEscapeBlock(self, ctx:NyarParser.StringEscapeBlockContext):
         pass
