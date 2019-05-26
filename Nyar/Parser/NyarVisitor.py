@@ -259,13 +259,13 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#LHSSingleSymbol.
-    def visitLHSSingleSymbol(self, ctx:NyarParser.LHSSingleSymbolContext):
+    # Visit a parse tree produced by NyarParser#LHSSingle.
+    def visitLHSSingle(self, ctx:NyarParser.LHSSingleContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#LHSTupleSymbol.
-    def visitLHSTupleSymbol(self, ctx:NyarParser.LHSTupleSymbolContext):
+    # Visit a parse tree produced by NyarParser#LHSTuple.
+    def visitLHSTuple(self, ctx:NyarParser.LHSTupleContext):
         return self.visitChildren(ctx)
 
 
@@ -279,8 +279,18 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#assignRHS.
-    def visitAssignRHS(self, ctx:NyarParser.AssignRHSContext):
+    # Visit a parse tree produced by NyarParser#RHSExpression.
+    def visitRHSExpression(self, ctx:NyarParser.RHSExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#RHSStatement.
+    def visitRHSStatement(self, ctx:NyarParser.RHSStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#RHSTuple.
+    def visitRHSTuple(self, ctx:NyarParser.RHSTupleContext):
         return self.visitChildren(ctx)
 
 

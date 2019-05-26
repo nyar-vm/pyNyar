@@ -458,21 +458,21 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#LHSSingleSymbol.
-    def enterLHSSingleSymbol(self, ctx:NyarParser.LHSSingleSymbolContext):
+    # Enter a parse tree produced by NyarParser#LHSSingle.
+    def enterLHSSingle(self, ctx:NyarParser.LHSSingleContext):
         pass
 
-    # Exit a parse tree produced by NyarParser#LHSSingleSymbol.
-    def exitLHSSingleSymbol(self, ctx:NyarParser.LHSSingleSymbolContext):
+    # Exit a parse tree produced by NyarParser#LHSSingle.
+    def exitLHSSingle(self, ctx:NyarParser.LHSSingleContext):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#LHSTupleSymbol.
-    def enterLHSTupleSymbol(self, ctx:NyarParser.LHSTupleSymbolContext):
+    # Enter a parse tree produced by NyarParser#LHSTuple.
+    def enterLHSTuple(self, ctx:NyarParser.LHSTupleContext):
         pass
 
-    # Exit a parse tree produced by NyarParser#LHSTupleSymbol.
-    def exitLHSTupleSymbol(self, ctx:NyarParser.LHSTupleSymbolContext):
+    # Exit a parse tree produced by NyarParser#LHSTuple.
+    def exitLHSTuple(self, ctx:NyarParser.LHSTupleContext):
         pass
 
 
@@ -494,12 +494,30 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#assignRHS.
-    def enterAssignRHS(self, ctx:NyarParser.AssignRHSContext):
+    # Enter a parse tree produced by NyarParser#RHSExpression.
+    def enterRHSExpression(self, ctx:NyarParser.RHSExpressionContext):
         pass
 
-    # Exit a parse tree produced by NyarParser#assignRHS.
-    def exitAssignRHS(self, ctx:NyarParser.AssignRHSContext):
+    # Exit a parse tree produced by NyarParser#RHSExpression.
+    def exitRHSExpression(self, ctx:NyarParser.RHSExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#RHSStatement.
+    def enterRHSStatement(self, ctx:NyarParser.RHSStatementContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#RHSStatement.
+    def exitRHSStatement(self, ctx:NyarParser.RHSStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#RHSTuple.
+    def enterRHSTuple(self, ctx:NyarParser.RHSTupleContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#RHSTuple.
+    def exitRHSTuple(self, ctx:NyarParser.RHSTupleContext):
         pass
 
 
