@@ -25,7 +25,7 @@ Semicolon      : ';' | '\uFF1B'; //U+FF1B ；
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 importStatement
-    : Using module = moduleName importController?       # ModuleInclude
+    : Using module = moduleName                         # ModuleInclude
     | Using module = moduleName As alias = identifier   # ModuleAlias
     | Using source = moduleName With? name = identifier # ModuleSymbol
     | Using source = moduleName With? idTuples          # ModuleSymbols
@@ -33,14 +33,13 @@ importStatement
     | Using dict                                        # ModuleResolve;
 moduleName: symbol | symbol (Dot symbol);
 // $antlr-format alignColons trailing;
-idTuples         : '{' identifier (Comma identifier)* '}';
-importController : Times | Power;
-As               : 'as';
-With             : 'with';
-Using            : 'using';
-Instance         : 'instance';
-Times            : '*';
-Power            : '^';
+idTuples : '{' identifier (Comma identifier)* '}';
+As       : 'as';
+With     : 'with';
+Using    : 'using';
+Instance : 'instance';
+Times    : '*';
+Power    : '^';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 blockStatement: '{' statement* '}' | Colon expression | Colon statement* End;
@@ -70,7 +69,7 @@ expression
     | left = expression op = list_ops right = expression                # ListLike
     | atom = data                                                       # DataLiteral
     | '(' expression ')'                                                # PriorityExpression
-    | controller                                                        # ControlExpression
+    | controlFlow                                                       # ControlExpression
     | expression BitAnd                                                 # SlotCatch;
 /* | left = number right = expression                                  # SpaceExpression*/
 /*====================================================================================================================*/
@@ -78,7 +77,7 @@ trinocular
     : l = trinocularNest Nullable m = trinocularNest Colon r = trinocularNest # ConditionTrinocular
     | l = trinocularNest If m = trinocularNest Else r = trinocularNest        # IfElseTrinocular;
 /*  | l = sym_or_num Power m = sym_or_num Mod r = sym_or_num         # PowerModTrinocular */
-controller
+controlFlow
     : state = (Pass | Break) ('(' ')')?
     | state = (Throw | Yield | Await) expression
     | state = Return expressionStatement
@@ -86,6 +85,7 @@ controller
 // $antlr-format alignColons trailing;
 trinocularNest : expression | '(' trinocular ')';
 functionCall   : symbols '(' (arguments (Comma arguments)*)? ')';
+flowController : Pass | Break | Throw | Yield | Await;
 Pass           : 'pass';
 Return         : 'return';
 Yield          : 'yield';
@@ -128,7 +128,7 @@ assignStatment
     | Def symbol '(' parameter (Comma parameter)* ')' typeSuffix? assignRHS # AssignFunction
     | symbol '(' parameter (Comma parameter)* ')' typeSuffix? Set assignRHS # AssignFunction
     | assignLHS Set assignRHS                                               # AssignValue
-    | assignLHS Vable assignRHS                                             # AssignVariable
+    | assignLHS Flexible assignRHS                                          # AssignVariable
     | assignLHS Delay assignRHS                                             # AssignDefer;
 assignLHS
     : symbol typeSuffix?               # LHSSingle
@@ -147,14 +147,14 @@ maybeSymbol: symbols typeSuffix? | head = Tilde;
 symbols: (symbol | symbolName) (Dot symbol)*;
 symbolName: symbol (Name symbol)*;
 // $antlr-format alignColons trailing;
-Val   : 'val';
-Var   : 'var';
-Let   : 'let';
-Def   : 'def';
-Set   : '=';
-Vable : '.=' | '\u2250'; //U+2250 ≐
-Name  : '::' | '\u2237'; //U+2237 ∷
-Delay : ':=' | '\u2254'; //U+2254 ≔
+Val      : 'val';
+Var      : 'var';
+Let      : 'let';
+Def      : 'def';
+Set      : '=';
+Flexible : '.=' | '\u2250'; //U+2250 ≐
+Name     : '::' | '\u2237'; //U+2237 ∷
+Delay    : ':=' | '\u2254'; //U+2254 ≔
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 data: number | string | special | symbols | list | dict | index | solt;
@@ -216,11 +216,14 @@ Final : 'final';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 loopStatement
-    : For '(' expressionStatement ')' blockStatement # ForLoop
-    | For identifier In expression blockStatement    # ForInLoop
-    | While condition blockStatement                 # WhileLoop
-    | Do blockStatement                              # DoLoop;
+    : For '(' expressionStatement ')' loopController? blockStatement # ForLoop
+    | For identifier In expression loopController? blockStatement    # ForInLoop
+    | While condition loopController? blockStatement                 # WhileLoop
+    | Do loopController? blockStatement                              # DoLoop;
+loopController: Async | Lazy;
 // $antlr-format alignColons trailing;
+Async : 'async';
+Lazy  : 'lazy';
 In    : 'in';
 For   : 'for';
 While : 'while';
@@ -288,9 +291,10 @@ fragment CharLevel1 : Escape . | ~[\\];
 fragment CharLevel2 : Escape . | ~["\\];
 fragment NonEscape  : ~[\u0001]+?;
 /*====================================================================================================================*/
+controller : flowController | switchController | loopController;
 special    : True | False | Null | Nothing;
-identifier : Val | Var | Def | Let | Identifier;
-symbol     : Symbol | Identifier;
+identifier : controller | Identifier;
+symbol     : controller | Symbol | Identifier;
 solt       : Sharp n = Integer? | Sharp id = Identifier;
 Identifier : Letter+;
 Symbol     : NameStartCharacter NameCharacter*;
