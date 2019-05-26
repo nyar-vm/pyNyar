@@ -43,7 +43,8 @@ Times            : '*';
 Power            : '^';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-blockStatement: '{' statement* '}' | Colon statement* End | Colon expression;
+blockStatement: '{' statement* '}' | Colon expression | Colon statement* End;
+blockNonEnd: '{' statement* '}' | Colon expression | Colon statement*;
 // $antlr-format alignColons trailing;
 End   : 'end';
 Colon : ':' | '\uFF1A'; //U+FF1A ：
@@ -74,8 +75,8 @@ expression
 /* | left = number right = expression                                  # SpaceExpression*/
 /*====================================================================================================================*/
 trinocular
-    : l = tri_or_expr Nullable m = tri_or_expr Colon r = tri_or_expr # ConditionTrinocular
-    | l = tri_or_expr If m = tri_or_expr Else r = tri_or_expr        # IfElseTrinocular;
+    : l = trinocularNest Nullable m = trinocularNest Colon r = trinocularNest # ConditionTrinocular
+    | l = trinocularNest If m = trinocularNest Else r = trinocularNest        # IfElseTrinocular;
 /*  | l = sym_or_num Power m = sym_or_num Mod r = sym_or_num         # PowerModTrinocular */
 controller
     : state = (Pass | Break) ('(' ')')?
@@ -83,17 +84,15 @@ controller
     | state = Return expressionStatement
     | state = Return '(' expressionStatement Comma? ')';
 // $antlr-format alignColons trailing;
-tri_or_expr   : expression | '(' trinocular ')';
-sym_or_num    : symbol | symbols | number;
-expr_or_block : expression | blockStatement;
-functionCall  : symbols '(' (arguments (Comma arguments)*)? ')';
-Pass          : 'pass';
-Return        : 'return';
-Yield         : 'yield';
-Await         : 'await';
-Break         : 'break';
-Throw         : 'throw';
-Comma         : ',' | '\uFF0C'; //U+FF0C ，
+trinocularNest : expression | '(' trinocular ')';
+functionCall   : symbols '(' (arguments (Comma arguments)*)? ')';
+Pass           : 'pass';
+Return         : 'return';
+Yield          : 'yield';
+Await          : 'await';
+Break          : 'break';
+Throw          : 'throw';
+Comma          : ',' | '\uFF0C'; //U+FF0C ，
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 arguments: expression | functionCall | data;
@@ -163,25 +162,26 @@ index
     : '[' indexValid (Comma? indexValid)* ']'
     | '⟦' indexValid (Comma? indexValid)* '⟧';
 // $antlr-format alignColons trailing;
-dict       : '{' (keyValue (Comma keyValue)*)? Comma? '}';
+dict       : '{' keyValue? (Comma keyValue)* Comma? '}';
 keyValue   : key = keyValid Colon value = element;
 keyValid   : integer | symbol | string;
-list       : '[' listLine? Comma? ']';
-listLine   : element (Comma? element)*;
-element    : data | expression | blockStatement;
+list       : '[' element? (Comma element)* Comma? ']';
+element    : data | expression | statement;
 indexValid : (symbol | integer) Colon?;
 Plus       : '+';
 Minus      : '-';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 branchStatement
-    : If condition expr_or_block if_else?             # IfSingle
-    | If condition expr_or_block if_elseif* if_else?  # IfNested
-    | Switch (Pass | Return)? condition expr_or_block # SwitchStatement
-    | Match condition expr_or_block                   # MatchStatement;
+    : If condition blockNonEnd else?               # IfSingle
+    | If condition blockNonEnd elseIf* else?       # IfNested
+    | Switch (Pass | Return)? condition switchBody # SwitchStatement
+    | Match condition matchBody                    # MatchStatement;
+switchBody: expression | blockStatement;
+matchBody: expression | blockStatement;
 condition: expression | '(' expression ')';
-if_else: Else expr_or_block # ElseStatement;
-if_elseif: Else If condition Then? expr_or_block # ElseIfStatement;
+else: Else expression | Else blockStatement;
+elseIf: Else If condition Then? blockNonEnd;
 // $antlr-format alignColons trailing;
 If     : 'if';
 Else   : 'else';
@@ -202,10 +202,10 @@ Final : 'final';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 loopStatement
-    : For '(' for_inline ')' expr_or_block       # ForLoop
-    | For identifier In expression expr_or_block # ForInLoop
-    | While condition expr_or_block              # WhileLoop
-    | Do expr_or_block                           # DoLoop;
+    : For '(' for_inline ')' blockStatement       # ForLoop
+    | For identifier In expression blockStatement # ForInLoop
+    | While condition blockStatement              # WhileLoop
+    | Do blockStatement                           # DoLoop;
 for_inline: init = expression Comma cond = expression Comma inc = expression;
 // $antlr-format alignColons trailing;
 In    : 'in';
@@ -244,15 +244,15 @@ Decimal        : Integer Dot Digit;
 DecimalBad     : Integer Dot | Dot Digit+;
 Binary         : Zero B Bin+;
 Octal          : Zero O Oct+;
-Hexadecimal    : Zero H Hex+;
+Hexadecimal    : Zero X Hex+;
 Integer        : Zero+ | [1-9] Digit*;
 Exponent       : '*^';
 Base           : '/^';
 fragment Zero  : [0];
-fragment Bin   : [01];
-fragment Oct   : [0-7];
-fragment Digit : [0-9];
-fragment Hex   : [0-9a-fA-F];
+fragment Bin   : [0]| [1];
+fragment Oct   : [0]| [1-7];
+fragment Digit : [0]| [1-9];
+fragment Hex   : [0]| [1-9a-fA-F];
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 string
@@ -261,13 +261,14 @@ string
     | StringEmpty        # StringEmpty;
 // $antlr-format alignColons trailing;
 StringEscapeBlock   : S6 CharLevel1+? S6;
-StringEscapeSingle  : S2 CharLevel2+? S2;
-StringEmpty         : S6 S6 | S2 S2;
+StringEscapeSingle  : S2 CharLevel2+? S2 | '＂' ~[＂]+? '＂';
+StringEmpty         : S6 S6 | S2 S2 | '＂' '＂';
 Escape              : '\\';
 fragment S6         : '"""';
 fragment S2         : '"';
 fragment CharLevel1 : Escape . | ~[\\];
 fragment CharLevel2 : Escape . | ~["\\];
+fragment NonEscape  : ~[\u0001]+?;
 /*====================================================================================================================*/
 special    : True | False | Null | Nothing;
 identifier : Val | Var | Def | Let | Identifier;
@@ -346,7 +347,7 @@ cpr_ops
     | (LogicAnd | LogicOr);
 pow_ops: Power | Surd;
 mul_ops: Divide | Mod | Remainder | Times | Multiply | Kronecker | TensorProduct;
-list_ops: Concat | LeftShift | RightShift | Increase;
+list_ops: Concat | LeftShift | RightShift | Increase | Map;
 // $antlr-format alignColons trailing;
 /* <> */
 Import      : '<<<' | '\u22D8'; //U+22D8 ⋘
