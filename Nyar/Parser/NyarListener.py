@@ -629,15 +629,6 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#matrix.
-    def enterMatrix(self, ctx:NyarParser.MatrixContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#matrix.
-    def exitMatrix(self, ctx:NyarParser.MatrixContext):
-        pass
-
-
     # Enter a parse tree produced by NyarParser#indexValid.
     def enterIndexValid(self, ctx:NyarParser.IndexValidContext):
         pass

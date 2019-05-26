@@ -354,11 +354,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#matrix.
-    def visitMatrix(self, ctx:NyarParser.MatrixContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#indexValid.
     def visitIndexValid(self, ctx:NyarParser.IndexValidContext):
         return self.visitChildren(ctx)
