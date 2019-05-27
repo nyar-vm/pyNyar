@@ -14,6 +14,7 @@ statement
     | traitStatement eos?
     | classStatement eos?
     | expression eos?
+    | letStatment eos?
     | trinocular eos?
     | data eos?;
 /*====================================================================================================================*/
@@ -154,7 +155,6 @@ symbols         : Symbols # MaybeMethod | TrueName Dot symbol # MustMethod;
 // $antlr-format alignColons trailing;
 Val      : 'val';
 Var      : 'var';
-Let      : 'let';
 Def      : 'def';
 Set      : '=';
 Flexible : '.=' | '\u2250'; //U+2250 ≐
@@ -221,11 +221,10 @@ Final : 'final';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 loopStatement
-    : For '(' expressionStatement ')' loopController? blockStatement # ForLoop
-    | For symbol In expression loopController? blockStatement        # ForInLoop
-    | While condition loopController? blockStatement                 # WhileLoop
-    | Do loopController? blockStatement                              # DoLoop;
-loopController: Async | Lazy;
+    : For '(' expressionStatement ')' blockStatement # ForLoop
+    | For symbol In expression blockStatement        # ForInLoop
+    | While condition blockStatement                 # WhileLoop
+    | Do blockStatement                              # DoLoop;
 // $antlr-format alignColons trailing;
 Async : 'async';
 Lazy  : 'lazy';
@@ -234,7 +233,9 @@ For   : 'for';
 While : 'while';
 Do    : 'do';
 /*====================================================================================================================*/
+letStatment: Let symbol* statement;
 Macro : 'macro';
+Let      : 'let';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 classBody
@@ -252,7 +253,7 @@ traitStatement  : Trait symbol classExtend? classTrait? classBody;
 classStatement  : Class symbol classExtend? classTrait? classBody;
 classExtend     : Extend symbol+ | '(' symbol (Comma symbol)* ')';
 classTrait      : Act symbol+ | Tilde symbol | Tilde '(' symbol (Comma symbol)* ')';
-classController : symbol | Val | Var | Let | Def;
+classController : symbol | Val | Var | Def;
 // $antlr-format alignColons trailing;
 Trait  : 'trait';
 Class  : 'class';
