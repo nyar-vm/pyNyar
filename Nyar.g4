@@ -25,12 +25,11 @@ Semicolon      : ';' | '\uFF1B'; //U+FF1B ；
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 importStatement
-    : Using module = moduleName                         # ModuleInclude
-    | Using module = moduleName As alias = identifier   # ModuleAlias
-    | Using source = moduleName With? name = identifier # ModuleSymbol
-    | Using source = moduleName With? idTuples          # ModuleSymbols
-    | Using source = moduleName Dot idTuples            # ModuleSymbols
-    | Using dict                                        # ModuleResolve;
+    : Using module = moduleName                        # ModuleInclude
+    | Using module = moduleName As alias = symbol      # ModuleAlias
+    | Using source = moduleName With? name = symbol    # ModuleSymbol
+    | Using source = moduleName (With | Dot)? idTuples # ModuleSymbols
+    | Using dict                                       # ModuleResolve;
 moduleName
     : string
     | symbol
@@ -40,7 +39,7 @@ moduleName
 moduleLanguage: Suffix symbol;
 moduleScope: Prefix symbol;
 // $antlr-format alignColons trailing;
-idTuples : '{' identifier (Comma identifier)* '}';
+idTuples : '{' symbols (Comma symbols)* '}';
 As       : 'as';
 With     : 'with';
 Using    : 'using';
@@ -63,7 +62,7 @@ expression
     | left = expression Dot right = functionCall                        # MethodApply
     | left = expression right = index                                   # IndexApply
     | assignStatment                                                    # AssignApply
-    | left = identifier right = string                                  # SpecialString
+    | left = symbol right = string                                      # SpecialString
     | left = expression As right = typeExpression                       # TypeConversion
     | op = pre_ops right = expression                                   # PrefixExpression
     | left = expression op = pst_ops                                    # PostfixExpression
@@ -92,6 +91,7 @@ controlFlow
 // $antlr-format alignColons trailing;
 trinocularNest : expression | '(' trinocular ')';
 functionCall   : symbols '(' (arguments (Comma arguments)*)? ')';
+arguments      : expression | functionCall | data;
 flowController : Pass | Break | Throw | Yield | Await;
 Pass           : 'pass';
 Return         : 'return';
@@ -102,57 +102,55 @@ Throw          : 'throw';
 Comma          : ',' | '\uFF0C'; //U+FF0C ，
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-arguments: expression | functionCall | data;
 typeStatement
     : Type symbol Colon typeExpression End?
     | Type symbol '{' typeExpression '}'?;
 typeExpression
-    : symbols '(' (typeExpression (Comma typeExpression)*)? ')'
-    | symbols '<' (typeExpression (Comma typeExpression)*)? '>'
+    : symbol '(' (typeExpression (Comma typeExpression)*)? ')'
+    | symbol '<' (typeExpression (Comma typeExpression)*)? '>'
     | typeExpression (BitOr | BitAnd) typeExpression
     | typeExpression '[' ']'
-    | symbols (Nullable | Times)?
+    | symbol (Nullable | Times)?
     | integer;
-typeSuffix: (Tilde | Meets) typeExpression;
-parameter
-    : typeExpression? symbol
-    | typeExpression? symbol Times
-    | typeExpression? symbol Keywords
-    | typeExpression? symbol Nullable symbol;
+typeSuffix: (Tilde | Act) typeExpression;
 // $antlr-format alignColons trailing;
 Type      : 'type';
 BitOr     : '|';
 BitAnd    : '&';
 Nullable  : '?';
-Keywords  : '**';
+Keyword   : '**';
 BaseInput : '^^';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 assignStatment
-    : Val assignLHS assignRHS                                               # AssignValue
-    | Var assignLHS assignRHS                                               # AssignVariable
-    | Def assignLHS assignRHS                                               # AssignDefer
-    | Def symbol '(' parameter (Comma parameter)* ')' typeSuffix? assignRHS # AssignFunction
-    | symbol '(' parameter (Comma parameter)* ')' typeSuffix? Set assignRHS # AssignFunction
-    | assignLHS Set assignRHS                                               # AssignValue
-    | assignLHS Flexible assignRHS                                          # AssignVariable
-    | assignLHS Delay assignRHS                                             # AssignDefer;
+    : Val assignLHS blockStatement            # AssignValue
+    | Var assignLHS blockStatement            # AssignVariable
+    | Def assignLHS blockStatement            # AssignDefer
+    | Def functionPattern blockStatement      # AssignFunction
+    | functionPattern (Set | Delay) assignRHS # AssignFunction
+    | assignLHS Set assignRHS                 # AssignValue
+    | assignLHS Flexible assignRHS            # AssignVariable
+    | assignLHS Delay assignRHS               # AssignDefer;
 assignLHS
     : symbol typeSuffix?               # LHSSingle
     | maybeSymbol (Comma maybeSymbol)* # LHSTuple
     | symbols                          # LHSMaybeSetter
     | symbols index                    # LHSMaybeIndex;
 assignRHS
-    : expression                  # RHSExpression
-    | Colon expression            # RHSExpression
-    | '{' statement* '}'          # RHSStatement
-    | Colon statement* End        # RHSStatement
-    | expressionStatement         # RHSTuple
-    | '(' expressionStatement ')' # RHSTuple
-    | statement                   # RHSStatement;
-maybeSymbol: symbols typeSuffix? | head = Tilde;
-symbols: (symbol | symbolName) (Dot symbol)*;
-symbolName: symbol (Name symbol)*;
+    : expression
+    | expressionStatement
+    | statement
+    | '{' statement* '}'
+    | Colon statement* End;
+parameter
+    : typeExpression? symbol
+    | typeExpression? symbol Times
+    | typeExpression? symbol Keyword
+    | typeExpression? symbol Nullable symbol;
+// $antlr-format alignColons trailing;
+functionPattern : symbol '(' parameter (Comma parameter)* Comma? ')' typeSuffix?;
+maybeSymbol     : symbols typeSuffix? | Suffix;
+symbols         : Symbols # MaybeMethod | TrueName Dot symbol # MustMethod;
 // $antlr-format alignColons trailing;
 Val      : 'val';
 Var      : 'var';
@@ -164,7 +162,7 @@ Name     : '::' | '\u2237'; //U+2237 ∷
 Delay    : ':=' | '\u2254'; //U+2254 ≔
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-data: number | string | special | symbols | list | dict | index | solt;
+data: number | string | special | symbol | symbols | list | dict | index | solt;
 number: complex | decimal | integer | Binary | Octal | Hexadecimal;
 index
     : '[' indexValid (Comma? indexValid)* ']'
@@ -224,7 +222,7 @@ Final : 'final';
 // $antlr-format alignColons hanging;
 loopStatement
     : For '(' expressionStatement ')' loopController? blockStatement # ForLoop
-    | For identifier In expression loopController? blockStatement    # ForInLoop
+    | For symbol In expression loopController? blockStatement        # ForInLoop
     | While condition loopController? blockStatement                 # WhileLoop
     | Do loopController? blockStatement                              # DoLoop;
 loopController: Async | Lazy;
@@ -239,30 +237,32 @@ Do    : 'do';
 Macro : 'macro';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-traitStatement: Trait symbol classExtends? classMeets? classBody;
-classStatement: Class symbol classExtends? classMeets? classBody;
-classExtends: Extends symbol+ | '(' symbol (Comma symbol)* ')';
-classMeets: Meets symbol+ | Tilde symbol | Tilde '(' symbol (Comma symbol)* ')';
 classBody
     : '{' classExpression* '}'
     | Colon classExpression* End
     | Colon classExpression;
 classExpression
     : emptyStatement
-    | identifier* symbol typeSuffix?
-    | identifier* symbol typeSuffix? blockStatement
-    | identifier* symbol '(' parameter* ')' typeSuffix? (Colon 'pass')?
-    | identifier* symbol '(' parameter* ')' typeSuffix? blockStatement;
+    | classController* symbol typeSuffix?
+    | classController* symbol typeSuffix? blockStatement
+    | classController* symbol '(' parameter* ')' typeSuffix? (Colon 'pass')?
+    | classController* symbol '(' parameter* ')' typeSuffix? blockStatement;
 // $antlr-format alignColons trailing;
-Trait   : 'trait';
-Class   : 'class';
-Extends : 'extends';
-Meets   : 'meets';
-Tilde   : '~';
-Suffix  : '$';
-Prefix  : '@';
+traitStatement  : Trait symbol classExtend? classTrait? classBody;
+classStatement  : Class symbol classExtend? classTrait? classBody;
+classExtend     : Extend symbol+ | '(' symbol (Comma symbol)* ')';
+classTrait      : Act symbol+ | Tilde symbol | Tilde '(' symbol (Comma symbol)* ')';
+classController : symbol | Val | Var | Let | Def;
+// $antlr-format alignColons trailing;
+Trait  : 'trait';
+Class  : 'class';
+Extend : 'extend';
+Act    : 'act';
+Tilde  : '~';
+Suffix : '$';
+Prefix : '@';
 /*====================================================================================================================*/
-complex        : (Decimal | Integer) identifier;
+complex        : (Decimal | Integer) symbol;
 decimal        : Decimal | DecimalBad;
 integer        : Integer;
 Decimal        : Integer Dot Digit;
@@ -300,10 +300,10 @@ fragment NonEscape  : ~[\u0001]+?;
 /*====================================================================================================================*/
 controller : flowController | switchController | loopController;
 special    : True | False | Null | Nothing;
-identifier : controller | Identifier;
-symbol     : controller | Symbol | Identifier;
-solt       : Sharp n = Integer? | Sharp id = Identifier;
-Identifier : Letter+;
+symbol     : controller | Symbol | TrueName;
+solt       : Sharp n = Integer? | Sharp id = symbol;
+Symbols    : Symbol (Dot Symbol)+;
+TrueName   : Symbol (Name Symbol)*;
 Symbol     : NameStartCharacter NameCharacter*;
 True       : 'true';
 False      : 'false';
