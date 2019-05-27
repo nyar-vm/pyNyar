@@ -15,7 +15,6 @@ statement
     | classStatement eos?
     | expression eos?
     | letStatment eos?
-    | trinocular eos?
     | data eos?;
 /*====================================================================================================================*/
 // $antlr-format alignColons trailing;
@@ -80,17 +79,12 @@ expression
     | expression BitAnd                                                 # SlotCatch;
 /* | left = number right = expression                                  # SpaceExpression*/
 /*====================================================================================================================*/
-trinocular
-    : l = trinocularNest Nullable m = trinocularNest Colon r = trinocularNest # ConditionTrinocular
-    | l = trinocularNest If m = trinocularNest Else r = trinocularNest        # IfElseTrinocular;
-/*  | l = sym_or_num Power m = sym_or_num Mod r = sym_or_num         # PowerModTrinocular */
 controlFlow
     : state = (Pass | Break) ('(' ')')?
     | state = (Throw | Yield | Await) expression
     | state = Return expressionStatement
     | state = Return '(' expressionStatement Comma? ')';
 // $antlr-format alignColons trailing;
-trinocularNest : expression | '(' trinocular ')';
 functionCall   : symbols '(' (arguments (Comma arguments)*)? ')';
 arguments      : expression | functionCall | data;
 flowController : Pass | Break | Throw | Yield | Await;
