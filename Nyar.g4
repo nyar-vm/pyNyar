@@ -8,7 +8,7 @@ statement
     | importStatement eos?
     | typeStatement eos?
     | assignStatment eos?
-    | branchStatement eos?
+    | (switchStatment | ifStatment | matchStatment) eos?
     | loopStatement eos?
     | tryStatement eos?
     | traitStatement eos?
@@ -49,7 +49,7 @@ Power    : '^';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 blockStatement: '{' statement* '}' | Colon expression | Colon statement* End;
-blockNonEnd: '{' statement* '}' | statement*;
+blockNonEnd: '{' statement* '}' | Colon? statement*;
 // $antlr-format alignColons trailing;
 End   : 'end';
 Colon : ':' | '\uFF1A'; //U+FF1A ：
@@ -155,35 +155,24 @@ Flexible : '.=' | '\u2250'; //U+2250 ≐
 Name     : '::' | '\u2237'; //U+2237 ∷
 Delay    : ':=' | '\u2254'; //U+2254 ≔
 /*====================================================================================================================*/
+ifStatment : ifShort | ifSingle | ifNested;
 // $antlr-format alignColons hanging;
-data: number | string | special | symbol | symbols | list | dict | index | solt;
-number: complex | decimal | integer | Binary | Octal | Hexadecimal;
-index
-    : '[' indexValid (Comma? indexValid)* ']'
-    | '⟦' indexValid (Comma? indexValid)* '⟧';
-// $antlr-format alignColons trailing;
-dict       : '{' keyValue? (Comma keyValue)* Comma? '}';
-keyValue   : key = keyValid Colon value = element;
-keyValid   : integer | symbol | string;
-list       : '[' element? (Comma element)* Comma? ']';
-element    : data | expression | statement;
-indexValid : (symbol | integer) Colon?;
-Plus       : '+';
-Minus      : '-';
-/*====================================================================================================================*/
-// $antlr-format alignColons hanging;
-branchStatement
-    : If condition (Then | Colon)? blockNonEnd else?         # IfSingle
-    | If condition (Then | Colon)? blockNonEnd elseIf* else? # IfNested
-    | Switch condition switchBody                            # SwitchStatement
-    | Match condition matchBody                              # MatchStatement;
+ifShort
+    : If condition (Then | Colon)? expression
+    | If condition (Then | Colon)? blockStatement;
+ifSingle: If condition (Then | Colon)? blockNonEnd else;
+ifNested
+    : If condition (Then | Colon)? blockNonEnd elseIf+ else
+    | If condition (Then | Colon)? blockNonEnd elseIf* (Else ifShort);
 // $antlr-format alignColons trailing;
 else   : Else expression | Else blockStatement;
 elseIf : Else If condition (Then | Colon)? blockNonEnd;
 If     : 'if';
 Else   : 'else';
 Then   : 'then';
+/*====================================================================================================================*/
 // $antlr-format alignColons hanging;
+switchStatment: Switch condition switchBody;
 caseBody //if no expr, must default
     : Case expression Colon blockNonEnd
     | expression Rule blockNonEnd
@@ -195,18 +184,20 @@ switchBody : '{' caseBody* '}' | Colon caseBody* End;
 Switch     : 'switch';
 Case       : 'case';
 Default    : 'default';
-// $antlr-format alignColons trailing;
-matchBody : expression | blockStatement;
-condition : expression | '(' expression ')';
-Match     : 'match';
-Rule      : '=>' | '\u27F9'; //U+27F9 ⟹;
+/*====================================================================================================================*/
+matchStatment : Match condition matchBody;
+matchBody     : expression | blockStatement;
+condition     : expression | '(' expression ')';
+Match         : 'match';
+Rule          : '=>' | '\u27F9'; //U+27F9 ⟹;
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 tryStatement
-    : Try blockStatement finalProduction
-    | Try blockStatement (catchProduction finalProduction?);
-catchProduction: Catch symbol blockStatement | Catch '(' symbol ')' blockStatement;
-finalProduction: Final blockStatement;
+    : Try blockNonEnd tryCatch+ tryFinal
+    | Try blockNonEnd Catch symbol blockNonEnd
+    | Try blockNonEnd Catch '(' symbol ')' blockNonEnd;
+tryCatch: Catch symbol blockNonEnd | Catch '(' symbol ')' blockNonEnd;
+tryFinal: Final blockStatement;
 // $antlr-format alignColons trailing;
 Try   : 'try';
 Catch : 'catch';
@@ -253,6 +244,22 @@ Act    : 'act';
 Tilde  : '~';
 Suffix : '$';
 Prefix : '@';
+/*====================================================================================================================*/
+// $antlr-format alignColons hanging;
+data: number | string | special | symbol | symbols | list | dict | index | solt;
+number: complex | decimal | integer | Binary | Octal | Hexadecimal;
+index
+    : '[' indexValid (Comma? indexValid)* ']'
+    | '⟦' indexValid (Comma? indexValid)* '⟧';
+// $antlr-format alignColons trailing;
+dict       : '{' keyValue? (Comma keyValue)* Comma? '}';
+keyValue   : key = keyValid Colon value = element;
+keyValid   : integer | symbol | string;
+list       : '[' element? (Comma element)* Comma? ']';
+element    : data | expression | statement;
+indexValid : (symbol | integer) Colon?;
+Plus       : '+';
+Minus      : '-';
 /*====================================================================================================================*/
 complex        : (Decimal | Integer) symbol;
 decimal        : Decimal | DecimalBad;
