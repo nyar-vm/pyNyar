@@ -189,23 +189,8 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#ConditionTrinocular.
-    def visitConditionTrinocular(self, ctx:NyarParser.ConditionTrinocularContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#IfElseTrinocular.
-    def visitIfElseTrinocular(self, ctx:NyarParser.IfElseTrinocularContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#controlFlow.
     def visitControlFlow(self, ctx:NyarParser.ControlFlowContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#trinocularNest.
-    def visitTrinocularNest(self, ctx:NyarParser.TrinocularNestContext):
         return self.visitChildren(ctx)
 
 
@@ -394,11 +379,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#switchController.
-    def visitSwitchController(self, ctx:NyarParser.SwitchControllerContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#matchBody.
     def visitMatchBody(self, ctx:NyarParser.MatchBodyContext):
         return self.visitChildren(ctx)
@@ -441,11 +421,6 @@ class NyarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by NyarParser#DoLoop.
     def visitDoLoop(self, ctx:NyarParser.DoLoopContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#loopController.
-    def visitLoopController(self, ctx:NyarParser.LoopControllerContext):
         return self.visitChildren(ctx)
 
 

@@ -332,39 +332,12 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#ConditionTrinocular.
-    def enterConditionTrinocular(self, ctx:NyarParser.ConditionTrinocularContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#ConditionTrinocular.
-    def exitConditionTrinocular(self, ctx:NyarParser.ConditionTrinocularContext):
-        pass
-
-
-    # Enter a parse tree produced by NyarParser#IfElseTrinocular.
-    def enterIfElseTrinocular(self, ctx:NyarParser.IfElseTrinocularContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#IfElseTrinocular.
-    def exitIfElseTrinocular(self, ctx:NyarParser.IfElseTrinocularContext):
-        pass
-
-
     # Enter a parse tree produced by NyarParser#controlFlow.
     def enterControlFlow(self, ctx:NyarParser.ControlFlowContext):
         pass
 
     # Exit a parse tree produced by NyarParser#controlFlow.
     def exitControlFlow(self, ctx:NyarParser.ControlFlowContext):
-        pass
-
-
-    # Enter a parse tree produced by NyarParser#trinocularNest.
-    def enterTrinocularNest(self, ctx:NyarParser.TrinocularNestContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#trinocularNest.
-    def exitTrinocularNest(self, ctx:NyarParser.TrinocularNestContext):
         pass
 
 
@@ -701,15 +674,6 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#switchController.
-    def enterSwitchController(self, ctx:NyarParser.SwitchControllerContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#switchController.
-    def exitSwitchController(self, ctx:NyarParser.SwitchControllerContext):
-        pass
-
-
     # Enter a parse tree produced by NyarParser#matchBody.
     def enterMatchBody(self, ctx:NyarParser.MatchBodyContext):
         pass
@@ -788,15 +752,6 @@ class NyarListener(ParseTreeListener):
 
     # Exit a parse tree produced by NyarParser#DoLoop.
     def exitDoLoop(self, ctx:NyarParser.DoLoopContext):
-        pass
-
-
-    # Enter a parse tree produced by NyarParser#loopController.
-    def enterLoopController(self, ctx:NyarParser.LoopControllerContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#loopController.
-    def exitLoopController(self, ctx:NyarParser.LoopControllerContext):
         pass
 
 
