@@ -214,13 +214,13 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#flowController.
-    def visitFlowController(self, ctx:NyarParser.FlowControllerContext):
+    # Visit a parse tree produced by NyarParser#arguments.
+    def visitArguments(self, ctx:NyarParser.ArgumentsContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#arguments.
-    def visitArguments(self, ctx:NyarParser.ArgumentsContext):
+    # Visit a parse tree produced by NyarParser#flowController.
+    def visitFlowController(self, ctx:NyarParser.FlowControllerContext):
         return self.visitChildren(ctx)
 
 
@@ -236,11 +236,6 @@ class NyarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by NyarParser#typeSuffix.
     def visitTypeSuffix(self, ctx:NyarParser.TypeSuffixContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#parameter.
-    def visitParameter(self, ctx:NyarParser.ParameterContext):
         return self.visitChildren(ctx)
 
 
@@ -284,18 +279,18 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#RHSExpression.
-    def visitRHSExpression(self, ctx:NyarParser.RHSExpressionContext):
+    # Visit a parse tree produced by NyarParser#assignRHS.
+    def visitAssignRHS(self, ctx:NyarParser.AssignRHSContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#RHSStatement.
-    def visitRHSStatement(self, ctx:NyarParser.RHSStatementContext):
+    # Visit a parse tree produced by NyarParser#parameter.
+    def visitParameter(self, ctx:NyarParser.ParameterContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#RHSTuple.
-    def visitRHSTuple(self, ctx:NyarParser.RHSTupleContext):
+    # Visit a parse tree produced by NyarParser#functionPattern.
+    def visitFunctionPattern(self, ctx:NyarParser.FunctionPatternContext):
         return self.visitChildren(ctx)
 
 
@@ -304,13 +299,13 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#symbols.
-    def visitSymbols(self, ctx:NyarParser.SymbolsContext):
+    # Visit a parse tree produced by NyarParser#MaybeMethod.
+    def visitMaybeMethod(self, ctx:NyarParser.MaybeMethodContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#symbolName.
-    def visitSymbolName(self, ctx:NyarParser.SymbolNameContext):
+    # Visit a parse tree produced by NyarParser#MustMethod.
+    def visitMustMethod(self, ctx:NyarParser.MustMethodContext):
         return self.visitChildren(ctx)
 
 
@@ -454,6 +449,16 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#classBody.
+    def visitClassBody(self, ctx:NyarParser.ClassBodyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#classExpression.
+    def visitClassExpression(self, ctx:NyarParser.ClassExpressionContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#traitStatement.
     def visitTraitStatement(self, ctx:NyarParser.TraitStatementContext):
         return self.visitChildren(ctx)
@@ -464,23 +469,18 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#classExtends.
-    def visitClassExtends(self, ctx:NyarParser.ClassExtendsContext):
+    # Visit a parse tree produced by NyarParser#classExtend.
+    def visitClassExtend(self, ctx:NyarParser.ClassExtendContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#classMeets.
-    def visitClassMeets(self, ctx:NyarParser.ClassMeetsContext):
+    # Visit a parse tree produced by NyarParser#classTrait.
+    def visitClassTrait(self, ctx:NyarParser.ClassTraitContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#classBody.
-    def visitClassBody(self, ctx:NyarParser.ClassBodyContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#classExpression.
-    def visitClassExpression(self, ctx:NyarParser.ClassExpressionContext):
+    # Visit a parse tree produced by NyarParser#classController.
+    def visitClassController(self, ctx:NyarParser.ClassControllerContext):
         return self.visitChildren(ctx)
 
 
@@ -526,11 +526,6 @@ class NyarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by NyarParser#special.
     def visitSpecial(self, ctx:NyarParser.SpecialContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#identifier.
-    def visitIdentifier(self, ctx:NyarParser.IdentifierContext):
         return self.visitChildren(ctx)
 
 
