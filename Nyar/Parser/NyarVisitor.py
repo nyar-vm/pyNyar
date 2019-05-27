@@ -294,68 +294,23 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#data.
-    def visitData(self, ctx:NyarParser.DataContext):
+    # Visit a parse tree produced by NyarParser#ifStatment.
+    def visitIfStatment(self, ctx:NyarParser.IfStatmentContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#number.
-    def visitNumber(self, ctx:NyarParser.NumberContext):
+    # Visit a parse tree produced by NyarParser#ifShort.
+    def visitIfShort(self, ctx:NyarParser.IfShortContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#index.
-    def visitIndex(self, ctx:NyarParser.IndexContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#dict.
-    def visitDict(self, ctx:NyarParser.DictContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#keyValue.
-    def visitKeyValue(self, ctx:NyarParser.KeyValueContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#keyValid.
-    def visitKeyValid(self, ctx:NyarParser.KeyValidContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#list.
-    def visitList(self, ctx:NyarParser.ListContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#element.
-    def visitElement(self, ctx:NyarParser.ElementContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#indexValid.
-    def visitIndexValid(self, ctx:NyarParser.IndexValidContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#IfSingle.
+    # Visit a parse tree produced by NyarParser#ifSingle.
     def visitIfSingle(self, ctx:NyarParser.IfSingleContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#IfNested.
+    # Visit a parse tree produced by NyarParser#ifNested.
     def visitIfNested(self, ctx:NyarParser.IfNestedContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#SwitchStatement.
-    def visitSwitchStatement(self, ctx:NyarParser.SwitchStatementContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#MatchStatement.
-    def visitMatchStatement(self, ctx:NyarParser.MatchStatementContext):
         return self.visitChildren(ctx)
 
 
@@ -369,6 +324,11 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#switchStatment.
+    def visitSwitchStatment(self, ctx:NyarParser.SwitchStatmentContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#caseBody.
     def visitCaseBody(self, ctx:NyarParser.CaseBodyContext):
         return self.visitChildren(ctx)
@@ -376,6 +336,11 @@ class NyarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by NyarParser#switchBody.
     def visitSwitchBody(self, ctx:NyarParser.SwitchBodyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#matchStatment.
+    def visitMatchStatment(self, ctx:NyarParser.MatchStatmentContext):
         return self.visitChildren(ctx)
 
 
@@ -394,13 +359,13 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#catchProduction.
-    def visitCatchProduction(self, ctx:NyarParser.CatchProductionContext):
+    # Visit a parse tree produced by NyarParser#tryCatch.
+    def visitTryCatch(self, ctx:NyarParser.TryCatchContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#finalProduction.
-    def visitFinalProduction(self, ctx:NyarParser.FinalProductionContext):
+    # Visit a parse tree produced by NyarParser#tryFinal.
+    def visitTryFinal(self, ctx:NyarParser.TryFinalContext):
         return self.visitChildren(ctx)
 
 
@@ -461,6 +426,51 @@ class NyarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by NyarParser#classController.
     def visitClassController(self, ctx:NyarParser.ClassControllerContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#data.
+    def visitData(self, ctx:NyarParser.DataContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#number.
+    def visitNumber(self, ctx:NyarParser.NumberContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#index.
+    def visitIndex(self, ctx:NyarParser.IndexContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#dict.
+    def visitDict(self, ctx:NyarParser.DictContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#keyValue.
+    def visitKeyValue(self, ctx:NyarParser.KeyValueContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#keyValid.
+    def visitKeyValid(self, ctx:NyarParser.KeyValidContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#list.
+    def visitList(self, ctx:NyarParser.ListContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#element.
+    def visitElement(self, ctx:NyarParser.ElementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#indexValid.
+    def visitIndexValid(self, ctx:NyarParser.IndexValidContext):
         return self.visitChildren(ctx)
 
 

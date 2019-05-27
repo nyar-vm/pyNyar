@@ -54,15 +54,15 @@ def serializedATN():
         buf.write("\3\32\3\32\3\32\3\33\3\33\3\34\3\34\3\35\3\35\3\36\3\36")
         buf.write("\3\36\3\37\3\37\3\37\3 \3 \3 \3 \3!\3!\3!\3!\3\"\3\"\3")
         buf.write("\"\3\"\3#\3#\3$\3$\3$\5$\u01f5\n$\3%\3%\3%\5%\u01fa\n")
-        buf.write("%\3&\3&\3&\5&\u01ff\n&\3\'\3\'\3(\3(\3)\3)\3)\3*\3*\3")
-        buf.write("*\3*\3*\3+\3+\3+\3+\3+\3,\3,\3,\3,\3,\3,\3,\3-\3-\3-\3")
-        buf.write("-\3-\3.\3.\3.\3.\3.\3.\3.\3.\3/\3/\3/\3/\3/\3/\3\60\3")
-        buf.write("\60\3\60\5\60\u022f\n\60\3\61\3\61\3\61\3\61\3\62\3\62")
-        buf.write("\3\62\3\62\3\62\3\62\3\63\3\63\3\63\3\63\3\63\3\63\3\64")
-        buf.write("\3\64\3\64\3\65\3\65\3\65\3\65\3\66\3\66\3\66\3\66\3\66")
-        buf.write("\3\66\3\67\3\67\3\67\38\38\38\38\38\38\39\39\39\39\3:")
-        buf.write("\3:\3:\3:\3:\3:\3;\3;\3;\3;\3;\3;\3<\3<\3<\3<\3<\3<\3")
-        buf.write("<\3=\3=\3=\3=\3>\3>\3?\3?\3@\3@\3A\3A\3A\3A\3B\3B\3B\3")
+        buf.write("%\3&\3&\3&\5&\u01ff\n&\3\'\3\'\3\'\3(\3(\3(\3(\3(\3)\3")
+        buf.write(")\3)\3)\3)\3*\3*\3*\3*\3*\3*\3*\3+\3+\3+\3+\3+\3,\3,\3")
+        buf.write(",\3,\3,\3,\3,\3,\3-\3-\3-\3-\3-\3-\3.\3.\3.\5.\u022b\n")
+        buf.write(".\3/\3/\3/\3/\3\60\3\60\3\60\3\60\3\60\3\60\3\61\3\61")
+        buf.write("\3\61\3\61\3\61\3\61\3\62\3\62\3\62\3\63\3\63\3\63\3\63")
+        buf.write("\3\64\3\64\3\64\3\64\3\64\3\64\3\65\3\65\3\65\3\66\3\66")
+        buf.write("\3\66\3\66\3\66\3\66\3\67\3\67\3\67\3\67\38\38\38\38\3")
+        buf.write("8\38\39\39\39\39\39\39\3:\3:\3:\3:\3:\3:\3:\3;\3;\3;\3")
+        buf.write(";\3<\3<\3=\3=\3>\3>\3?\3?\3@\3@\3A\3A\3A\3A\3B\3B\3B\3")
         buf.write("B\3B\6B\u0281\nB\rB\16B\u0282\5B\u0285\nB\3C\3C\3C\6C")
         buf.write("\u028a\nC\rC\16C\u028b\3D\3D\3D\6D\u0291\nD\rD\16D\u0292")
         buf.write("\3E\3E\3E\6E\u0298\nE\rE\16E\u0299\3F\6F\u029d\nF\rF\16")
@@ -262,12 +262,12 @@ def serializedATN():
         buf.write("\2\2\29\u01db\3\2\2\2;\u01dd\3\2\2\2=\u01e0\3\2\2\2?\u01e3")
         buf.write("\3\2\2\2A\u01e7\3\2\2\2C\u01eb\3\2\2\2E\u01ef\3\2\2\2")
         buf.write("G\u01f4\3\2\2\2I\u01f9\3\2\2\2K\u01fe\3\2\2\2M\u0200\3")
-        buf.write("\2\2\2O\u0202\3\2\2\2Q\u0204\3\2\2\2S\u0207\3\2\2\2U\u020c")
-        buf.write("\3\2\2\2W\u0211\3\2\2\2Y\u0218\3\2\2\2[\u021d\3\2\2\2")
-        buf.write("]\u0225\3\2\2\2_\u022e\3\2\2\2a\u0230\3\2\2\2c\u0234\3")
-        buf.write("\2\2\2e\u023a\3\2\2\2g\u0240\3\2\2\2i\u0243\3\2\2\2k\u0247")
-        buf.write("\3\2\2\2m\u024d\3\2\2\2o\u0250\3\2\2\2q\u0256\3\2\2\2")
-        buf.write("s\u025a\3\2\2\2u\u0260\3\2\2\2w\u0266\3\2\2\2y\u026d\3")
+        buf.write("\2\2\2O\u0203\3\2\2\2Q\u0208\3\2\2\2S\u020d\3\2\2\2U\u0214")
+        buf.write("\3\2\2\2W\u0219\3\2\2\2Y\u0221\3\2\2\2[\u022a\3\2\2\2")
+        buf.write("]\u022c\3\2\2\2_\u0230\3\2\2\2a\u0236\3\2\2\2c\u023c\3")
+        buf.write("\2\2\2e\u023f\3\2\2\2g\u0243\3\2\2\2i\u0249\3\2\2\2k\u024c")
+        buf.write("\3\2\2\2m\u0252\3\2\2\2o\u0256\3\2\2\2q\u025c\3\2\2\2")
+        buf.write("s\u0262\3\2\2\2u\u0269\3\2\2\2w\u026d\3\2\2\2y\u026f\3")
         buf.write("\2\2\2{\u0271\3\2\2\2}\u0273\3\2\2\2\177\u0275\3\2\2\2")
         buf.write("\u0081\u0277\3\2\2\2\u0083\u0284\3\2\2\2\u0085\u0286\3")
         buf.write("\2\2\2\u0087\u028d\3\2\2\2\u0089\u0294\3\2\2\2\u008b\u02a7")
@@ -361,46 +361,46 @@ def serializedATN():
         buf.write("\2\2\u01f9\u01f8\3\2\2\2\u01faJ\3\2\2\2\u01fb\u01fc\7")
         buf.write("<\2\2\u01fc\u01ff\7?\2\2\u01fd\u01ff\7\u2256\2\2\u01fe")
         buf.write("\u01fb\3\2\2\2\u01fe\u01fd\3\2\2\2\u01ffL\3\2\2\2\u0200")
-        buf.write("\u0201\7-\2\2\u0201N\3\2\2\2\u0202\u0203\7/\2\2\u0203")
-        buf.write("P\3\2\2\2\u0204\u0205\7k\2\2\u0205\u0206\7h\2\2\u0206")
-        buf.write("R\3\2\2\2\u0207\u0208\7g\2\2\u0208\u0209\7n\2\2\u0209")
-        buf.write("\u020a\7u\2\2\u020a\u020b\7g\2\2\u020bT\3\2\2\2\u020c")
-        buf.write("\u020d\7v\2\2\u020d\u020e\7j\2\2\u020e\u020f\7g\2\2\u020f")
-        buf.write("\u0210\7p\2\2\u0210V\3\2\2\2\u0211\u0212\7u\2\2\u0212")
-        buf.write("\u0213\7y\2\2\u0213\u0214\7k\2\2\u0214\u0215\7v\2\2\u0215")
-        buf.write("\u0216\7e\2\2\u0216\u0217\7j\2\2\u0217X\3\2\2\2\u0218")
-        buf.write("\u0219\7e\2\2\u0219\u021a\7c\2\2\u021a\u021b\7u\2\2\u021b")
-        buf.write("\u021c\7g\2\2\u021cZ\3\2\2\2\u021d\u021e\7f\2\2\u021e")
-        buf.write("\u021f\7g\2\2\u021f\u0220\7h\2\2\u0220\u0221\7c\2\2\u0221")
-        buf.write("\u0222\7w\2\2\u0222\u0223\7n\2\2\u0223\u0224\7v\2\2\u0224")
-        buf.write("\\\3\2\2\2\u0225\u0226\7o\2\2\u0226\u0227\7c\2\2\u0227")
-        buf.write("\u0228\7v\2\2\u0228\u0229\7e\2\2\u0229\u022a\7j\2\2\u022a")
-        buf.write("^\3\2\2\2\u022b\u022c\7?\2\2\u022c\u022f\7@\2\2\u022d")
-        buf.write("\u022f\7\u27fb\2\2\u022e\u022b\3\2\2\2\u022e\u022d\3\2")
-        buf.write("\2\2\u022f`\3\2\2\2\u0230\u0231\7v\2\2\u0231\u0232\7t")
-        buf.write("\2\2\u0232\u0233\7{\2\2\u0233b\3\2\2\2\u0234\u0235\7e")
-        buf.write("\2\2\u0235\u0236\7c\2\2\u0236\u0237\7v\2\2\u0237\u0238")
-        buf.write("\7e\2\2\u0238\u0239\7j\2\2\u0239d\3\2\2\2\u023a\u023b")
-        buf.write("\7h\2\2\u023b\u023c\7k\2\2\u023c\u023d\7p\2\2\u023d\u023e")
-        buf.write("\7c\2\2\u023e\u023f\7n\2\2\u023ff\3\2\2\2\u0240\u0241")
-        buf.write("\7k\2\2\u0241\u0242\7p\2\2\u0242h\3\2\2\2\u0243\u0244")
-        buf.write("\7h\2\2\u0244\u0245\7q\2\2\u0245\u0246\7t\2\2\u0246j\3")
-        buf.write("\2\2\2\u0247\u0248\7y\2\2\u0248\u0249\7j\2\2\u0249\u024a")
-        buf.write("\7k\2\2\u024a\u024b\7n\2\2\u024b\u024c\7g\2\2\u024cl\3")
-        buf.write("\2\2\2\u024d\u024e\7f\2\2\u024e\u024f\7q\2\2\u024fn\3")
-        buf.write("\2\2\2\u0250\u0251\7o\2\2\u0251\u0252\7c\2\2\u0252\u0253")
-        buf.write("\7e\2\2\u0253\u0254\7t\2\2\u0254\u0255\7q\2\2\u0255p\3")
-        buf.write("\2\2\2\u0256\u0257\7n\2\2\u0257\u0258\7g\2\2\u0258\u0259")
-        buf.write("\7v\2\2\u0259r\3\2\2\2\u025a\u025b\7v\2\2\u025b\u025c")
-        buf.write("\7t\2\2\u025c\u025d\7c\2\2\u025d\u025e\7k\2\2\u025e\u025f")
-        buf.write("\7v\2\2\u025ft\3\2\2\2\u0260\u0261\7e\2\2\u0261\u0262")
-        buf.write("\7n\2\2\u0262\u0263\7c\2\2\u0263\u0264\7u\2\2\u0264\u0265")
-        buf.write("\7u\2\2\u0265v\3\2\2\2\u0266\u0267\7g\2\2\u0267\u0268")
-        buf.write("\7z\2\2\u0268\u0269\7v\2\2\u0269\u026a\7g\2\2\u026a\u026b")
-        buf.write("\7p\2\2\u026b\u026c\7f\2\2\u026cx\3\2\2\2\u026d\u026e")
-        buf.write("\7c\2\2\u026e\u026f\7e\2\2\u026f\u0270\7v\2\2\u0270z\3")
-        buf.write("\2\2\2\u0271\u0272\7\u0080\2\2\u0272|\3\2\2\2\u0273\u0274")
-        buf.write("\7&\2\2\u0274~\3\2\2\2\u0275\u0276\7B\2\2\u0276\u0080")
+        buf.write("\u0201\7k\2\2\u0201\u0202\7h\2\2\u0202N\3\2\2\2\u0203")
+        buf.write("\u0204\7g\2\2\u0204\u0205\7n\2\2\u0205\u0206\7u\2\2\u0206")
+        buf.write("\u0207\7g\2\2\u0207P\3\2\2\2\u0208\u0209\7v\2\2\u0209")
+        buf.write("\u020a\7j\2\2\u020a\u020b\7g\2\2\u020b\u020c\7p\2\2\u020c")
+        buf.write("R\3\2\2\2\u020d\u020e\7u\2\2\u020e\u020f\7y\2\2\u020f")
+        buf.write("\u0210\7k\2\2\u0210\u0211\7v\2\2\u0211\u0212\7e\2\2\u0212")
+        buf.write("\u0213\7j\2\2\u0213T\3\2\2\2\u0214\u0215\7e\2\2\u0215")
+        buf.write("\u0216\7c\2\2\u0216\u0217\7u\2\2\u0217\u0218\7g\2\2\u0218")
+        buf.write("V\3\2\2\2\u0219\u021a\7f\2\2\u021a\u021b\7g\2\2\u021b")
+        buf.write("\u021c\7h\2\2\u021c\u021d\7c\2\2\u021d\u021e\7w\2\2\u021e")
+        buf.write("\u021f\7n\2\2\u021f\u0220\7v\2\2\u0220X\3\2\2\2\u0221")
+        buf.write("\u0222\7o\2\2\u0222\u0223\7c\2\2\u0223\u0224\7v\2\2\u0224")
+        buf.write("\u0225\7e\2\2\u0225\u0226\7j\2\2\u0226Z\3\2\2\2\u0227")
+        buf.write("\u0228\7?\2\2\u0228\u022b\7@\2\2\u0229\u022b\7\u27fb\2")
+        buf.write("\2\u022a\u0227\3\2\2\2\u022a\u0229\3\2\2\2\u022b\\\3\2")
+        buf.write("\2\2\u022c\u022d\7v\2\2\u022d\u022e\7t\2\2\u022e\u022f")
+        buf.write("\7{\2\2\u022f^\3\2\2\2\u0230\u0231\7e\2\2\u0231\u0232")
+        buf.write("\7c\2\2\u0232\u0233\7v\2\2\u0233\u0234\7e\2\2\u0234\u0235")
+        buf.write("\7j\2\2\u0235`\3\2\2\2\u0236\u0237\7h\2\2\u0237\u0238")
+        buf.write("\7k\2\2\u0238\u0239\7p\2\2\u0239\u023a\7c\2\2\u023a\u023b")
+        buf.write("\7n\2\2\u023bb\3\2\2\2\u023c\u023d\7k\2\2\u023d\u023e")
+        buf.write("\7p\2\2\u023ed\3\2\2\2\u023f\u0240\7h\2\2\u0240\u0241")
+        buf.write("\7q\2\2\u0241\u0242\7t\2\2\u0242f\3\2\2\2\u0243\u0244")
+        buf.write("\7y\2\2\u0244\u0245\7j\2\2\u0245\u0246\7k\2\2\u0246\u0247")
+        buf.write("\7n\2\2\u0247\u0248\7g\2\2\u0248h\3\2\2\2\u0249\u024a")
+        buf.write("\7f\2\2\u024a\u024b\7q\2\2\u024bj\3\2\2\2\u024c\u024d")
+        buf.write("\7o\2\2\u024d\u024e\7c\2\2\u024e\u024f\7e\2\2\u024f\u0250")
+        buf.write("\7t\2\2\u0250\u0251\7q\2\2\u0251l\3\2\2\2\u0252\u0253")
+        buf.write("\7n\2\2\u0253\u0254\7g\2\2\u0254\u0255\7v\2\2\u0255n\3")
+        buf.write("\2\2\2\u0256\u0257\7v\2\2\u0257\u0258\7t\2\2\u0258\u0259")
+        buf.write("\7c\2\2\u0259\u025a\7k\2\2\u025a\u025b\7v\2\2\u025bp\3")
+        buf.write("\2\2\2\u025c\u025d\7e\2\2\u025d\u025e\7n\2\2\u025e\u025f")
+        buf.write("\7c\2\2\u025f\u0260\7u\2\2\u0260\u0261\7u\2\2\u0261r\3")
+        buf.write("\2\2\2\u0262\u0263\7g\2\2\u0263\u0264\7z\2\2\u0264\u0265")
+        buf.write("\7v\2\2\u0265\u0266\7g\2\2\u0266\u0267\7p\2\2\u0267\u0268")
+        buf.write("\7f\2\2\u0268t\3\2\2\2\u0269\u026a\7c\2\2\u026a\u026b")
+        buf.write("\7e\2\2\u026b\u026c\7v\2\2\u026cv\3\2\2\2\u026d\u026e")
+        buf.write("\7\u0080\2\2\u026ex\3\2\2\2\u026f\u0270\7&\2\2\u0270z")
+        buf.write("\3\2\2\2\u0271\u0272\7B\2\2\u0272|\3\2\2\2\u0273\u0274")
+        buf.write("\7-\2\2\u0274~\3\2\2\2\u0275\u0276\7/\2\2\u0276\u0080")
         buf.write("\3\2\2\2\u0277\u0278\5\u008bF\2\u0278\u0279\5\u00c1a\2")
         buf.write("\u0279\u027a\5\u0095K\2\u027a\u0082\3\2\2\2\u027b\u027c")
         buf.write("\5\u008bF\2\u027c\u027d\5\u00c1a\2\u027d\u0285\3\2\2\2")
@@ -610,7 +610,7 @@ def serializedATN():
         buf.write("\u045e\7\u00a9\2\2\u045e\u0170\3\2\2\2\u045f\u0460\7\u00b8")
         buf.write("\2\2\u0460\u0172\3\2\2\2\u0461\u0462\7\u00a6\2\2\u0462")
         buf.write("\u0174\3\2\2\2\u0463\u0464\7\u220a\2\2\u0464\u0176\3\2")
-        buf.write("\2\2\63\2\u01f4\u01f9\u01fe\u022e\u0282\u0284\u028b\u0292")
+        buf.write("\2\2\63\2\u01f4\u01f9\u01fe\u022a\u0282\u0284\u028b\u0292")
         buf.write("\u0299\u029e\u02a4\u02a7\u02b1\u02b5\u02b9\u02bd\u02c5")
         buf.write("\u02cd\u02d5\u02e2\u02f2\u02f8\u02fd\u0305\u030d\u0314")
         buf.write("\u0370\u0379\u0381\u0389\u038b\u038f\u0392\u0398\u03a7")
@@ -662,32 +662,32 @@ class NyarLexer(Lexer):
     Flexible = 35
     Name = 36
     Delay = 37
-    Plus = 38
-    Minus = 39
-    If = 40
-    Else = 41
-    Then = 42
-    Switch = 43
-    Case = 44
-    Default = 45
-    Match = 46
-    Rule = 47
-    Try = 48
-    Catch = 49
-    Final = 50
-    In = 51
-    For = 52
-    While = 53
-    Do = 54
-    Macro = 55
-    Let = 56
-    Trait = 57
-    Class = 58
-    Extend = 59
-    Act = 60
-    Tilde = 61
-    Suffix = 62
-    Prefix = 63
+    If = 38
+    Else = 39
+    Then = 40
+    Switch = 41
+    Case = 42
+    Default = 43
+    Match = 44
+    Rule = 45
+    Try = 46
+    Catch = 47
+    Final = 48
+    In = 49
+    For = 50
+    While = 51
+    Do = 52
+    Macro = 53
+    Let = 54
+    Trait = 55
+    Class = 56
+    Extend = 57
+    Act = 58
+    Tilde = 59
+    Suffix = 60
+    Prefix = 61
+    Plus = 62
+    Minus = 63
     Decimal = 64
     DecimalBad = 65
     Binary = 66
@@ -779,13 +779,13 @@ class NyarLexer(Lexer):
             "';;'", "'as'", "'with'", "'using'", "'instance'", "'*'", "'^'", 
             "'end'", "'pass'", "'return'", "'yield'", "'await'", "'break'", 
             "'throw'", "'type'", "'|'", "'&'", "'?'", "'**'", "'^^'", "'val'", 
-            "'var'", "'def'", "'='", "'+'", "'-'", "'if'", "'else'", "'then'", 
-            "'switch'", "'case'", "'default'", "'match'", "'try'", "'catch'", 
-            "'final'", "'in'", "'for'", "'while'", "'do'", "'macro'", "'let'", 
-            "'trait'", "'class'", "'extend'", "'act'", "'~'", "'$'", "'@'", 
-            "'*^'", "'/^'", "'\\'", "'true'", "'false'", "'null'", "'nothing'", 
-            "'#'", "'.'", "'_'", "'#!'", "'%%%'", "'<='", "'<'", "'>='", 
-            "'>'", "'++'", "'+='", "'\u2295'", "'--'", "'-='", "'\u00D7'", 
+            "'var'", "'def'", "'='", "'if'", "'else'", "'then'", "'switch'", 
+            "'case'", "'default'", "'match'", "'try'", "'catch'", "'final'", 
+            "'in'", "'for'", "'while'", "'do'", "'macro'", "'let'", "'trait'", 
+            "'class'", "'extend'", "'act'", "'~'", "'$'", "'@'", "'+'", 
+            "'-'", "'*^'", "'/^'", "'\\'", "'true'", "'false'", "'null'", 
+            "'nothing'", "'#'", "'.'", "'_'", "'#!'", "'%%%'", "'<='", "'<'", 
+            "'>='", "'>'", "'++'", "'+='", "'\u2295'", "'--'", "'-='", "'\u00D7'", 
             "'\u2297'", "'\u2299'", "'//@'", "'//'", "'/@'", "'/'", "'\u00F7'", 
             "'%%'", "'%'", "'==='", "'=!='", "'=='", "'~~'", "'~='", "'!!'", 
             "':?'", "'@@@'", "'@@'", "'@='", "'`'", "'\u00B4'", "'''", "'...'", 
@@ -797,10 +797,10 @@ class NyarLexer(Lexer):
             "Times", "Power", "End", "Colon", "Pass", "Return", "Yield", 
             "Await", "Break", "Throw", "Comma", "Type", "BitOr", "BitAnd", 
             "Nullable", "Keyword", "BaseInput", "Val", "Var", "Def", "Set", 
-            "Flexible", "Name", "Delay", "Plus", "Minus", "If", "Else", 
-            "Then", "Switch", "Case", "Default", "Match", "Rule", "Try", 
-            "Catch", "Final", "In", "For", "While", "Do", "Macro", "Let", 
-            "Trait", "Class", "Extend", "Act", "Tilde", "Suffix", "Prefix", 
+            "Flexible", "Name", "Delay", "If", "Else", "Then", "Switch", 
+            "Case", "Default", "Match", "Rule", "Try", "Catch", "Final", 
+            "In", "For", "While", "Do", "Macro", "Let", "Trait", "Class", 
+            "Extend", "Act", "Tilde", "Suffix", "Prefix", "Plus", "Minus", 
             "Decimal", "DecimalBad", "Binary", "Octal", "Hexadecimal", "Integer", 
             "Exponent", "Base", "StringEscapeBlock", "StringEscapeSingle", 
             "StringLiteral", "StringEmpty", "Escape", "Symbols", "TrueName", 
@@ -822,32 +822,32 @@ class NyarLexer(Lexer):
                   "Times", "Power", "End", "Colon", "Pass", "Return", "Yield", 
                   "Await", "Break", "Throw", "Comma", "Type", "BitOr", "BitAnd", 
                   "Nullable", "Keyword", "BaseInput", "Val", "Var", "Def", 
-                  "Set", "Flexible", "Name", "Delay", "Plus", "Minus", "If", 
-                  "Else", "Then", "Switch", "Case", "Default", "Match", 
-                  "Rule", "Try", "Catch", "Final", "In", "For", "While", 
-                  "Do", "Macro", "Let", "Trait", "Class", "Extend", "Act", 
-                  "Tilde", "Suffix", "Prefix", "Decimal", "DecimalBad", 
-                  "Binary", "Octal", "Hexadecimal", "Integer", "Exponent", 
-                  "Base", "Bin", "Oct", "Digit", "Hex", "Zero", "StringEscapeBlock", 
-                  "StringEscapeSingle", "StringLiteral", "StringEmpty", 
-                  "Escape", "S6", "S4", "S2", "CharLevel1", "CharLevel2", 
-                  "NonEscape", "Symbols", "TrueName", "Symbol", "True", 
-                  "False", "Null", "Nothing", "Sharp", "Dot", "Underline", 
-                  "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", 
-                  "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", 
-                  "W", "X", "Y", "Z", "Letter", "NameStartCharacter", "EmojiCharacter", 
-                  "NameCharacter", "Shebang", "Comment", "LineComment", 
-                  "PartComment", "NewLine", "WhiteSpace", "UnicodeWS", "Import", 
-                  "LeftShift", "LessEqual", "Less", "Export", "RightShift", 
-                  "GraterEqual", "Grater", "Increase", "PlusTo", "LogicXor", 
-                  "Decrease", "MinusFrom", "Multiply", "Kronecker", "TensorProduct", 
-                  "MapAll", "Remainder", "Map", "Divide", "Quotient", "Output", 
-                  "Mod", "Equivalent", "NotEquivalent", "Equal", "Concat", 
-                  "Destruct", "LogicOr", "LogicAnd", "DoubleBang", "NotEqual", 
-                  "BitNot", "LogicNot", "Elvis", "Curry", "Apply", "LetAssign", 
-                  "Quote", "Acute", "Quotation", "Ellipsis", "DOT", "Surd", 
-                  "Reciprocal", "Degree", "Transpose", "Hermitian", "Section", 
-                  "Pilcrow", "Currency", "Element" ]
+                  "Set", "Flexible", "Name", "Delay", "If", "Else", "Then", 
+                  "Switch", "Case", "Default", "Match", "Rule", "Try", "Catch", 
+                  "Final", "In", "For", "While", "Do", "Macro", "Let", "Trait", 
+                  "Class", "Extend", "Act", "Tilde", "Suffix", "Prefix", 
+                  "Plus", "Minus", "Decimal", "DecimalBad", "Binary", "Octal", 
+                  "Hexadecimal", "Integer", "Exponent", "Base", "Bin", "Oct", 
+                  "Digit", "Hex", "Zero", "StringEscapeBlock", "StringEscapeSingle", 
+                  "StringLiteral", "StringEmpty", "Escape", "S6", "S4", 
+                  "S2", "CharLevel1", "CharLevel2", "NonEscape", "Symbols", 
+                  "TrueName", "Symbol", "True", "False", "Null", "Nothing", 
+                  "Sharp", "Dot", "Underline", "A", "B", "C", "D", "E", 
+                  "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", 
+                  "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Letter", 
+                  "NameStartCharacter", "EmojiCharacter", "NameCharacter", 
+                  "Shebang", "Comment", "LineComment", "PartComment", "NewLine", 
+                  "WhiteSpace", "UnicodeWS", "Import", "LeftShift", "LessEqual", 
+                  "Less", "Export", "RightShift", "GraterEqual", "Grater", 
+                  "Increase", "PlusTo", "LogicXor", "Decrease", "MinusFrom", 
+                  "Multiply", "Kronecker", "TensorProduct", "MapAll", "Remainder", 
+                  "Map", "Divide", "Quotient", "Output", "Mod", "Equivalent", 
+                  "NotEquivalent", "Equal", "Concat", "Destruct", "LogicOr", 
+                  "LogicAnd", "DoubleBang", "NotEqual", "BitNot", "LogicNot", 
+                  "Elvis", "Curry", "Apply", "LetAssign", "Quote", "Acute", 
+                  "Quotation", "Ellipsis", "DOT", "Surd", "Reciprocal", 
+                  "Degree", "Transpose", "Hermitian", "Section", "Pilcrow", 
+                  "Currency", "Element" ]
 
     grammarFileName = "Nyar.g4"
 
