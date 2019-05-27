@@ -449,6 +449,11 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#letStatment.
+    def visitLetStatment(self, ctx:NyarParser.LetStatmentContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#classBody.
     def visitClassBody(self, ctx:NyarParser.ClassBodyContext):
         return self.visitChildren(ctx)

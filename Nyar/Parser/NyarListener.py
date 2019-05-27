@@ -800,6 +800,15 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#letStatment.
+    def enterLetStatment(self, ctx:NyarParser.LetStatmentContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#letStatment.
+    def exitLetStatment(self, ctx:NyarParser.LetStatmentContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#classBody.
     def enterClassBody(self, ctx:NyarParser.ClassBodyContext):
         pass
