@@ -674,21 +674,21 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#WhileLoop.
-    def enterWhileLoop(self, ctx:NyarParser.WhileLoopContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#WhileLoop.
-    def exitWhileLoop(self, ctx:NyarParser.WhileLoopContext):
-        pass
-
-
     # Enter a parse tree produced by NyarParser#DoLoop.
     def enterDoLoop(self, ctx:NyarParser.DoLoopContext):
         pass
 
     # Exit a parse tree produced by NyarParser#DoLoop.
     def exitDoLoop(self, ctx:NyarParser.DoLoopContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#whileStatment.
+    def enterWhileStatment(self, ctx:NyarParser.WhileStatmentContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#whileStatment.
+    def exitWhileStatment(self, ctx:NyarParser.WhileStatmentContext):
         pass
 
 

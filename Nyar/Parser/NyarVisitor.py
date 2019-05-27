@@ -379,13 +379,13 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#WhileLoop.
-    def visitWhileLoop(self, ctx:NyarParser.WhileLoopContext):
+    # Visit a parse tree produced by NyarParser#DoLoop.
+    def visitDoLoop(self, ctx:NyarParser.DoLoopContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#DoLoop.
-    def visitDoLoop(self, ctx:NyarParser.DoLoopContext):
+    # Visit a parse tree produced by NyarParser#whileStatment.
+    def visitWhileStatment(self, ctx:NyarParser.WhileStatmentContext):
         return self.visitChildren(ctx)
 
 
