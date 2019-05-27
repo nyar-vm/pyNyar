@@ -181,7 +181,7 @@ Minus      : '-';
 branchStatement
     : If condition (Then | Colon)? blockNonEnd else?         # IfSingle
     | If condition (Then | Colon)? blockNonEnd elseIf* else? # IfNested
-    | Switch condition switchController? switchBody          # SwitchStatement
+    | Switch condition switchBody                            # SwitchStatement
     | Match condition matchBody                              # MatchStatement;
 // $antlr-format alignColons trailing;
 else   : Else expression | Else blockStatement;
@@ -197,11 +197,10 @@ caseBody //if no expr, must default
     | Case Times Colon blockNonEnd
     | Times Rule blockNonEnd;
 // $antlr-format alignColons trailing;
-switchBody       : '{' caseBody* '}' | Colon caseBody* End;
-switchController : Pass | Return | Break;
-Switch           : 'switch';
-Case             : 'case';
-Default          : 'default';
+switchBody : '{' caseBody* '}' | Colon caseBody* End;
+Switch     : 'switch';
+Case       : 'case';
+Default    : 'default';
 // $antlr-format alignColons trailing;
 matchBody : expression | blockStatement;
 condition : expression | '(' expression ')';
@@ -226,16 +225,14 @@ loopStatement
     | While condition blockStatement                 # WhileLoop
     | Do blockStatement                              # DoLoop;
 // $antlr-format alignColons trailing;
-Async : 'async';
-Lazy  : 'lazy';
 In    : 'in';
 For   : 'for';
 While : 'while';
 Do    : 'do';
 /*====================================================================================================================*/
-letStatment: Let symbol* statement;
-Macro : 'macro';
-Let      : 'let';
+letStatment : Let symbol* statement | Let symbol* blockStatement;
+Macro       : 'macro';
+Let         : 'let';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 classBody
@@ -299,7 +296,7 @@ fragment CharLevel1 : Escape . | ~[\\];
 fragment CharLevel2 : Escape . | ~["\\];
 fragment NonEscape  : ~[\u0001]+?;
 /*====================================================================================================================*/
-controller : flowController | switchController | loopController;
+controller : flowController;
 special    : True | False | Null | Nothing;
 symbol     : controller | Symbol | TrueName;
 solt       : Sharp n = Integer? | Sharp id = symbol;
