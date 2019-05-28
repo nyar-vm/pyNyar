@@ -41,7 +41,6 @@ moduleScope: Prefix symbol;
 // $antlr-format alignColons trailing;
 idTuples : '{' symbols (Comma symbols)* '}';
 As       : 'as';
-With     : 'with';
 Using    : 'using';
 Instance : 'instance';
 Times    : '*';
@@ -203,19 +202,18 @@ Catch : 'catch';
 Final : 'final';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-forStatement
-    : For '(' expressionStatement ')' blockStatement # ForLoop
-    | For symbol In expression blockStatement        # ForInLoop
-    | Do blockStatement                              # DoLoop;
+forStatement: forLoop | forInLoop;
+forLoop: For '(' expressionStatement ')' blockStatement;
+forInLoop: For symbol In expression blockStatement;
 whileStatment: While condition blockStatement;
 // $antlr-format alignColons trailing;
 In    : 'in';
 For   : 'for';
 While : 'while';
-Do    : 'do';
 /*====================================================================================================================*/
 letStatment : Let symbol* statement | Let symbol* blockStatement;
 Macro       : 'macro';
+With        : 'with';
 Let         : 'let';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
