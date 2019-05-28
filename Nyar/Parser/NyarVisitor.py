@@ -374,18 +374,18 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#ForLoop.
+    # Visit a parse tree produced by NyarParser#forStatement.
+    def visitForStatement(self, ctx:NyarParser.ForStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#forLoop.
     def visitForLoop(self, ctx:NyarParser.ForLoopContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#ForInLoop.
+    # Visit a parse tree produced by NyarParser#forInLoop.
     def visitForInLoop(self, ctx:NyarParser.ForInLoopContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by NyarParser#DoLoop.
-    def visitDoLoop(self, ctx:NyarParser.DoLoopContext):
         return self.visitChildren(ctx)
 
 

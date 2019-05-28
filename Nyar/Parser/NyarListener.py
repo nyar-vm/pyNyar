@@ -665,30 +665,30 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#ForLoop.
+    # Enter a parse tree produced by NyarParser#forStatement.
+    def enterForStatement(self, ctx:NyarParser.ForStatementContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#forStatement.
+    def exitForStatement(self, ctx:NyarParser.ForStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#forLoop.
     def enterForLoop(self, ctx:NyarParser.ForLoopContext):
         pass
 
-    # Exit a parse tree produced by NyarParser#ForLoop.
+    # Exit a parse tree produced by NyarParser#forLoop.
     def exitForLoop(self, ctx:NyarParser.ForLoopContext):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#ForInLoop.
+    # Enter a parse tree produced by NyarParser#forInLoop.
     def enterForInLoop(self, ctx:NyarParser.ForInLoopContext):
         pass
 
-    # Exit a parse tree produced by NyarParser#ForInLoop.
+    # Exit a parse tree produced by NyarParser#forInLoop.
     def exitForInLoop(self, ctx:NyarParser.ForInLoopContext):
-        pass
-
-
-    # Enter a parse tree produced by NyarParser#DoLoop.
-    def enterDoLoop(self, ctx:NyarParser.DoLoopContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#DoLoop.
-    def exitDoLoop(self, ctx:NyarParser.DoLoopContext):
         pass
 
 
