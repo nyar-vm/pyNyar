@@ -557,15 +557,6 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#then.
-    def enterThen(self, ctx:NyarParser.ThenContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#then.
-    def exitThen(self, ctx:NyarParser.ThenContext):
-        pass
-
-
     # Enter a parse tree produced by NyarParser#elif.
     def enterElif(self, ctx:NyarParser.ElifContext):
         pass

@@ -314,11 +314,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#then.
-    def visitThen(self, ctx:NyarParser.ThenContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#elif.
     def visitElif(self, ctx:NyarParser.ElifContext):
         return self.visitChildren(ctx)
