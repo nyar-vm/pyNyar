@@ -9,7 +9,7 @@ statement
     | typeStatement eos?
     | assignStatment eos?
     | (switchStatment | ifStatment | matchStatment) eos?
-    | loopStatement eos?
+    | (forStatement | whileStatment) eos?
     | tryStatement eos?
     | traitStatement eos?
     | classStatement eos?
@@ -155,20 +155,21 @@ Flexible : '.=' | '\u2250'; //U+2250 ≐
 Name     : '::' | '\u2237'; //U+2237 ∷
 Delay    : ':=' | '\u2254'; //U+2254 ≔
 /*====================================================================================================================*/
-ifStatment : ifShort | ifSingle | ifNested;
+ifStatment : If ifShort | If ifSingle | If ifNested;
 // $antlr-format alignColons hanging;
-ifShort
-    : If condition (Then | Colon)? expression
-    | If condition (Then | Colon)? blockStatement;
-ifSingle: If condition (Then | Colon)? blockNonEnd else;
+ifShort: condition then? expression | condition then? blockStatement;
+ifSingle: condition then? blockNonEnd else;
 ifNested
-    : If condition (Then | Colon)? blockNonEnd elseIf+ else
-    | If condition (Then | Colon)? blockNonEnd elseIf* (Else ifShort);
+    : condition then? blockNonEnd elseIf+ else
+    | condition then? blockNonEnd elseIf* elif ifShort;
 // $antlr-format alignColons trailing;
+then   : Then | Colon;
+elif   : ElseIf | Else If;
 else   : Else expression | Else blockStatement;
-elseIf : Else If condition (Then | Colon)? blockNonEnd;
+elseIf : elif condition (Then | Colon)? blockNonEnd;
 If     : 'if';
 Else   : 'else';
+ElseIf : 'elseif';
 Then   : 'then';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
@@ -204,11 +205,11 @@ Catch : 'catch';
 Final : 'final';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-loopStatement
+forStatement
     : For '(' expressionStatement ')' blockStatement # ForLoop
     | For symbol In expression blockStatement        # ForInLoop
-    | While condition blockStatement                 # WhileLoop
     | Do blockStatement                              # DoLoop;
+whileStatment: While condition blockStatement;
 // $antlr-format alignColons trailing;
 In    : 'in';
 For   : 'for';
