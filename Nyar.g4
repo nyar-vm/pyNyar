@@ -157,20 +157,18 @@ Delay    : ':=' | '\u2254'; //U+2254 ≔
 /*====================================================================================================================*/
 ifStatment : If ifShort | If ifSingle | If ifNested;
 // $antlr-format alignColons hanging;
-ifShort: condition then? expression | condition then? blockStatement;
-ifSingle: condition then? blockNonEnd else;
+ifShort: condition expression | condition blockStatement;
+ifSingle: condition blockNonEnd else;
 ifNested
-    : condition then? blockNonEnd elseIf+ else
-    | condition then? blockNonEnd elseIf* elif ifShort;
+    : condition blockNonEnd elseIf+ else
+    | condition blockNonEnd elseIf* elif ifShort;
 // $antlr-format alignColons trailing;
-then   : Then | Colon;
 elif   : ElseIf | Else If;
 else   : Else expression | Else blockStatement;
-elseIf : elif condition (Then | Colon)? blockNonEnd;
+elseIf : elif condition blockNonEnd;
 If     : 'if';
 Else   : 'else';
 ElseIf : 'elseif';
-Then   : 'then';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 switchStatment: Switch condition switchBody;
