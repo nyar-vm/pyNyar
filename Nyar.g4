@@ -25,21 +25,16 @@ Semicolon      : ';' | '\uFF1B'; //U+FF1B ；
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 importStatement
-    : Using module = moduleName                        # ModuleInclude
+    : Using module = moduleName m=(Times|Power)?                       # ModuleModify
     | Using module = moduleName As alias = symbol      # ModuleAlias
     | Using source = moduleName With? name = symbol    # ModuleSymbol
     | Using source = moduleName (With | Dot)? idTuples # ModuleSymbols
     | Using dict                                       # ModuleResolve;
-moduleName
-    : string
-    | symbol
-    | symbol (Dot symbol)
-    | moduleLanguage moduleScope?
-    | moduleScope?;
-moduleLanguage: Suffix symbol;
-moduleScope: Prefix symbol;
+moduleName: string | symbol | moduleLanguage? moduleScope? symbols;
+moduleLanguage: Suffix symbol Divide;
+moduleScope: Prefix symbol Divide;
 // $antlr-format alignColons trailing;
-idTuples : '{' symbols (Comma symbols)* '}';
+idTuples : '{' symbol (Comma symbol)* '}';
 As       : 'as';
 Using    : 'using';
 Instance : 'instance';
@@ -48,7 +43,7 @@ Power    : '^';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 blockStatement: '{' statement* '}' | Colon expression | Colon statement* End;
-blockNonEnd: '{' statement* '}' | Colon? statement*;
+blockNonEnd: '{' statement* '}' | Colon? statement+;
 // $antlr-format alignColons trailing;
 End   : 'end';
 Colon : ':' | '\uFF1A'; //U+FF1A ：
@@ -84,7 +79,7 @@ controlFlow
     | state = Return expressionStatement
     | state = Return '(' expressionStatement Comma? ')';
 // $antlr-format alignColons trailing;
-functionCall   : symbols '(' (arguments (Comma arguments)*)? ')';
+functionCall   : symbols '(' (arguments (Comma arguments)* Comma?)? ')';
 arguments      : expression | functionCall | data;
 flowController : Pass | Break | Throw | Yield | Await;
 Pass           : 'pass';
@@ -191,10 +186,10 @@ Rule          : '=>' | '\u27F9'; //U+27F9 ⟹;
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 tryStatement
-    : Try blockNonEnd tryCatch+ tryFinal
+    : Try blockNonEnd (Catch tryCatch)+ tryFinal
     | Try blockNonEnd Catch symbol blockNonEnd
     | Try blockNonEnd Catch '(' symbol ')' blockNonEnd;
-tryCatch: Catch symbol blockNonEnd | Catch '(' symbol ')' blockNonEnd;
+tryCatch: symbol blockNonEnd | '(' symbol ')' blockNonEnd;
 tryFinal: Final blockStatement;
 // $antlr-format alignColons trailing;
 Try   : 'try';
@@ -202,9 +197,9 @@ Catch : 'catch';
 Final : 'final';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-forStatement: forLoop | forInLoop;
-forLoop: For '(' expressionStatement ')' blockStatement;
-forInLoop: For symbol In expression blockStatement;
+forStatement
+    : For '(' expressionStatement ')' blockStatement # ForLoop
+    | For symbol In expression blockStatement        # ForInLoop;
 whileStatment: While condition blockStatement;
 // $antlr-format alignColons trailing;
 In    : 'in';
@@ -225,7 +220,6 @@ classExpression
     : emptyStatement
     | classController* symbol typeSuffix?
     | classController* symbol typeSuffix? blockStatement
-    | classController* symbol '(' parameter* ')' typeSuffix? (Colon 'pass')?
     | classController* symbol '(' parameter* ')' typeSuffix? blockStatement;
 // $antlr-format alignColons trailing;
 traitStatement  : Trait symbol classExtend? classTrait? classBody;
@@ -294,9 +288,8 @@ fragment CharLevel1 : Escape . | ~[\\];
 fragment CharLevel2 : Escape . | ~["\\];
 fragment NonEscape  : ~[\u0001]+?;
 /*====================================================================================================================*/
-controller : flowController;
 special    : True | False | Null | Nothing;
-symbol     : controller | Symbol | TrueName;
+symbol     : flowController | Symbol | TrueName;
 solt       : Sharp n = Integer? | Sharp id = symbol;
 Symbols    : Symbol (Dot Symbol)+;
 TrueName   : Symbol (Name Symbol)*;
