@@ -233,8 +233,8 @@ Prefix : '@';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 traitStatement
-    : Trait symbol classExtend? classTrait? '{' '}'
-    | Trait symbol classExtend? classTrait? Colon End;
+    : Trait symbol classExtend? classTrait? '{' traitExpression* '}'
+    | Trait symbol classExtend? classTrait? Colon traitExpression* End;
 interfaceStatement
     : Interface symbol classTrait? '{' interfaceExpression '}'
     | Interface symbol classTrait? Colon interfaceExpression* End;
@@ -242,12 +242,15 @@ structureStatement
     : Structure symbol classTrait? '{' structureExpression* '}'
     | Structure symbol classTrait? Colon structureExpression* End;
 enumerateStatement
-    : Enumerate symbol classTrait? '{' enumerateExpression* '}'
-    | Enumerate symbol classTrait? Colon enumerateExpression* End;
-interfaceExpression: symbol e = Nullable Colon typeExpression classEos?;
+    : Enumerate symbol e = (Plus | Power)? classTrait? '{' enumerateExpression* '}'
+    | Enumerate symbol e = (Plus | Power)? classTrait? Colon enumerateExpression* End;
+traitExpression: interfaceExpression | structureExpression;
+interfaceExpression: interfaceFunction Colon typeExpression classEos?;
+interfaceFunction
+    : symbol '(' parameter (Comma parameter)* Comma? ')' e = Nullable?;
 structureExpression: symbol e = Nullable Colon typeExpression classEos?;
 enumerateExpression: symbol classEos? | symbol Colon enumerateNumber classEos?;
-enumerateNumber: number | number LeftShift number | symbol BitOr symbol;
+enumerateNumber: number | symbol BitOr symbol;
 // $antlr-format alignColons trailing;
 Enumerate : 'enumerate';
 Structure : 'structure';
