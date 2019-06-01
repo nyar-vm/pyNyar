@@ -464,6 +464,11 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#interfaceParameters.
+    def visitInterfaceParameters(self, ctx:NyarParser.InterfaceParametersContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#structureExpression.
     def visitStructureExpression(self, ctx:NyarParser.StructureExpressionContext):
         return self.visitChildren(ctx)

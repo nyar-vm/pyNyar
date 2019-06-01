@@ -827,6 +827,15 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#interfaceParameters.
+    def enterInterfaceParameters(self, ctx:NyarParser.InterfaceParametersContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#interfaceParameters.
+    def exitInterfaceParameters(self, ctx:NyarParser.InterfaceParametersContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#structureExpression.
     def enterStructureExpression(self, ctx:NyarParser.StructureExpressionContext):
         pass
