@@ -5,16 +5,12 @@ grammar Nyar;
 program: statement* EOF;
 statement
     : emptyStatement
-    | importStatement eos?
-    | typeStatement eos?
-    | assignStatment eos?
-    | (switchStatment | ifStatment | matchStatment) eos?
-    | (forStatement | whileStatment) eos?
+    | (importStatement | exportStatment) eos?
+    | (letStatment | assignStatment) eos?
+    | (switchStatment | ifStatment | matchStatment | forStatement | whileStatment) eos?
+    | (typeStatement | traitStatement | classStatement) eos?
     | tryStatement eos?
-    | traitStatement eos?
-    | classStatement eos?
     | expression eos?
-    | letStatment eos?
     | data eos?;
 /*====================================================================================================================*/
 // $antlr-format alignColons trailing;
@@ -25,19 +21,20 @@ Semicolon      : ';' | '\uFF1B'; //U+FF1B ；
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 importStatement
-    : Using module = moduleName m=(Times|Power)?                       # ModuleModify
-    | Using module = moduleName As alias = symbol      # ModuleAlias
-    | Using source = moduleName With? name = symbol    # ModuleSymbol
-    | Using source = moduleName (With | Dot)? idTuples # ModuleSymbols
-    | Using dict                                       # ModuleResolve;
+    : Using name = moduleName mod = (Times | Power)? # ModuleModify
+    | Using name = moduleName As symbol              # ModuleAlias
+    | Using name = moduleName With? symbol           # ModuleSymbol
+    | Using name = moduleName (With | Dot)? idTuples # ModuleSymbols
+    | Using dict                                     # ModuleResolve;
 moduleName: string | symbol | moduleLanguage? moduleScope? symbols;
 moduleLanguage: Suffix symbol Divide;
 moduleScope: Prefix symbol Divide;
+exportStatment: Expose symbol;
 // $antlr-format alignColons trailing;
 idTuples : '{' symbol (Comma symbol)* '}';
 As       : 'as';
 Using    : 'using';
-Instance : 'instance';
+Expose   : 'expose';
 Times    : '*';
 Power    : '^';
 /*====================================================================================================================*/
