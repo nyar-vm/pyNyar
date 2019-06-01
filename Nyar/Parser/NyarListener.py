@@ -800,6 +800,24 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#structureExpression.
+    def enterStructureExpression(self, ctx:NyarParser.StructureExpressionContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#structureExpression.
+    def exitStructureExpression(self, ctx:NyarParser.StructureExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#enumerateExpression.
+    def enterEnumerateExpression(self, ctx:NyarParser.EnumerateExpressionContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#enumerateExpression.
+    def exitEnumerateExpression(self, ctx:NyarParser.EnumerateExpressionContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#data.
     def enterData(self, ctx:NyarParser.DataContext):
         pass
