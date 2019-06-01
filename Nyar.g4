@@ -216,8 +216,10 @@ classExpression
     | classController* symbol typeSuffix?
     | classController* symbol typeSuffix? blockStatement
     | classController* symbol '(' parameter* ')' typeSuffix? blockStatement;
+classStatement
+    : Class symbol classExtend? classTrait? '{' classExpression* '}'
+    | Class symbol classExtend? classTrait? Colon classExpression* End;
 // $antlr-format alignColons trailing;
-classStatement  : Class symbol classExtend? classTrait? classBody;
 classExtend     : Extend symbol+ | '(' symbol (Comma symbol)* ')';
 classTrait      : Act symbol+ | Tilde symbol | Tilde '(' symbol (Comma symbol)* ')';
 classController : symbol | Val | Var | Def;
@@ -230,8 +232,8 @@ Suffix : '$';
 Prefix : '@';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-traitStatement: Trait symbol classExtend? classTrait? classBody;
-interfaceStatement: Interface symbol classTrait? classBody;
+traitStatement: Trait symbol classExtend? classTrait? '{' '}';
+interfaceStatement: Interface symbol classTrait? '{' '}';
 structureStatement: Structure symbol classTrait? '{' structureExpression* '}';
 enumerateStatement: Enumerate symbol classTrait? '{' enumerateExpression* '}';
 structureExpression: symbol Colon typeExpression;
