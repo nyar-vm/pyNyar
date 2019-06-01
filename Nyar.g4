@@ -210,12 +210,11 @@ With        : 'with';
 Let         : 'let';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-classBody: '{' classExpression* '}' | Colon classExpression* End;
 classExpression
-    : emptyStatement
-    | classController* symbol typeSuffix?
-    | classController* symbol typeSuffix? blockStatement
-    | classController* symbol '(' parameter* ')' typeSuffix? blockStatement;
+    : emptyStatement classEos?
+    | classController* symbol typeSuffix? classEos?
+    | classController* symbol typeSuffix? blockStatement classEos?
+    | classController* symbol '(' parameter* ')' typeSuffix? blockStatement classEos?;
 classStatement
     : Class symbol classExtend? classTrait? '{' classExpression* '}'
     | Class symbol classExtend? classTrait? Colon classExpression* End;
@@ -223,6 +222,7 @@ classStatement
 classExtend     : Extend symbol+ | '(' symbol (Comma symbol)* ')';
 classTrait      : Act symbol+ | Tilde symbol | Tilde '(' symbol (Comma symbol)* ')';
 classController : symbol | Val | Var | Def;
+classEos        : Semicolon | Comma;
 // $antlr-format alignColons trailing;
 Class  : 'class';
 Extend : 'extend';
@@ -232,12 +232,22 @@ Suffix : '$';
 Prefix : '@';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-traitStatement: Trait symbol classExtend? classTrait? '{' '}';
-interfaceStatement: Interface symbol classTrait? '{' '}';
-structureStatement: Structure symbol classTrait? '{' structureExpression* '}';
-enumerateStatement: Enumerate symbol classTrait? '{' enumerateExpression* '}';
-structureExpression: symbol Colon typeExpression;
-enumerateExpression: symbol | symbol Colon number;
+traitStatement
+    : Trait symbol classExtend? classTrait? '{' '}'
+    | Trait symbol classExtend? classTrait? Colon End;
+interfaceStatement
+    : Interface symbol classTrait? '{' interfaceExpression '}'
+    | Interface symbol classTrait? Colon interfaceExpression* End;
+structureStatement
+    : Structure symbol classTrait? '{' structureExpression* '}'
+    | Structure symbol classTrait? Colon structureExpression* End;
+enumerateStatement
+    : Enumerate symbol classTrait? '{' enumerateExpression* '}'
+    | Enumerate symbol classTrait? Colon enumerateExpression* End;
+interfaceExpression: symbol e = Nullable Colon typeExpression classEos?;
+structureExpression: symbol e = Nullable Colon typeExpression classEos?;
+enumerateExpression: symbol classEos? | symbol Colon enumerateNumber classEos?;
+enumerateNumber: number | number LeftShift number | symbol BitOr symbol;
 // $antlr-format alignColons trailing;
 Enumerate : 'enumerate';
 Structure : 'structure';
