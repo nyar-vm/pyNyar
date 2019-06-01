@@ -9,6 +9,7 @@ statement
     | (letStatment | assignStatment) eos?
     | (switchStatment | ifStatment | matchStatment | forStatement | whileStatment) eos?
     | (typeStatement | traitStatement | classStatement) eos?
+    | (interfaceStatement | structureStatement | enumerateStatement) eos?
     | tryStatement eos?
     | expression eos?
     | data eos?;
@@ -231,7 +232,10 @@ Tilde  : '~';
 Suffix : '$';
 Prefix : '@';
 /*====================================================================================================================*/
-traitStatement : Trait symbol classExtend? classTrait? classBody;
+traitStatement     : Trait symbol classExtend? classTrait? classBody;
+interfaceStatement : Interface symbol;
+structureStatement : Structure symbol;
+enumerateStatement : Enumerate symbol;
 // $antlr-format alignColons trailing;
 Enumerate : 'enumerate';
 Structure : 'structure';
