@@ -219,19 +219,24 @@ classExpression
     | classController* symbol typeSuffix? blockStatement
     | classController* symbol '(' parameter* ')' typeSuffix? blockStatement;
 // $antlr-format alignColons trailing;
-traitStatement  : Trait symbol classExtend? classTrait? classBody;
 classStatement  : Class symbol classExtend? classTrait? classBody;
 classExtend     : Extend symbol+ | '(' symbol (Comma symbol)* ')';
 classTrait      : Act symbol+ | Tilde symbol | Tilde '(' symbol (Comma symbol)* ')';
 classController : symbol | Val | Var | Def;
 // $antlr-format alignColons trailing;
-Trait  : 'trait';
 Class  : 'class';
 Extend : 'extend';
 Act    : 'act';
 Tilde  : '~';
 Suffix : '$';
 Prefix : '@';
+/*====================================================================================================================*/
+traitStatement : Trait symbol classExtend? classTrait? classBody;
+// $antlr-format alignColons trailing;
+Enumerate : 'enumerate';
+Structure : 'structure';
+Interface : 'interface';
+Trait     : 'trait';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 data: number | string | special | symbol | symbols | list | dict | index | solt;
