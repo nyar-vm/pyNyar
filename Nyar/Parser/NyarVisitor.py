@@ -399,11 +399,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#classBody.
-    def visitClassBody(self, ctx:NyarParser.ClassBodyContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#classExpression.
     def visitClassExpression(self, ctx:NyarParser.ClassExpressionContext):
         return self.visitChildren(ctx)
@@ -429,6 +424,11 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#classEos.
+    def visitClassEos(self, ctx:NyarParser.ClassEosContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#traitStatement.
     def visitTraitStatement(self, ctx:NyarParser.TraitStatementContext):
         return self.visitChildren(ctx)
@@ -449,6 +449,21 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#traitExpression.
+    def visitTraitExpression(self, ctx:NyarParser.TraitExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#interfaceExpression.
+    def visitInterfaceExpression(self, ctx:NyarParser.InterfaceExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#interfaceFunction.
+    def visitInterfaceFunction(self, ctx:NyarParser.InterfaceFunctionContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#structureExpression.
     def visitStructureExpression(self, ctx:NyarParser.StructureExpressionContext):
         return self.visitChildren(ctx)
@@ -456,6 +471,11 @@ class NyarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by NyarParser#enumerateExpression.
     def visitEnumerateExpression(self, ctx:NyarParser.EnumerateExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#enumerateNumber.
+    def visitEnumerateNumber(self, ctx:NyarParser.EnumerateNumberContext):
         return self.visitChildren(ctx)
 
 
