@@ -116,6 +116,15 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#exportStatment.
+    def enterExportStatment(self, ctx:NyarParser.ExportStatmentContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#exportStatment.
+    def exitExportStatment(self, ctx:NyarParser.ExportStatmentContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#idTuples.
     def enterIdTuples(self, ctx:NyarParser.IdTuplesContext):
         pass
@@ -719,15 +728,6 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#traitStatement.
-    def enterTraitStatement(self, ctx:NyarParser.TraitStatementContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#traitStatement.
-    def exitTraitStatement(self, ctx:NyarParser.TraitStatementContext):
-        pass
-
-
     # Enter a parse tree produced by NyarParser#classStatement.
     def enterClassStatement(self, ctx:NyarParser.ClassStatementContext):
         pass
@@ -761,6 +761,42 @@ class NyarListener(ParseTreeListener):
 
     # Exit a parse tree produced by NyarParser#classController.
     def exitClassController(self, ctx:NyarParser.ClassControllerContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#traitStatement.
+    def enterTraitStatement(self, ctx:NyarParser.TraitStatementContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#traitStatement.
+    def exitTraitStatement(self, ctx:NyarParser.TraitStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#interfaceStatement.
+    def enterInterfaceStatement(self, ctx:NyarParser.InterfaceStatementContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#interfaceStatement.
+    def exitInterfaceStatement(self, ctx:NyarParser.InterfaceStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#structureStatement.
+    def enterStructureStatement(self, ctx:NyarParser.StructureStatementContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#structureStatement.
+    def exitStructureStatement(self, ctx:NyarParser.StructureStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#enumerateStatement.
+    def enterEnumerateStatement(self, ctx:NyarParser.EnumerateStatementContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#enumerateStatement.
+    def exitEnumerateStatement(self, ctx:NyarParser.EnumerateStatementContext):
         pass
 
 

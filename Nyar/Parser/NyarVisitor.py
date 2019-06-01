@@ -69,6 +69,11 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#exportStatment.
+    def visitExportStatment(self, ctx:NyarParser.ExportStatmentContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#idTuples.
     def visitIdTuples(self, ctx:NyarParser.IdTuplesContext):
         return self.visitChildren(ctx)
@@ -404,11 +409,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#traitStatement.
-    def visitTraitStatement(self, ctx:NyarParser.TraitStatementContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#classStatement.
     def visitClassStatement(self, ctx:NyarParser.ClassStatementContext):
         return self.visitChildren(ctx)
@@ -426,6 +426,26 @@ class NyarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by NyarParser#classController.
     def visitClassController(self, ctx:NyarParser.ClassControllerContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#traitStatement.
+    def visitTraitStatement(self, ctx:NyarParser.TraitStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#interfaceStatement.
+    def visitInterfaceStatement(self, ctx:NyarParser.InterfaceStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#structureStatement.
+    def visitStructureStatement(self, ctx:NyarParser.StructureStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#enumerateStatement.
+    def visitEnumerateStatement(self, ctx:NyarParser.EnumerateStatementContext):
         return self.visitChildren(ctx)
 
 
