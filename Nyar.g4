@@ -210,10 +210,7 @@ With        : 'with';
 Let         : 'let';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-classBody
-    : '{' classExpression* '}'
-    | Colon classExpression* End
-    | Colon classExpression;
+classBody: '{' classExpression* '}' | Colon classExpression* End;
 classExpression
     : emptyStatement
     | classController* symbol typeSuffix?
@@ -232,10 +229,13 @@ Tilde  : '~';
 Suffix : '$';
 Prefix : '@';
 /*====================================================================================================================*/
-traitStatement     : Trait symbol classExtend? classTrait? classBody;
-interfaceStatement : Interface symbol;
-structureStatement : Structure symbol;
-enumerateStatement : Enumerate symbol;
+// $antlr-format alignColons hanging;
+traitStatement: Trait symbol classExtend? classTrait? classBody;
+interfaceStatement: Interface symbol classTrait? classBody;
+structureStatement: Structure symbol classTrait? '{' structureExpression* '}';
+enumerateStatement: Enumerate symbol classTrait? '{' enumerateExpression* '}';
+structureExpression: symbol Colon typeExpression;
+enumerateExpression: symbol | symbol Colon number;
 // $antlr-format alignColons trailing;
 Enumerate : 'enumerate';
 Structure : 'structure';
