@@ -324,11 +324,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#else.
-    def visitElse(self, ctx:NyarParser.ElseContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#elseIf.
     def visitElseIf(self, ctx:NyarParser.ElseIfContext):
         return self.visitChildren(ctx)
@@ -494,8 +489,63 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#byteInput.
+    def visitByteInput(self, ctx:NyarParser.ByteInputContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#index.
     def visitIndex(self, ctx:NyarParser.IndexContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#IndexTake.
+    def visitIndexTake(self, ctx:NyarParser.IndexTakeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#Index000.
+    def visitIndex000(self, ctx:NyarParser.Index000Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#Index001.
+    def visitIndex001(self, ctx:NyarParser.Index001Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#Index010.
+    def visitIndex010(self, ctx:NyarParser.Index010Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#Index011.
+    def visitIndex011(self, ctx:NyarParser.Index011Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#Index100.
+    def visitIndex100(self, ctx:NyarParser.Index100Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#Index101.
+    def visitIndex101(self, ctx:NyarParser.Index101Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#Index110.
+    def visitIndex110(self, ctx:NyarParser.Index110Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#Index111.
+    def visitIndex111(self, ctx:NyarParser.Index111Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#indexTerm.
+    def visitIndexTerm(self, ctx:NyarParser.IndexTermContext):
         return self.visitChildren(ctx)
 
 
@@ -524,11 +574,6 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#indexValid.
-    def visitIndexValid(self, ctx:NyarParser.IndexValidContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by NyarParser#complex.
     def visitComplex(self, ctx:NyarParser.ComplexContext):
         return self.visitChildren(ctx)
@@ -544,6 +589,11 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#StringEmpty.
+    def visitStringEmpty(self, ctx:NyarParser.StringEmptyContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#StringEscapeBlock.
     def visitStringEscapeBlock(self, ctx:NyarParser.StringEscapeBlockContext):
         return self.visitChildren(ctx)
@@ -554,13 +604,13 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#StringLiteral.
-    def visitStringLiteral(self, ctx:NyarParser.StringLiteralContext):
+    # Visit a parse tree produced by NyarParser#StringLiteralBlock.
+    def visitStringLiteralBlock(self, ctx:NyarParser.StringLiteralBlockContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by NyarParser#StringEmpty.
-    def visitStringEmpty(self, ctx:NyarParser.StringEmptyContext):
+    # Visit a parse tree produced by NyarParser#StringLiteralSingle.
+    def visitStringLiteralSingle(self, ctx:NyarParser.StringLiteralSingleContext):
         return self.visitChildren(ctx)
 
 

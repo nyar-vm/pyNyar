@@ -575,15 +575,6 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#else.
-    def enterElse(self, ctx:NyarParser.ElseContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#else.
-    def exitElse(self, ctx:NyarParser.ElseContext):
-        pass
-
-
     # Enter a parse tree produced by NyarParser#elseIf.
     def enterElseIf(self, ctx:NyarParser.ElseIfContext):
         pass
@@ -881,12 +872,111 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#byteInput.
+    def enterByteInput(self, ctx:NyarParser.ByteInputContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#byteInput.
+    def exitByteInput(self, ctx:NyarParser.ByteInputContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#index.
     def enterIndex(self, ctx:NyarParser.IndexContext):
         pass
 
     # Exit a parse tree produced by NyarParser#index.
     def exitIndex(self, ctx:NyarParser.IndexContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#IndexTake.
+    def enterIndexTake(self, ctx:NyarParser.IndexTakeContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#IndexTake.
+    def exitIndexTake(self, ctx:NyarParser.IndexTakeContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#Index000.
+    def enterIndex000(self, ctx:NyarParser.Index000Context):
+        pass
+
+    # Exit a parse tree produced by NyarParser#Index000.
+    def exitIndex000(self, ctx:NyarParser.Index000Context):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#Index001.
+    def enterIndex001(self, ctx:NyarParser.Index001Context):
+        pass
+
+    # Exit a parse tree produced by NyarParser#Index001.
+    def exitIndex001(self, ctx:NyarParser.Index001Context):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#Index010.
+    def enterIndex010(self, ctx:NyarParser.Index010Context):
+        pass
+
+    # Exit a parse tree produced by NyarParser#Index010.
+    def exitIndex010(self, ctx:NyarParser.Index010Context):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#Index011.
+    def enterIndex011(self, ctx:NyarParser.Index011Context):
+        pass
+
+    # Exit a parse tree produced by NyarParser#Index011.
+    def exitIndex011(self, ctx:NyarParser.Index011Context):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#Index100.
+    def enterIndex100(self, ctx:NyarParser.Index100Context):
+        pass
+
+    # Exit a parse tree produced by NyarParser#Index100.
+    def exitIndex100(self, ctx:NyarParser.Index100Context):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#Index101.
+    def enterIndex101(self, ctx:NyarParser.Index101Context):
+        pass
+
+    # Exit a parse tree produced by NyarParser#Index101.
+    def exitIndex101(self, ctx:NyarParser.Index101Context):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#Index110.
+    def enterIndex110(self, ctx:NyarParser.Index110Context):
+        pass
+
+    # Exit a parse tree produced by NyarParser#Index110.
+    def exitIndex110(self, ctx:NyarParser.Index110Context):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#Index111.
+    def enterIndex111(self, ctx:NyarParser.Index111Context):
+        pass
+
+    # Exit a parse tree produced by NyarParser#Index111.
+    def exitIndex111(self, ctx:NyarParser.Index111Context):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#indexTerm.
+    def enterIndexTerm(self, ctx:NyarParser.IndexTermContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#indexTerm.
+    def exitIndexTerm(self, ctx:NyarParser.IndexTermContext):
         pass
 
 
@@ -935,15 +1025,6 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#indexValid.
-    def enterIndexValid(self, ctx:NyarParser.IndexValidContext):
-        pass
-
-    # Exit a parse tree produced by NyarParser#indexValid.
-    def exitIndexValid(self, ctx:NyarParser.IndexValidContext):
-        pass
-
-
     # Enter a parse tree produced by NyarParser#complex.
     def enterComplex(self, ctx:NyarParser.ComplexContext):
         pass
@@ -971,6 +1052,15 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#StringEmpty.
+    def enterStringEmpty(self, ctx:NyarParser.StringEmptyContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#StringEmpty.
+    def exitStringEmpty(self, ctx:NyarParser.StringEmptyContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#StringEscapeBlock.
     def enterStringEscapeBlock(self, ctx:NyarParser.StringEscapeBlockContext):
         pass
@@ -989,21 +1079,21 @@ class NyarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#StringLiteral.
-    def enterStringLiteral(self, ctx:NyarParser.StringLiteralContext):
+    # Enter a parse tree produced by NyarParser#StringLiteralBlock.
+    def enterStringLiteralBlock(self, ctx:NyarParser.StringLiteralBlockContext):
         pass
 
-    # Exit a parse tree produced by NyarParser#StringLiteral.
-    def exitStringLiteral(self, ctx:NyarParser.StringLiteralContext):
+    # Exit a parse tree produced by NyarParser#StringLiteralBlock.
+    def exitStringLiteralBlock(self, ctx:NyarParser.StringLiteralBlockContext):
         pass
 
 
-    # Enter a parse tree produced by NyarParser#StringEmpty.
-    def enterStringEmpty(self, ctx:NyarParser.StringEmptyContext):
+    # Enter a parse tree produced by NyarParser#StringLiteralSingle.
+    def enterStringLiteralSingle(self, ctx:NyarParser.StringLiteralSingleContext):
         pass
 
-    # Exit a parse tree produced by NyarParser#StringEmpty.
-    def exitStringEmpty(self, ctx:NyarParser.StringEmptyContext):
+    # Exit a parse tree produced by NyarParser#StringLiteralSingle.
+    def exitStringLiteralSingle(self, ctx:NyarParser.StringLiteralSingleContext):
         pass
 
 
