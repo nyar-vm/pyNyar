@@ -249,6 +249,11 @@ class NyarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by NyarParser#AssignModify.
+    def visitAssignModify(self, ctx:NyarParser.AssignModifyContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by NyarParser#LHSSingle.
     def visitLHSSingle(self, ctx:NyarParser.LHSSingleContext):
         return self.visitChildren(ctx)
@@ -671,6 +676,11 @@ class NyarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by NyarParser#list_ops.
     def visitList_ops(self, ctx:NyarParser.List_opsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by NyarParser#mod_assign.
+    def visitMod_assign(self, ctx:NyarParser.Mod_assignContext):
         return self.visitChildren(ctx)
 
 

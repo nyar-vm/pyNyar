@@ -440,6 +440,15 @@ class NyarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by NyarParser#AssignModify.
+    def enterAssignModify(self, ctx:NyarParser.AssignModifyContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#AssignModify.
+    def exitAssignModify(self, ctx:NyarParser.AssignModifyContext):
+        pass
+
+
     # Enter a parse tree produced by NyarParser#LHSSingle.
     def enterLHSSingle(self, ctx:NyarParser.LHSSingleContext):
         pass
@@ -1202,6 +1211,15 @@ class NyarListener(ParseTreeListener):
 
     # Exit a parse tree produced by NyarParser#list_ops.
     def exitList_ops(self, ctx:NyarParser.List_opsContext):
+        pass
+
+
+    # Enter a parse tree produced by NyarParser#mod_assign.
+    def enterMod_assign(self, ctx:NyarParser.Mod_assignContext):
+        pass
+
+    # Exit a parse tree produced by NyarParser#mod_assign.
+    def exitMod_assign(self, ctx:NyarParser.Mod_assignContext):
         pass
 
 
