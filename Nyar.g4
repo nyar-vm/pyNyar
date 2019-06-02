@@ -150,13 +150,15 @@ Delay    : ':=' | '\u2254'; //U+2254 ≔
 ifStatment : If ifShort | If ifSingle | If ifNested;
 // $antlr-format alignColons hanging;
 ifShort: condition expression | condition blockStatement;
-ifSingle: condition blockNonEnd else;
+ifSingle
+    : condition blockNonEnd Else expression
+    | condition blockNonEnd Else blockStatement;
 ifNested
-    : condition blockNonEnd elseIf+ else
+    : condition blockNonEnd elseIf+ Else expression
+    | condition blockNonEnd elseIf+ Else blockStatement
     | condition blockNonEnd elseIf* elif ifShort;
 // $antlr-format alignColons trailing;
 elif   : ElseIf | Else If;
-else   : Else expression | Else blockStatement;
 elseIf : elif condition blockNonEnd;
 If     : 'if';
 Else   : 'else';
@@ -236,18 +238,18 @@ traitStatement
     : Trait symbol classExtend? classTrait? '{' traitExpression* '}'
     | Trait symbol classExtend? classTrait? Colon traitExpression* End;
 interfaceStatement
-    : Interface symbol classTrait? '{' interfaceExpression '}'
-    | Interface symbol classTrait? Colon interfaceExpression* End;
+    : Interface symbol classExtend? classTrait? '{' interfaceExpression '}'
+    | Interface symbol classExtend? classTrait? Colon interfaceExpression* End;
 structureStatement
-    : Structure symbol classTrait? '{' structureExpression* '}'
-    | Structure symbol classTrait? Colon structureExpression* End;
+    : Structure symbol classExtend? classTrait? '{' structureExpression* '}'
+    | Structure symbol classExtend? classTrait? Colon structureExpression* End;
 enumerateStatement
-    : Enumerate symbol e = (Plus | Power)? classTrait? '{' enumerateExpression* '}'
-    | Enumerate symbol e = (Plus | Power)? classTrait? Colon enumerateExpression* End;
+    : Enumerate e = (Plus | Times)? symbol classExtend? classTrait? '{' enumerateExpression* '}'
+    | Enumerate e = (Plus | Times)? symbol classExtend? classTrait? Colon enumerateExpression* End;
 traitExpression: interfaceExpression | structureExpression;
 interfaceExpression: interfaceFunction Colon typeExpression classEos?;
-interfaceFunction
-    : symbol '(' parameter (Comma parameter)* Comma? ')' e = Nullable?;
+interfaceFunction: symbol '(' interfaceParameters? ')' e = Nullable?;
+interfaceParameters: typeExpression symbol (Comma typeExpression symbol)*;
 structureExpression: symbol e = Nullable Colon typeExpression classEos?;
 enumerateExpression: symbol classEos? | symbol Colon enumerateNumber classEos?;
 enumerateNumber: number | symbol BitOr symbol;
@@ -259,19 +261,33 @@ Trait     : 'trait';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 data: number | string | special | symbol | symbols | list | dict | index | solt;
-number: complex | decimal | integer | Binary | Octal | Hexadecimal;
+number: complex | decimal | integer | byteInput;
+byteInput: Binary | Octal | Hexadecimal;
 index
     : '[' indexValid (Comma? indexValid)* ']'
     | '⟦' indexValid (Comma? indexValid)* '⟧';
+indexValid
+    : (indexTerm | list)                        # IndexTake
+    | Colon                                     # Index000
+    | Name indexTerm                            # Index001
+    | Colon Colon indexTerm                     # Index001
+    | Colon indexTerm Colon?                    # Index010
+    | Colon indexTerm Colon indexTerm           # Index011
+    | indexTerm Name                            # Index100
+    | indexTerm Colon Colon?                    # Index100
+    | indexTerm Name indexTerm                  # Index101
+    | indexTerm Colon Colon indexTerm           # Index101
+    | indexTerm Colon indexTerm Colon?          # Index110
+    | indexTerm Colon indexTerm Colon indexTerm # Index111;
+indexTerm: symbol | sign = (Plus | Minus)? integer;
 // $antlr-format alignColons trailing;
-dict       : '{' keyValue? (Comma keyValue)* Comma? '}';
-keyValue   : key = keyValid Colon value = element;
-keyValid   : integer | symbol | string;
-list       : '[' element? (Comma element)* Comma? ']';
-element    : data | expression | statement;
-indexValid : (symbol | integer) Colon?;
-Plus       : '+';
-Minus      : '-';
+dict     : '{' keyValue? (Comma keyValue)* Comma? '}';
+keyValue : key = keyValid Colon value = element;
+keyValid : integer | symbol | string;
+list     : '[' element? (Comma element)* Comma? ']';
+element  : data | expression | statement;
+Plus     : '+';
+Minus    : '-';
 /*====================================================================================================================*/
 complex        : (Decimal | Integer) symbol;
 decimal        : Decimal | DecimalBad;
@@ -292,33 +308,36 @@ fragment Zero  : [0];
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 string
-    : StringEscapeBlock  # StringEscapeBlock
-    | StringEscapeSingle # StringEscapeSingle
-    | StringLiteral      # StringLiteral
-    | StringEmpty        # StringEmpty;
+    : StringEmpty         # StringEmpty
+    | StringEscapeBlock   # StringEscapeBlock
+    | StringEscapeSingle  # StringEscapeSingle
+    | StringLiteralBlock  # StringLiteralBlock
+    | StringLiteralSingle # StringLiteralSingle;
 // $antlr-format alignColons trailing;
 StringEscapeBlock   : S6 CharLevel1+? S6;
 StringEscapeSingle  : S2 CharLevel2+? S2;
-StringLiteral       : S4 ~[\uFF02]+? S4;
-StringEmpty         : S6 S6 | S2 S2 | S4 S4;
+StringLiteralBlock  : S3 .+? S3;
+StringLiteralSingle : S1 ~[\uFF02]+? S1;
+StringEmpty         : S6 S6 | S3 S3 | S2 S2 | S1 S1;
 Escape              : '\\';
 fragment S6         : '"""';
-fragment S4         : '\uFF02'; //U+FF02 ＂
+fragment S3         : '\uFF02\uFF02\uFF02';
 fragment S2         : '"';
-fragment CharLevel1 : Escape . | ~[\\];
-fragment CharLevel2 : Escape . | ~["\\];
-fragment NonEscape  : ~[\u0001]+?;
+fragment S1         : '\uFF02'; //U+FF02 ＂
+fragment CharLevel1 : Escape ~[ ] | ~[\\];
+fragment CharLevel2 : Escape ~[ ] | ~["\\];
 /*====================================================================================================================*/
-special    : True | False | Null | Nothing;
+special : True | False | Null | Nothing;
+True    : 'true';
+False   : 'false';
+Null    : 'null';
+Nothing : 'nothing';
+/*====================================================================================================================*/
 symbol     : flowController | Symbol | TrueName;
 solt       : Sharp n = Integer? | Sharp id = symbol;
 Symbols    : Symbol (Dot Symbol)+;
 TrueName   : Symbol (Name Symbol)*;
 Symbol     : NameStartCharacter NameCharacter*;
-True       : 'true';
-False      : 'false';
-Null       : 'null';
-Nothing    : 'nothing';
 Sharp      : '#';
 Dot        : '.';
 Underline  : '_';
@@ -367,8 +386,9 @@ fragment NameCharacter  : NameStartCharacter | Digit;
 /*====================================================================================================================*/
 // $antlr-format alignColons trailing;
 Shebang            : '#!' -> channel(HIDDEN);
+Remark             : '///' -> channel(HIDDEN);
 Comment            : '%%%';
-LineComment        : Shebang ~[\r\n]+ -> channel(HIDDEN);
+LineComment        : (Shebang | Remark) ~[\r\n]+ -> channel(HIDDEN);
 PartComment        : Comment .*? Comment -> channel(HIDDEN);
 NewLine            : ('\r'? '\n' | '\r')+ -> skip;
 WhiteSpace         : UnicodeWS+ -> skip;
