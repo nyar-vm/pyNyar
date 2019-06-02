@@ -22,22 +22,24 @@ Semicolon      : ';' | '\uFF1B'; //U+FF1B ；
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 importStatement
-    : Using name = moduleName mod = (Times | Power)? # ModuleModify
+    : Using name = moduleName mod = (Star | Power)?  # ModuleModify
     | Using name = moduleName As symbol              # ModuleAlias
     | Using name = moduleName With? symbol           # ModuleSymbol
     | Using name = moduleName (With | Dot)? idTuples # ModuleSymbols
     | Using dict                                     # ModuleResolve;
 moduleName: string | symbol | moduleLanguage? moduleScope? symbols;
-moduleLanguage: Suffix symbol Divide;
-moduleScope: Prefix symbol Divide;
+moduleLanguage: Suffix symbol Slash;
+moduleScope: Prefix symbol Slash;
 exportStatment: Expose symbol;
 // $antlr-format alignColons trailing;
 idTuples : '{' symbol (Comma symbol)* '}';
 As       : 'as';
 Using    : 'using';
 Expose   : 'expose';
-Times    : '*';
-Power    : '^';
+Divide   : Slash | '\u00F7'; //U+00F7 ÷
+Multiply : Star | '\u00D7'; //U+00D7 ×
+Star     : '*';
+Slash    : '/';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 blockStatement: '{' statement* '}' | Colon expression | Colon statement* End;
@@ -69,7 +71,7 @@ expression
     | '(' expression ')'                                                # PriorityExpression
     | controlFlow                                                       # ControlExpression
     | expression BitAnd                                                 # SlotCatch;
-/* | left = number right = expression                                  # SpaceExpression*/
+/*  | left = number right = expression                                  # SpaceExpression*/
 /*====================================================================================================================*/
 controlFlow
     : state = (Pass | Break) ('(' ')')?
@@ -80,13 +82,14 @@ controlFlow
 functionCall   : symbols '(' (arguments (Comma arguments)* Comma?)? ')';
 arguments      : expression | functionCall | data;
 flowController : Pass | Break | Throw | Yield | Await;
-Pass           : 'pass';
-Return         : 'return';
-Yield          : 'yield';
-Await          : 'await';
-Break          : 'break';
-Throw          : 'throw';
-Comma          : ',' | '\uFF0C'; //U+FF0C ，
+// $antlr-format alignColons trailing;
+Pass     : 'pass';
+Return   : 'return';
+Yield    : 'yield';
+Await    : 'await';
+Break    : 'break';
+Throw    : 'throw';
+Comma    : ',' | '\uFF0C'; //U+FF0C ，
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 typeStatement
@@ -97,7 +100,7 @@ typeExpression
     | symbol '<' (typeExpression (Comma typeExpression)*)? '>'
     | typeExpression (BitOr | BitAnd) typeExpression
     | typeExpression '[' ']'
-    | symbol (Nullable | Times)?
+    | symbol (Nullable | Star)?
     | integer;
 typeSuffix: (Tilde | Act) typeExpression;
 // $antlr-format alignColons trailing;
@@ -115,6 +118,7 @@ assignStatment
     | Def assignLHS blockStatement            # AssignDefer
     | Def functionPattern blockStatement      # AssignFunction
     | functionPattern (Set | Delay) assignRHS # AssignFunction
+    | assignLHS mod_assign Set assignRHS      # AssignModify
     | assignLHS Set assignRHS                 # AssignValue
     | assignLHS Flexible assignRHS            # AssignVariable
     | assignLHS Delay assignRHS               # AssignDefer;
@@ -131,7 +135,7 @@ assignRHS
     | Colon statement* End;
 parameter
     : typeExpression? symbol
-    | typeExpression? symbol Times
+    | typeExpression? symbol Star
     | typeExpression? symbol Keyword
     | typeExpression? symbol Nullable symbol;
 // $antlr-format alignColons trailing;
@@ -170,8 +174,8 @@ caseBody //if no expr, must default
     : Case expression Colon blockNonEnd
     | expression Rule blockNonEnd
     | Default Colon blockNonEnd
-    | Case Times Colon blockNonEnd
-    | Times Rule blockNonEnd;
+    | Case Star Colon blockNonEnd
+    | Star Rule blockNonEnd;
 // $antlr-format alignColons trailing;
 switchBody : '{' caseBody* '}' | Colon caseBody* End;
 Switch     : 'switch';
@@ -244,8 +248,8 @@ structureStatement
     : Structure symbol classExtend? classTrait? '{' structureExpression* '}'
     | Structure symbol classExtend? classTrait? Colon structureExpression* End;
 enumerateStatement
-    : Enumerate e = (Plus | Times)? symbol classExtend? classTrait? '{' enumerateExpression* '}'
-    | Enumerate e = (Plus | Times)? symbol classExtend? classTrait? Colon enumerateExpression* End;
+    : Enumerate e = (Plus | Star)? symbol classExtend? classTrait? '{' enumerateExpression* '}'
+    | Enumerate e = (Plus | Star)? symbol classExtend? classTrait? Colon enumerateExpression* End;
 traitExpression: interfaceExpression | structureExpression;
 interfaceExpression: interfaceFunction Colon typeExpression classEos?;
 interfaceFunction: symbol '(' interfaceParameters? ')' e = Nullable?;
@@ -288,6 +292,8 @@ list     : '[' element? (Comma element)* Comma? ']';
 element  : data | expression | statement;
 Plus     : '+';
 Minus    : '-';
+Power    : '^';
+Surd     : '\u221A'; //U+221A √
 /*====================================================================================================================*/
 complex        : (Decimal | Integer) symbol;
 decimal        : Decimal | DecimalBad;
@@ -405,8 +411,9 @@ cpr_ops
     | (Grater | GraterEqual | Less | LessEqual)
     | (LogicAnd | LogicOr);
 pow_ops: Power | Surd;
-mul_ops: Divide | Mod | Remainder | Times | Multiply | Kronecker | TensorProduct;
+mul_ops: Divide | Modulo | Quotient | Multiply | Kronecker | TensorProduct;
 list_ops: Concat | LeftShift | RightShift | Increase | Map;
+mod_assign: Plus | Minus | Star | Divide;
 // $antlr-format alignColons trailing;
 /* <> */
 Import      : '<<<' | '\u22D8'; //U+22D8 ⋘
@@ -419,20 +426,15 @@ GraterEqual : '>=';
 Grater      : '>';
 /* +-÷ */
 Increase      : '++';
-PlusTo        : '+=';
 LogicXor      : '\u2295'; //U+2295 ⊕
 Decrease      : '--';
-MinusFrom     : '-=';
-Multiply      : '\u00D7'; //U+00D7 ×
 Kronecker     : '\u2297'; //U+2297 ⊗
 TensorProduct : '\u2299'; //U+2299 ⊙
 MapAll        : '//@';
-Remainder     : '//';
+Quotient      : '//';
 Map           : '/@';
-Divide        : '/';
-Quotient      : '\u00F7'; //U+00F7 ÷
 Output        : '%%';
-Mod           : '%';
+Modulo        : '%';
 /* =~ */
 Equivalent    : '===';
 NotEquivalent : '=!=';
@@ -458,7 +460,6 @@ Quotation : '\'';
 Ellipsis  : '...'; //…
 DOT       : '\u22C5'; //U+22C5 ⋅
 /* Prefix */
-Surd       : '\u221A'; //U+221A √
 Reciprocal : '\u215F'; //U+215F ⅟
 /* Postfix */
 Degree    : '\u00B0'; //U+00B0 °
