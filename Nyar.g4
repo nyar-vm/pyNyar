@@ -16,9 +16,10 @@ statement
 /*====================================================================================================================*/
 // $antlr-format alignColons trailing;
 emptyStatement : eos | Separate;
-eos            : Semicolon;
-Separate       : ';;';
-Semicolon      : ';' | '\uFF1B'; //U+FF1B ；
+// $antlr-format alignColons trailing;
+eos       : Semicolon;
+Separate  : ';;';
+Semicolon : ';' | '\uFF1B'; //U+FF1B ；
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 importStatement
@@ -41,10 +42,12 @@ Multiply : Star | '\u00D7'; //U+00D7 ×
 Star     : '*';
 Slash    : '/';
 /*====================================================================================================================*/
-blockStatement : '{' statement* '}' | Colon expression;
-blockNonEnd    : '{' statement* '}' | Colon? statement+;
-Colon          : ':' | '\uFF1A'; //U+FF1A ：
-Name           : '::' | '\u2237'; //U+2237 ∷
+// $antlr-format alignColons hanging;
+blockStatement: '{' statement* '}' | Colon statement* End | Colon expression;
+blockNonEnd: '{' statement* '}' | Colon? statement+;
+// $antlr-format alignColons trailing;
+Colon : ':' | '\uFF1A'; //U+FF1A ：
+End   : 'end' | '\u00AD'; // U+00AD
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
 expressionStatement: expression (Comma expression)*;
@@ -90,7 +93,9 @@ Throw  : 'throw';
 Comma  : ',' | '\uFF0C'; //U+FF0C ，
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-typeStatement: Type symbol '{' typeExpression '}'?;
+typeStatement
+    : Type symbol Colon typeExpression End?
+    | Type symbol '{' typeExpression '}'?;
 typeExpression
     : symbol '(' (typeExpression (Comma typeExpression)*)? ')'
     | symbol '<' (typeExpression (Comma typeExpression)*)? '>'
@@ -123,7 +128,12 @@ assignLHS
     | maybeSymbol (Comma maybeSymbol)* # LHSTuple
     | symbols                          # LHSMaybeSetter
     | symbols index                    # LHSMaybeIndex;
-assignRHS: expression | expressionStatement | statement | '{' statement* '}';
+assignRHS
+    : expression
+    | expressionStatement
+    | statement
+    | '{' statement* '}'
+    | Colon statement* End;
 parameter
     : typeExpression? symbol
     | typeExpression? symbol Star
@@ -139,6 +149,7 @@ Var      : 'var';
 Def      : 'def';
 Set      : '=';
 Flexible : '.=' | '\u2250'; //U+2250 ≐
+Name     : '::' | '\u2237'; //U+2237 ∷
 Delay    : ':=' | '\u2254'; //U+2254 ≔
 /*====================================================================================================================*/
 ifStatment : If ifShort | If ifSingle | If ifNested;
@@ -167,7 +178,7 @@ caseBody //if no expr, must default
     | Case Star Colon blockNonEnd
     | Star Rule blockNonEnd;
 // $antlr-format alignColons trailing;
-switchBody : '{' caseBody* '}';
+switchBody : '{' caseBody* '}' | Colon caseBody* End;
 Switch     : 'switch';
 Case       : 'case';
 Default    : 'default';
@@ -211,7 +222,9 @@ classExpression
     | classController* symbol typeSuffix? classEos?
     | classController* symbol typeSuffix? blockStatement classEos?
     | classController* symbol '(' parameter* ')' typeSuffix? blockStatement classEos?;
-classStatement: Class symbol classExtend? classTrait? '{' classExpression* '}';
+classStatement
+    : Class symbol classExtend? classTrait? '{' classExpression* '}'
+    | Class symbol classExtend? classTrait? Colon classExpression* End;
 // $antlr-format alignColons trailing;
 classExtend     : Extend symbol+ | '(' symbol (Comma symbol)* ')';
 classTrait      : Act symbol+ | Tilde symbol | Tilde '(' symbol (Comma symbol)* ')';
@@ -226,13 +239,18 @@ Suffix : '$';
 Prefix : '@';
 /*====================================================================================================================*/
 // $antlr-format alignColons hanging;
-traitStatement: Trait symbol classExtend? classTrait? '{' traitExpression* '}';
+traitStatement
+    : Trait symbol classExtend? classTrait? '{' traitExpression* '}'
+    | Trait symbol classExtend? classTrait? Colon traitExpression* End;
 interfaceStatement
-    : Interface symbol classExtend? classTrait? '{' interfaceExpression '}';
+    : Interface symbol classExtend? classTrait? '{' interfaceExpression '}'
+    | Interface symbol classExtend? classTrait? Colon interfaceExpression* End;
 structureStatement
-    : Structure symbol classExtend? classTrait? '{' structureExpression* '}';
+    : Structure symbol classExtend? classTrait? '{' structureExpression* '}'
+    | Structure symbol classExtend? classTrait? Colon structureExpression* End;
 enumerateStatement
-    : Enumerate e = (Plus | Star)? symbol classExtend? classTrait? '{' enumerateExpression* '}';
+    : Enumerate e = (Plus | Star)? symbol classExtend? classTrait? '{' enumerateExpression* '}'
+    | Enumerate e = (Plus | Star)? symbol classExtend? classTrait? Colon enumerateExpression* End;
 traitExpression: interfaceExpression | structureExpression;
 interfaceExpression: interfaceFunction Colon typeExpression classEos?;
 interfaceFunction: symbol '(' interfaceParameters? ')' e = Nullable?;
