@@ -1,0 +1,64 @@
+{
+  "Program": [
+    {
+      "NumberLiteral": {
+        "handler": "int",
+        "data": "0"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "fp",
+        "data": "0.0"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "fp",
+        "data": "0.0"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "fp",
+        "data": "123456.0"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "fp",
+        "data": "0.789"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "fp",
+        "data": "0.0"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "int",
+        "data": "123456"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "i",
+        "data": "123456"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "im",
+        "data": "1234.56"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "cm",
+        "data": "1234.56"
+      }
+    }
+  ]
+}

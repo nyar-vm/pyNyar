@@ -1,4 +1,4 @@
-# Generated from D:/Python/NyarPY\Nyar.g4 by ANTLR 4.7.2
+# Generated from D:/Python/NyarPY\nyar-antlr.g4 by ANTLR 4.7.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -759,7 +759,7 @@ def serializedATN():
 
 class NyarParser ( Parser ):
 
-    grammarFileName = "Nyar.g4"
+    grammarFileName = "nyar-antlr.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 

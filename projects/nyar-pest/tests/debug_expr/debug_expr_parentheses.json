@@ -1,0 +1,39 @@
+{
+  "Program": [
+    {
+      "InfixOperators": {
+        "operator": "+",
+        "lhs": {
+          "NumberLiteral": {
+            "handler": "int",
+            "data": "1"
+          }
+        },
+        "rhs": {
+          "NumberLiteral": {
+            "handler": "int",
+            "data": "1"
+          }
+        }
+      }
+    },
+    "None",
+    {
+      "InfixOperators": {
+        "operator": "+",
+        "lhs": {
+          "NumberLiteral": {
+            "handler": "int",
+            "data": "1"
+          }
+        },
+        "rhs": {
+          "NumberLiteral": {
+            "handler": "int",
+            "data": "1"
+          }
+        }
+      }
+    }
+  ]
+}

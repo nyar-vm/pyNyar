@@ -1,4 +1,4 @@
-# Generated from D:/Python/NyarPY\Nyar.g4 by ANTLR 4.7.2
+# Generated from D:/Python/NyarPY\nyar-antlr.g4 by ANTLR 4.7.2
 from antlr4 import *
 from io import StringIO
 from typing.io import TextIO
@@ -880,7 +880,7 @@ class NyarLexer(Lexer):
                   "DOT", "Reciprocal", "Degree", "Transpose", "Hermitian", 
                   "Section", "Pilcrow", "Currency", "Element" ]
 
-    grammarFileName = "Nyar.g4"
+    grammarFileName = "nyar-antlr.g4"
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)

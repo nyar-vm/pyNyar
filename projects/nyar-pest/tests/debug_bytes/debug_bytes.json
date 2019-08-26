@@ -1,0 +1,22 @@
+{
+  "Program": [
+    {
+      "NumberLiteral": {
+        "handler": "x",
+        "data": "FF"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "o",
+        "data": "77"
+      }
+    },
+    {
+      "NumberLiteral": {
+        "handler": "b",
+        "data": "11"
+      }
+    }
+  ]
+}

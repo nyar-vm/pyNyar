@@ -1,0 +1,116 @@
+{
+  "Program": [
+    {
+      "InfixOperators": {
+        "operator": "+",
+        "lhs": {
+          "UnaryOperators": {
+            "base": {
+              "NumberLiteral": {
+                "handler": "int",
+                "data": "1"
+              }
+            },
+            "prefix": [
+              "+"
+            ],
+            "postfix": []
+          }
+        },
+        "rhs": {
+          "InfixOperators": {
+            "operator": "*",
+            "lhs": {
+              "NumberLiteral": {
+                "handler": "int",
+                "data": "2"
+              }
+            },
+            "rhs": {
+              "InfixOperators": {
+                "operator": "^",
+                "lhs": {
+                  "NumberLiteral": {
+                    "handler": "int",
+                    "data": "3"
+                  }
+                },
+                "rhs": {
+                  "UnaryOperators": {
+                    "base": {
+                      "NumberLiteral": {
+                        "handler": "int",
+                        "data": "4"
+                      }
+                    },
+                    "prefix": [
+                      "-"
+                    ],
+                    "postfix": [
+                      "!",
+                      "!"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "InfixOperators": {
+        "operator": "+",
+        "lhs": {
+          "NumberLiteral": {
+            "handler": "int",
+            "data": "1"
+          }
+        },
+        "rhs": {
+          "UnaryOperators": {
+            "base": {
+              "NumberLiteral": {
+                "handler": "int",
+                "data": "2"
+              }
+            },
+            "prefix": [
+              "+",
+              "+"
+            ],
+            "postfix": []
+          }
+        }
+      }
+    },
+    {
+      "InfixOperators": {
+        "operator": "*",
+        "lhs": {
+          "NumberLiteral": {
+            "handler": "int",
+            "data": "1"
+          }
+        },
+        "rhs": {
+          "InfixOperators": {
+            "operator": "+",
+            "lhs": {
+              "NumberLiteral": {
+                "handler": "int",
+                "data": "2"
+              }
+            },
+            "rhs": {
+              "NumberLiteral": {
+                "handler": "int",
+                "data": "3"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
