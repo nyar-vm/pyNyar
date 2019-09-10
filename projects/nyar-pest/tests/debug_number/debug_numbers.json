@@ -15,19 +15,7 @@
     {
       "NumberLiteral": {
         "handler": "fp",
-        "data": "0.0"
-      }
-    },
-    {
-      "NumberLiteral": {
-        "handler": "fp",
         "data": "123456.0"
-      }
-    },
-    {
-      "NumberLiteral": {
-        "handler": "fp",
-        "data": "0.789"
       }
     },
     {
