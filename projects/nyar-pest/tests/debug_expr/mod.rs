@@ -1,17 +1,11 @@
-
-
 use nyar_valkyrie::get_ast;
-
-const INPUT: &str = r#"
-+1+2*3^-4!!
-1 +++ 2
-1 * (2 + 3)
-"#;
+use nyar_python::ToPython;
 
 #[test]
 fn debug_expr() {
-    let ast = get_ast(INPUT);
-    ast.save("tests/debug_expr.json");
+    let ast = get_ast(include_str!("basic_expr.nyar"));
+    ast.clone().save("./tests/debug_expr/basic_expr.json");
+    ast.save_python("./tests/debug_expr/basic_expr.py");
 }
 
 const PARENTHESES: &str = r#"
