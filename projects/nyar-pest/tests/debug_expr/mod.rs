@@ -1,5 +1,5 @@
-use nyar_valkyrie::get_ast;
 use nyar_python::ToPython;
+use nyar_valkyrie::get_ast;
 
 #[test]
 fn debug_expr() {

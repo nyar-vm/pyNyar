@@ -1,0 +1,125 @@
+{
+  "Program": [
+    {
+      "IfStatement": {
+        "pairs": [
+          [
+            {
+              "Symbol": {
+                "name": "a",
+                "scope": []
+              }
+            },
+            "None"
+          ]
+        ],
+        "default": null,
+        "modifier": null
+      }
+    },
+    {
+      "IfStatement": {
+        "pairs": [
+          [
+            {
+              "Symbol": {
+                "name": "a",
+                "scope": []
+              }
+            },
+            "None"
+          ]
+        ],
+        "default": "None",
+        "modifier": null
+      }
+    },
+    {
+      "IfStatement": {
+        "pairs": [
+          [
+            {
+              "Symbol": {
+                "name": "a",
+                "scope": []
+              }
+            },
+            "None"
+          ],
+          [
+            {
+              "Symbol": {
+                "name": "b",
+                "scope": []
+              }
+            },
+            "None"
+          ]
+        ],
+        "default": null,
+        "modifier": null
+      }
+    },
+    {
+      "IfStatement": {
+        "pairs": [
+          [
+            {
+              "Symbol": {
+                "name": "a",
+                "scope": []
+              }
+            },
+            "None"
+          ],
+          [
+            {
+              "Symbol": {
+                "name": "b",
+                "scope": []
+              }
+            },
+            "None"
+          ]
+        ],
+        "default": "None",
+        "modifier": null
+      }
+    },
+    {
+      "IfStatement": {
+        "pairs": [
+          [
+            {
+              "Symbol": {
+                "name": "a",
+                "scope": []
+              }
+            },
+            "None"
+          ],
+          [
+            {
+              "Symbol": {
+                "name": "b",
+                "scope": []
+              }
+            },
+            "None"
+          ],
+          [
+            {
+              "Symbol": {
+                "name": "c",
+                "scope": []
+              }
+            },
+            "None"
+          ]
+        ],
+        "default": null,
+        "modifier": null
+      }
+    }
+  ]
+}

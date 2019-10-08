@@ -1,20 +1,28 @@
 {
   "Program": [
     {
+      "UnaryOperators": {
+        "base": {
+          "NumberLiteral": {
+            "handler": "int",
+            "data": "1"
+          }
+        },
+        "prefix": [],
+        "postfix": [
+          "!",
+          "!"
+        ],
+        "modifier": "None"
+      }
+    },
+    {
       "InfixOperators": {
         "operator": "+",
         "lhs": {
-          "UnaryOperators": {
-            "base": {
-              "NumberLiteral": {
-                "handler": "int",
-                "data": "1"
-              }
-            },
-            "prefix": [
-              "+"
-            ],
-            "postfix": []
+          "NumberLiteral": {
+            "handler": "int",
+            "data": "1"
           }
         },
         "rhs": {
@@ -49,13 +57,17 @@
                     "postfix": [
                       "!",
                       "!"
-                    ]
+                    ],
+                    "modifier": "None"
                   }
-                }
+                },
+                "modifier": "None"
               }
-            }
+            },
+            "modifier": "None"
           }
-        }
+        },
+        "modifier": "None"
       }
     },
     {
@@ -79,9 +91,11 @@
               "+",
               "+"
             ],
-            "postfix": []
+            "postfix": [],
+            "modifier": "None"
           }
-        }
+        },
+        "modifier": "None"
       }
     },
     {
@@ -107,9 +121,11 @@
                 "handler": "int",
                 "data": "3"
               }
-            }
+            },
+            "modifier": "None"
           }
-        }
+        },
+        "modifier": "None"
       }
     }
   ]
