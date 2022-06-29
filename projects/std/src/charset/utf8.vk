@@ -1,68 +1,76 @@
- Represents a growable utf8 string literal
+//+
+Represents a growable utf8 string literal
+//-
 #derive(PartialOrd, Eq, Ord)
 #external
-class String {}
+class String {
+    inner : ByteArray
+}
 
 constructor String {
-//+
-Creates a new string literal
-//-
-#external
-def String(
-//? Types that allow lossless conversion to strings
-into s: String,
-//? The preallocated capacity of the string
-capacity: Integer
-)
-{
+    //+
+    Creates a new string literal
 
-}
+    @s: Types that allow lossless conversion to strings
+    @capacity: The preallocated capacity of the string
+    //-
+    #external
+    def String(into s: String, capacity: Integer) -> Self {
+
+    }
 }
 
 extends String {
+    //+
+    Returns `true` if [`Self`] has a length of zero bytes.
+    
+    # Examples
+    
+    ```
+    let s = "";
+    assert!(s.is_empty());
+    
+    let s = "not empty";
+    assert!(!s.is_empty());
+    ```
+    
+    # Notice
+    
+    For zero-width space characters, visually empty, but still returns `false`
+    //-
+    #external
+    def is_empty(self, <, >) -> bool {
 
+    }
 
+    //+ doc
 
-//? Returns `true` if [`Self`] has a length of zero bytes.
-//?
-//? # Examples
-//?
-//? ```
-//? let s = "";
-//? assert!(s.is_empty());
-//?
-//? let s = "not empty";
-//? assert!(!s.is_empty());
-//? ```
-//?
-//? # Notice
-//?
-//? For zero-width space characters, visually empty, but still returns `false`
-#external
-def is_empty(self, <, >) -> bool {
+    //-
+    #external
+    def join(self, into ..other: String, <, >) -> String {
 
-}
+    }
 
-//+ doc
+    //+ doc
 
-//-
-#external
-def join(self, into ..other: String, <, >) -> Self {
+    //-
+    #external
+    def take(self, <, min: Integer, max: Integer, >) -> String {
 
-}
+    }
 
-#external
-def repeat(self, n: Integer, <, >) -> Self {
-@assert(n >= 0);
-}
+    #external
+    def repeat(self, n: Integer, <, >) -> Self {
+        @assert(n > 0);
+    }
 
-#external
-def pad(self, <, >) {
+    #external
+    def pad(self, <, >) {
 
-}
+    }
 
-#external
-def pad_front(self, <, >) {
+    #external
+    def pad_front(self, <, >) {
 
-}
+    }
 }
