@@ -1,0 +1,11 @@
+///
+trait Default {
+    def default() -> Self;
+}
+
+#external extends Vector: Default {
+    def default() {
+
+    }
+}
+

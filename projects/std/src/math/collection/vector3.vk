@@ -1,0 +1,38 @@
+class Vector3<T> {
+    /// First component of the vector.
+    x: T,
+    /// Second component of the vector.
+    y: T,
+    /// First component of the vector.
+    z: T,
+}
+
+extends constructor Vector3<T> {
+/// 不需要显然式转换
+/// let a = vec2(1,1)
+/// let b = a
+/// let c = vec3(a, 0)
+def implicit Vector3 (v: Vector2<T>) -> Self {
+new Self {
+x: v.x,
+y: v.y,
+z: 0
+}
+}
+def Vector3 (v: Vector2<T>, z: T) -> Self {
+new Self {
+x: v.x,
+y: v.y,
+z: z,
+}
+}
+
+def implicit Vector3 (v: Vector4<T>) -> Self {
+new Self {
+x: v.x,
+y: v.y,
+z: v.z,
+}
+}
+}
+

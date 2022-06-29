@@ -1,0 +1,9 @@
+trait Iterator {
+    def has_next(self);
+    def next(mut self);
+}
+
+trait Iterable {
+    def into_iterator(self) -> Iterator<T>;
+}
+

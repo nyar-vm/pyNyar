@@ -1,0 +1,4 @@
+#external(rust)
+class Regex {
+
+}

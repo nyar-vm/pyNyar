@@ -1,0 +1,3 @@
+class native OrderedSet<T> {
+    map: OrderedMap<T, ()>
+}

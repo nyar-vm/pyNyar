@@ -1,0 +1,23 @@
+[package]
+name = "nyar-py-std"
+description = "Template."
+version = "0.1.1"
+authors = ["Andrew Hickman <andrew.hickman1@sky.com>"]
+repository = "https://github.com/andrewhickman/mlsub-rs"
+documentation = "https://docs.rs/mlsub"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+edition = "2021"
+
+[dependencies.rustpython-derive]
+version = "0.1.2"
+git = "https://github.com/RustPython/RustPython"
+
+[dependencies.rustpython-vm]
+version = "0.1.2"
+git = "https://github.com/RustPython/RustPython"
+default-features = false
+features = ["parser", "compiler", "freeze-stdlib"]
+
+[dev-dependencies]
+

@@ -1,0 +1,10 @@
+#external(rust)
+tagged Toml {
+    Boolean(bool),
+    Integer(i64),
+    Float(f64),
+    String(String),
+    Datetime(Datetime),
+    Array(Vector<Toml>),
+    Table(OrderedMap<String, Toml>),
+}

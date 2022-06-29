@@ -1,0 +1,39 @@
+trait CharacterEncoding {
+
+}
+
+struct UTF8 { }
+
+trait AbstractString {
+    type Character;
+    let ENCODING: UTF8String;
+    #protected
+    def get_encoding(self) -> UTF8String {
+        Self::ENCODING
+    }
+    def bytes() -> u8;
+    def chars() -> Iterator<Self::Character>
+}
+
+class String {
+
+}
+
+class AsciiString {
+
+}
+
+extends String: CharacterEncoding {
+    def  get_encodeing()
+}
+
+def get_encoding<T>() -> Optional<T> {
+    if T < CharacterEncoding {
+        return
+    }
+}
+
+extends ctor A {
+
+}
+

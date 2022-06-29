@@ -1,0 +1,22 @@
+///
+trait From<T> {
+    def default() -> Self;
+}
+
+trait Into<T> {
+    def default() -> Self;
+}
+
+trait TryFrom<T> {
+    def default() -> Self;
+}
+
+trait TryInto<T> {
+    def default() -> Self;
+}
+
+def identity<T>(x: T) -> T {
+    x
+}
+
+

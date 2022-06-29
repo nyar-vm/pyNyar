@@ -1,0 +1,9 @@
+/// Fast but not safe
+class native HashMap<K, V> {
+
+}
+
+
+class native HashSet<T> {
+    map: HashMap<T, ()>
+}

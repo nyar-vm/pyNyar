@@ -1,0 +1,7 @@
+module default;
+
+using {default};
+
+class Infallible {
+
+}
