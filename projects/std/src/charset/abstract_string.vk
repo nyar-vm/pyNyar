@@ -1,22 +1,7 @@
 /// General method of table-like structure
+#strict_parameters
 trait AbstructString {
-    def contains(self, key: K) -> bool;
+    def is_empty(self) -> bool {
 
-    def get(self, key: K) -> bool;
-
-    def insert(mut self, key: K, value: V) -> Optional<V>;
-
-    def remove(mut self, key: K, value: V) -> Optional<V>;
-
-    def count(self) -> Iterator<(K, V)> {
-        self.pairs.count
     }
-
-    def clear(self) -> Iterator<(K, V)>;
-
-    def keys(self) -> Iterator<K>;
-
-    def values(self) -> Iterator<V>;
-
-    def iterator(self) -> Iterator<(K, V)>;
 }

@@ -4,6 +4,8 @@ class native HashMap<K, V> {
 }
 
 
-class native HashSet<T> {
+class HashSet<T> {
     map: HashMap<T, ()>
 }
+
+let a = 1

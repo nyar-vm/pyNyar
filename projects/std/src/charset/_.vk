@@ -19,12 +19,15 @@ class String {
 
 }
 
-class AsciiString {
+
+
+
+#native class AsciiString {
 
 }
 
 extends String: CharacterEncoding {
-    def  get_encodeing()
+    def get_encodeing()
 }
 
 def get_encoding<T>() -> Optional<T> {

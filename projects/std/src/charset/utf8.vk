@@ -4,7 +4,7 @@ Represents a growable utf8 string literal
 #derive(PartialOrd, Eq, Ord)
 #external
 class String {
-    inner : ByteArray
+    inner : Vector<u8>
 }
 
 constructor String {
@@ -13,9 +13,15 @@ constructor String {
 
     @s: Types that allow lossless conversion to strings
     @capacity: The preallocated capacity of the string
+
+    # Examples
+    ```
+    let c: char = '1';
+    @assert_eq(String(char), "1");
+    ```
     //-
     #external
-    def String(into s: String, capacity: Integer) -> Self {
+    def String(into s: String, capacity: Integer = 0) -> Self {
 
     }
 }
@@ -25,7 +31,6 @@ extends String {
     Returns `true` if [`Self`] has a length of zero bytes.
     
     # Examples
-    
     ```
     let s = "";
     assert!(s.is_empty());
@@ -47,7 +52,7 @@ extends String {
 
     //-
     #external
-    def join(self, into ..other: String, <, >) -> String {
+    def concat(self, into ..other: String, <, >) -> String {
 
     }
 
@@ -65,7 +70,7 @@ extends String {
     }
 
     #external
-    def pad(self, <, >) {
+    def pad(self, c: Character, <, >) {
 
     }
 

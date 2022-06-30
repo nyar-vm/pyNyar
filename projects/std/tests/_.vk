@@ -1,6 +1,44 @@
+#external
+class native TestA {
 
+}
 
+#external
+tagged native TestB {
+
+}
+
+#external
+bitset native TestC {
+
+}
+
+trait native TestD {
+    #external
+    def native test_1() {
+        let a = 1;
+        def native test_2() {
+
+        }
+    }
+}
+
+#external
+extends native TestA {
+    def native test_1() {
+
+    }
+}
 
 def test() {
+
+}
+
+
+for mut mut a, b in c {
+
+}
+
+for mut (a, b) in c {
 
 }
