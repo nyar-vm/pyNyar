@@ -1,18 +1,30 @@
+namespace std.collection;
+
 /// Fast but not safe
 trait AbstructSet<T>: Iterable {
     def contains(self, key: T) -> bool;
 
     def get(self, key: K) -> bool;
 
-    def insert(mut self, value: T) -> Optional<T>;
+    def insert(mut self, value: T) -> Option<T>;
 
-    def remove(mut self, value: T) -> Optional<T>;
+    def remove(mut self, value: T) -> Option<T>;
 
-    def count(self) -> Iterator<T> {
+    def count(self) -> Integer {
         self.iterator.count
     }
 
     def clear(self);
 
     def iterator(self) -> Iterator<T>;
+}
+
+
+#just
+extends Point: Eq {
+
+}
+
+extends Point: Eq {
+
 }

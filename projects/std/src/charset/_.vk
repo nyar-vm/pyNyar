@@ -30,7 +30,7 @@ extends String: CharacterEncoding {
     def get_encodeing()
 }
 
-def get_encoding<T>() -> Optional<T> {
+def get_encoding<T>() -> Option<T> {
     if T < CharacterEncoding {
         return
     }

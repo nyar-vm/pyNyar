@@ -1,9 +1,8 @@
 //+
 Represents a growable utf8 string literal
 //-
-#derive(PartialOrd, Eq, Ord)
 #external
-class String {
+class String: Eq {
     inner : Vector<u8>
 }
 

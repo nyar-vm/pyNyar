@@ -1,11 +1,11 @@
+namespace std.collection;
+using a;
+
 /// Fast but not safe
-class native HashMap<K, V> {
+#external
+class HashMap<K, V> {}
+
+#test
+namespace test {
 
 }
-
-
-class HashSet<T> {
-    map: HashMap<T, ()>
-}
-
-let a = 1

@@ -1,12 +1,14 @@
+namespace std.collection;
+
 /// General method of table-like structure
 trait AbstructMap<K, V> {
     def contains(self, key: K) -> bool;
 
     def get(self, key: K) -> bool;
 
-    def insert(mut self, key: K, value: V) -> Optional<V>;
+    def insert(mut self, key: K, value: V) -> Option<V>;
 
-    def remove(mut self, key: K, value: V) -> Optional<V>;
+    def remove(mut self, key: K, value: V) -> Option<V>;
 
     def count(self) -> Iterator<(K, V)> {
         self.pairs.count

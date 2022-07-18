@@ -1,0 +1,19 @@
+using {depot::collection};
+
+///
+trait Default {
+    def default() -> Self;
+}
+
+#external
+extends Vector: Default {
+    def default() {
+
+    }
+}
+
+
+#external
+extends Hashmap: Default {
+    def default() {}
+}
