@@ -1,22 +1,50 @@
+class Point[T](x: T, y: T)
 
-class Shape;
+###^
+Note that private fields are not inherited,
 
-class Shape[T];
-
-class Ellipse[T]: Shape;
-
-extend Ellipse(type T) {
-
+only public interfaces are automatically inherited
+###
+class Ellipse[T]: Shape {
+    #^ define a field, with default initialization
+    _center: (T, T);
+    _axis: (T, T) = (T::ONE + T.ONE, T.ONE);
+    extends(center) {
+    get() {
+    Point(_center.0, _center.1)
+    }
+    set(v: Point[T]) {
+    _axis.0 = (v.x, v.y)
+    }
+    }
+    extends(major_axis): Point[T] {
+    get: _axis.0,
+    set: _axis.0 = value
+    }
+    extends(minor_axis, _axis.1, get, set);
 }
 
-Semi major axis Semi minor axis
-class Circle(T): Ellipse(T) {
-
+class Circle[T]: Ellipse[T] {
+    #^ Declare field and getter methods at the same time
+    get center: Point[T];
+    _radius: T = T.ONE;
+    #^ Subclasses need to implement all public interfaces of the superclass
+    extends(radius, _radius, get, set)
+    extends(major_axis, _radius, get, set)
+    extends(minor_axis, _radius, get, set)
 }
 
-class BB(T): AA(T)
+#^ define the setter with complete standard form
+extends[T] Circle[T] {
+    def set center(v: (T, T)) {
+        self.center = Point(v.0, v.1)
+    }
+}
+
+
+class Const[]
 {
-1: 1
+    1: 1 = 1
 };
 
 let mut exprs = ASTSequence()
@@ -32,13 +60,12 @@ return acc;
 
 
 
-/// Compares two slices and returns whether they are equal.
-pub fn eql(comptime T: type, a: []const T, b: []const T) bool {
+/// Compares two slices and returns whether they are equal.pub fn eql (comptime T: type, a: []const T, b: []const T) bool {
 if (a.len != b.len) return false;
 for (a) |item, index| {
-if (b[index] != item) return false;
+if (b [index] != item) return false;
 }
 return true;
 }
 
-first_or_default::(usize)([])
+first_or_default:: (usize) ([])
