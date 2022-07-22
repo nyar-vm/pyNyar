@@ -1,7 +1,7 @@
 //+
 Represents a growable utf8 string literal
 //-
-#external
+@external
 class String: Eq {
     inner : Vector<u8>
 }
@@ -19,7 +19,7 @@ constructor String {
     @assert_eq(String(char), "1");
     ```
     //-
-    #external
+    @external
     def String(into s: String, capacity: Integer = 0) -> Self {
 
     }
@@ -42,7 +42,7 @@ extends String {
     
     For zero-width space characters, visually empty, but still returns `false`
     //-
-    #external
+    @external
     def is_empty(self, <, >) -> bool {
 
     }
@@ -50,7 +50,7 @@ extends String {
     //+ doc
 
     //-
-    #external
+    @external
     def concat(self, into ..other: String, <, >) -> String {
 
     }
@@ -58,22 +58,22 @@ extends String {
     //+ doc
 
     //-
-    #external
+    @external
     def take(self, <, min: Integer, max: Integer, >) -> String {
 
     }
 
-    #external
+    @external
     def repeat(self, n: Integer, <, >) -> Self {
         @assert(n > 0);
     }
 
-    #external
+    @external
     def pad(self, c: Character, <, >) {
 
     }
 
-    #external
+    @external
     def pad_front(self, <, >) {
 
     }

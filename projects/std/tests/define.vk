@@ -1,0 +1,43 @@
+using a
+using a as b
+using a.b as c
+using {a as b}
+using {a}
+using a.{b};
+using a.b.{b as c}
+using a.{
+b::c as d, c::b as e
+}
+
+def a();
+def a.a();
+def a a.a();
+def get a(self) {}
+def set a(mut) {}
+def a a a.a(a): a
+def a a a.a(a) -> a
+def a a a<a::a>() {}
+def a a a.a<a::a>() {}
+
+
+def print<T>(t: T) {
+
+}
+
+###^
+x point
+###
+def distance(T, x: T, y: T) {
+
+}
+
+def first_or_default(type I, mut i: I) -> I::Item where I: Iterator, I::Item : Default
+
+def first_or_default(type I, mut i: I) -> I.Item {
+where {
+I <: Iterator
+I.Item <: Default
+}
+}
+
+first_or_default::(Default)([])

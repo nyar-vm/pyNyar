@@ -1,0 +1,44 @@
+
+class Shape;
+
+class Shape[T];
+
+class Ellipse[T]: Shape;
+
+extend Ellipse(type T) {
+
+}
+
+Semi major axis Semi minor axis
+class Circle(T): Ellipse(T) {
+
+}
+
+class BB(T): AA(T)
+{
+1: 1
+};
+
+let mut exprs = ASTSequence()
+
+for operations |op| {
+switch (op) {
+.Sum => acc += num,
+.Mul => acc *= num,
+.Sub => acc -= num,
+}
+}
+return acc;
+
+
+
+/// Compares two slices and returns whether they are equal.
+pub fn eql(comptime T: type, a: []const T, b: []const T) bool {
+if (a.len != b.len) return false;
+for (a) |item, index| {
+if (b[index] != item) return false;
+}
+return true;
+}
+
+first_or_default::(usize)([])

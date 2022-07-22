@@ -1,0 +1,66 @@
+@external
+class native TestA {
+    0: A,
+    item: B,
+    field: (C, D)
+}
+
+class native TestB(int, int)
+
+
+
+@external
+tagged native TestB {
+    Zero,
+    Item(B),
+    Field(C, D)
+}
+
+@external
+bitset native TestC {
+    Read = 0x1
+}
+
+trait native TestD {
+    @external
+    def native test_1() {
+        let a = 1;
+        def native test_2() {
+
+        }
+    }
+}
+
+@external
+extends native TestA {
+    def native test_1() {
+
+    }
+}
+
+
+type mut = int;
+trait mut mut {}
+class mut mut: mut {
+    mut: mut
+}
+
+def mut mut(mut self, mut mut: int) {
+    let mut mut = self.mut;
+}
+
+expr = 1 * 2 + (3 - 8!);
+text = 'This is a ' + 'text';
+
+a match {
+
+}
+
+
+for mut ref a, b in c {
+    a + b
+}
+
+for mut (a, b) in c {
+
+}

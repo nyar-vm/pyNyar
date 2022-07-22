@@ -1,4 +1,4 @@
-#external(rust)
+@external(rust)
 tagged Toml {
     Boolean(bool),
     Integer(i64),

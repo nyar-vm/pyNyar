@@ -1,4 +1,4 @@
-#external(rust)
+@external(rust)
 tagged Json {
     ///
     Null,
@@ -14,7 +14,7 @@ tagged Json {
     Object(OrderedMap<String, Json>),
 }
 
-#external(rust)
+@external(rust)
 tagged Number {
     /// Always larger than zero.
     Postive(u64),

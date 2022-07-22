@@ -1,66 +1,77 @@
-#external
-class native TestA {
-    0: A,
-    item: B,
-    field: (C, D)
+def f(): T {};
+def mod.f(): T {};
+def mut f(macro type: T): T {};
+def macro mod.Class.a(): T {};
+def ext option::Option.get_or_default(mut self, type T, <, >) {
+    # if (T==bool) {
+    #
+    # }
 }
 
-class native TestB(int, int)
+###^
+AA
+###
 
 
 
-#external
-tagged native TestB {
-    Zero,
-    Item(B),
-    Field(C, D)
+# extension A {
+# namespace {
+#
+# }
+#
+# }
+# @name.space
+# @von [+, -, *]
+#
+# @von {a, b, c}
+#
+# @map {
+#     a: 2,
+#     b: 3,
+# }
+
+re«'"»
+
+"""
+sss
+"""
+
+"123"
+
+1 in [1, 2, 3]
+1 not in [1, 2, 3]
+
+if T is bool {
+
 }
-
-#external
-bitset native TestC {
-    Read = 0x1
-}
-
-trait native TestD {
-    #external
-    def native test_1() {
-        let a = 1;
-        def native test_2() {
-
-        }
-    }
-}
-
-#external
-extends native TestA {
-    def native test_1() {
-
-    }
-}
-
-
-type mut = int;
-trait mut mut {}
-class mut mut: mut {
-    mut: mut
-}
-
-def mut mut(mut self, mut mut: int) {
-    let mut mut = self.mut;
-}
-
-expr = 1 * 2 + (3 - 8!);
-text = 'This is a ' + 'text';
-
-a match {
+else if T is number {
 
 }
 
 
-for mut ref a, b in c {
-    a + b
-}
+I.Item is not Default
+I.Item <! Default
+I.Item ⋢ Default
 
-for mut (a, b) in c {
+I is Iterator I::Item is Default
+I ⊑ Iterator  I∷Item ⊑ Default
+I <: Iterator I::Item <: Default
+I < Iterator  I.Item < Default
 
-}
+
+
+# new HashSet(i64) [1, 2, 3]
+# new Hashmap(i64) {
+#
+# }
+#
+# @list []
+# SortedMap(
+#     a -> 2
+# )
+# OrderedMap {
+#
+# {
+# a: 2,
+#     a->2,
+# }

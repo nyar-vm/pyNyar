@@ -1,0 +1,26 @@
+# namespace default;
+# @doc(path)
+namespace! root.testing;
+# @@doc("readme.md")
+# @@doc(path)
+namespace* std.ffi
+namespace? std::collection
+namespace `namespace`::`using`.`as`::`class`
+#
+
+using a
+using a as b
+using a.b as c
+using {a as b}
+using {a}
+using a.{b};
+using a.b.{b as c}
+using std.{
+    collection.BTreeMap as HashMap,
+    operators.{
+        binary.`+` as `-`,
+        unary.`++` as `--`,
+    },
+}
+
+a

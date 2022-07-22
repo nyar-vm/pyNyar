@@ -1,11 +1,6 @@
-namespace std.collection;
-using a;
-
-/// Fast but not safe
-#external
+#^ Fast but not safe
+@external
 class HashMap<K, V> {}
 
-#test
-namespace test {
-
-}
+@test
+namespace test

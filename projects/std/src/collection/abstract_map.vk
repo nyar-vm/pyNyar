@@ -1,6 +1,6 @@
 namespace std.collection;
 
-/// General method of table-like structure
+#^ General method of table-like structure
 trait AbstructMap<K, V> {
     def contains(self, key: K) -> bool;
 

@@ -1,0 +1,10 @@
+using a
+using a as b
+using a.b as c
+using {a as b}
+using {a}
+using a.{b};
+using a.b.{b as c}
+using a.{
+    b::c as d, c::b as e
+}
