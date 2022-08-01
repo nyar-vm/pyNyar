@@ -1,0 +1,22 @@
+def field(): int {
+    0
+}
+
+class Test {
+    field: int = 1
+}
+
+extends Test {
+    def get field(self): int {
+        2
+    }
+    def test_field(self): int {
+        print(namespace.field());
+        print(class.field);
+        print(self.field);
+        print(field())
+    }
+}
+
+Test().test_field()
+

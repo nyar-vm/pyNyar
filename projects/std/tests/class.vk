@@ -19,10 +19,23 @@ class Ellipse[T]: Shape {
     }
     extends(major_axis): Point[T] {
     get: _axis.0,
-    set: _axis.0 = value
+    set: _axis.0 = value,
     }
     extends(minor_axis, _axis.1, get, set);
 }
+
+
+extends[T] Ellipse[T]: Default {
+
+}
+
+class Ellipse[T]: Shape {
+    _center: (T, T) = T::Default();
+    _axis: (T, T) = (T::ONE + T.ONE, T.ONE);
+}
+
+
+
 
 class Circle[T]: Ellipse[T] {
     #^ Declare field and getter methods at the same time

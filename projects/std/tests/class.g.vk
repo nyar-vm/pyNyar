@@ -1,0 +1,24 @@
+
+class Ellipse[T]: Shape {
+    _center: (T, T) = T::Default();
+    _axis: (T, T) = (T::ONE + T.ONE, T.ONE);
+}
+
+extends[T] Ellipse[T] {
+    def get center(self) {
+        self._center
+    }
+    def set center(mut self, v: (T, T)) {
+        self._center = Point(v.0, v.1)
+    }
+}
+
+a.unwrap_or {
+    f() {
+
+    }
+
+    f() {
+
+    }
+}

@@ -1,0 +1,22 @@
+# 特质, 等价于 abstract class, 需要重新实现的特征
+trait Debug {
+    def debug(self);
+}
+
+# 接口, 自动继承, 不需要重新实现的特征
+interface Length {
+    def length(self) {
+
+    }
+}
+
+# 约定, 等价于 type object,
+convention Convention {
+
+}
+
+# 协议, 未定
+protocol Protocol {
+
+}
+
