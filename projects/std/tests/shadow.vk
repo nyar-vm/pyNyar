@@ -3,20 +3,21 @@ def field(): int {
 }
 
 class Test {
-    field: int = 1
+    _field: int = 1;
 }
 
 extends Test {
-    def get field(self): int {
+    def get field(self) {
         2
     }
-    def test_field(self): int {
+    def test_field(self) {
         print(namespace.field());
-        print(class.field);
-        print(self.field);
+        print(_field);
         print(field())
     }
 }
 
 Test().test_field()
+
+
 

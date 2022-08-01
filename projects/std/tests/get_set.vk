@@ -1,0 +1,32 @@
+class TestA1 {
+    a: i64 = 1;
+}
+
+
+class TestA2 {
+    _a: i64 = 1;
+}
+
+extends TestA2 {
+    get a(self): i64 {
+        _a
+    }
+    set a(mut self, value: i64) {
+        _a = value
+    }
+}
+
+
+class TestB1 {
+    _b: u8 = 1;
+    get b() {
+        _b
+    }
+    set b() {
+        _b = value
+    }
+    set b(value: i8) {
+        _b = value as u8
+    }
+}
+

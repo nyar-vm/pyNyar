@@ -1,0 +1,67 @@
+class Point[T](x: T, y: T)
+
+###^
+Note that private fields are not inherited,
+
+only public interfaces are automatically inherited
+###
+class Ellipse[T] {
+    #^ define a field, with default initialization
+    _center: (T, T);
+    _axis: (T, T) = (T::ONE + T.ONE, T.ONE);
+}
+
+extends[T] Ellipse[T] {
+    get center(self): Point[T] {
+        Point(_center.0, _center.1)
+    }
+    set center(mut self, v: Point[T]) {
+        _center = (v.x, v.y)
+    }
+    get major_axis(self): T {
+        _axis.0
+    }
+    set major_axis(mut self, value: T) {
+       _axis.0 = value
+    }
+    get minor_axis(self): T {
+        _axis.1
+    }
+    set minor_axis(mut self, value: T) {
+         _axis.1 = value
+    }
+}
+
+
+class Circle[T]: Ellipse[T] {
+    #^ Declare field and getter methods at the same time
+    _center: Point [T];
+    _radius: T = T.ONE;
+}
+
+extends[T] Circle[T] {
+    get center(self): Point[T] {
+        _center
+    }
+    set center(mut self, value: Point[T]) {
+        _center = value
+    }
+    get radius(self): Point[T] {
+        _center
+    }
+    set radius(mut self, value: Point[T]) {
+        _radius = value
+    }
+    get major_axis(self): T {
+        _radius
+    }
+    set major_axis(mut self, value: T) {
+        _radius = value
+    }
+    get minor_axis(self): T {
+        _radius
+    }
+    set minor_axis(mut self, value: T) {
+        _radius = value
+    }
+}

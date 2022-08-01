@@ -1,0 +1,43 @@
+class A {
+    field: int = 1;
+}
+
+class BA: A {
+    inherit _a: A;
+}
+
+class CA: A {
+    inherit _a: A;
+}
+
+class D: BA + CA {
+    _ba: BA;
+    # @inherits(_ba) [
+    #     exclude: [field]
+    # ];
+    _ca: CA;
+    _a() {}
+    new a() {_a}
+    get a() {}
+    set a() {}
+    # @inherits(_ca) [
+    #     exclude: [field]
+    # ];
+    constructor() {
+
+    }
+    from(_ba) {
+
+    }
+    into() {
+
+    }
+}
+
+class A {
+    _ba: [
+
+    ]
+    _ca: [
+    ]
+}

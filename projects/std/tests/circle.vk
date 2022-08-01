@@ -1,0 +1,34 @@
+class Point[T](x: T, y: T)
+
+###^
+Note that private fields are not inherited,
+
+only public interfaces are automatically inherited
+###
+class Ellipse[T] {
+    #^ define a field, with default initialization
+    _center: (T, T);
+    get center() {
+        Point(_center.0, _center.1)
+    }
+    set center(v: Point[T]) {
+        _center = (v.x, v.y)
+    }
+    _axis: (T, T) = (T::ONE + T.ONE, T.ONE);
+    @get_set(_axis.0)
+    major_axis();
+    @get_set(_axis.1)
+    minor_axis();
+}
+
+class Circle[T]: Ellipse[T] {
+    #^ Declare field and getter methods at the same time
+    get set center: Point [T];
+    _radius: T = T.ONE;
+    @get_set(_radius)
+    radius();
+    @get_set(_radius)
+    major_axis();
+    @get_set(_radius)
+    minor_axis();
+}
