@@ -1,0 +1,100 @@
+using depot::quantity;
+
+let µg    = Micro * Gram
+let mg    = Milli * Gram
+let g     = Gram
+let kg    = KiloGram
+
+let nm    = Nano * Meter
+let µm    = Micro * Meter
+let mm    = Milli * Meter
+let cm    = CentiMeter
+let m     = Meter
+let km    = Kilo*Meter
+
+let mJ    = Milli*Joule
+let J     = Joule
+let MJ    = Mega*Joule
+let GJ    = Giga*Joule
+
+let fF    = Femto*Farad
+let pF    = Pico*Farad
+let nF    = Nano*Farad
+let µF    = Micro*Farad
+let mF    = Milli*Farad
+let F     = Farad
+
+let pΩ    = Pico*Ohm
+let nΩ    = Nano*Ohm
+let µΩ    = Micro*Ohm
+let mΩ    = Milli*Ohm
+let Ω     = Ohm
+let kΩ    = Kilo*Ohm
+let MΩ    = Mega*Ohm
+
+let mV    = Milli*Volt
+let V     = Volt
+let MV    = Mega*Volt
+
+let ns    = Nano*Second
+let ms    = Milli*Second
+let µs    = Micro*Second
+let s     = Second
+
+let S     = Siemens
+
+let mHz   = Milli*Hertz
+let Hz    = Hertz
+let kHz   = Kilo*Hertz
+let MHz   = Mega*Hertz
+let GHz   = Giga*Hertz
+let THz   = Tera*Hertz
+
+let fA    = Femto*Ampere
+let pA    = Pico*Ampere
+let nA    = Nano*Ampere
+let µA    = Micro*Ampere
+let mA    = Milli*Ampere
+let A     = Ampere
+
+let mPa   = Milli*Pascal
+let Pa    = Pascal
+let kPa   = Kilo*Pascal
+let MPa   = Mega*Pascal
+let GPa   = Giga*Pascal
+
+let C     = Coulomb
+
+let N     = Newton
+
+let nW    = Nano*Watt
+let µW    = Micro*Watt
+let mW    = Milli*Watt
+let W     = Watt
+let MW    = Mega*Watt
+let kW    = Kilo*Watt
+let GW    = Giga*Watt
+
+let mol   = Mole
+
+let K     = Kelvin
+
+let eV    = ElectronVolt
+let MeV   = Mega*ElectronVolt
+let GeV   = Giga*ElectronVolt
+let TeV   = Tera*ElectronVolt
+
+let torr  = Torr
+let mtorr = Milli*Torr
+
+let atm   = Atmosphere
+
+let rad   = Radian
+let deg   = Degree
+let sr    = Steradian
+
+let μg = µg
+let μm = µm
+let μF = µF
+let μA = µA
+let μW = µW

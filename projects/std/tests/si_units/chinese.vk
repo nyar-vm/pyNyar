@@ -1,46 +1,46 @@
 namespace depot::chinese;
 using depot::quantity;
 
-let unit µg    = 10^-6 * Gram
-let unit mg    = 10^-3 * Gram
-let unit g     =         Gram
-let unit kg    = 10^3  * Gram
+let unit 微克  = 10^-6 * Gram
+let unit 毫克  = 10^-3 * Gram
+let unit 克    = 10^+0 * Gram
+let unit 千克  = 10^+3 * Gram
 
-let unit nm    = 10^-9 * Meter
-let unit µm    = 10^-6 * Meter
-let unit mm    = 10^-3 * Meter
-let unit cm    = 10^-1 * Meter
-let unit m     =         Meter
-let unit km    = 10^3  * Meter
+let unit nm    = Nano * Meter
+let unit µm    = Micro * Meter
+let unit mm    = Milli * Meter
+let unit cm    = CentiMeter
+let unit m     = Meter
+let unit km    = Kilo*Meter
 
-let unit mJ    = 10^-3 * Joule
-let unit J     =         Joule
-let unit MJ    = 10^6  * Joule
-let unit GJ    = 10^9  * Joule
+let unit mJ    = Milli*Joule
+let unit J     = Joule
+let unit MJ    = Mega*Joule
+let unit GJ    = Giga*Joule
 
-let unit fF    = 10^-15 * Farad
-let unit pF    = 10^-12 * Farad
-let unit nF    = 10^-9  * Farad
-let unit µF    = 10^-6  * Farad
-let unit mF    = 10^-3  * Farad
-let unit F     =          Farad
+let unit fF    = Femto*Farad
+let unit pF    = Pico*Farad
+let unit nF    = Nano*Farad
+let unit µF    = Micro*Farad
+let unit mF    = Milli*Farad
+let unit F     = Farad
 
-let unit pΩ    = 10^-12 * Ohm
-let unit nΩ    = 10^-9  * Ohm
-let unit µΩ    = 10^-6  * Ohm
-let unit mΩ    = 10^-3  * Ohm
-let unit Ω     =          Ohm
-let unit kΩ    = 10^3   * Ohm
-let unit MΩ    = 10^6   * Ohm
+let unit pΩ    = Pico*Ohm
+let unit nΩ    = Nano*Ohm
+let unit µΩ    = Micro*Ohm
+let unit mΩ    = Milli*Ohm
+let unit Ω     = Ohm
+let unit kΩ    = Kilo*Ohm
+let unit MΩ    = Mega*Ohm
 
-let unit mV    = 10^-3 * Volt
-let unit V     =         Volt
-let unit MV    = 10^6  * Volt
+let unit mV    = Milli*Volt
+let unit V     = Volt
+let unit MV    = Mega*Volt
 
-let unit ns    = 10^-9 * Second
-let unit ms    = 10^-6 * Second
-let unit µs    = 10^-3 * Second
-let unit s     =         Second
+let unit ns    = Nano*Second
+let unit ms    = Milli*Second
+let unit µs    = Micro*Second
+let unit s     = Second
 
 let unit S     = Siemens
 

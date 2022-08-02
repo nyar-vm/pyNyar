@@ -1,4 +1,4 @@
-namespace* depot::meter;
+namespace* depot::quantity;
 
 class unit Meter(m: T = 1)
 
@@ -16,5 +16,12 @@ class Number {
 
 class SIQuantity[T: Number]: Number {
     m: T,
-    kg: T,s:T,A:T,K:T,mol:T,cd,rad,sr
+    kg: T,
+    s: T,
+    A: T,
+    K: T,
+    mol: T,
+    cd: T,
+    rad: T,
+    sr: T
 }
