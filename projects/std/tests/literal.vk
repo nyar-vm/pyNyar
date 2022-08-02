@@ -1,0 +1,52 @@
+# bool
+let _ = true;
+let _ = false;
+# number
+let _ = 1;
+let _ = 2.0;
+let _ = 1km;
+# string
+let _ = "single line"
+#^ FIXME: Missing escape
+let _ = "
+multiline \\
+text      \n
+"
+#^ raw mode
+let _ = r"""
+raw   \\
+text  \n
+"""
+#^ regex mode
+let _: Regex = re"#\d+[a-z]"
+#^ regex (?x) mode
+let _: Regex = rex"#\d+[a-z]"
+#^ deserialize from json literal
+let _: Point = json"
+{
+    x: 1,
+    y: 2
+}
+"
+# option
+let _: Option[u32] = Some(0)
+let _: Option[u32] = None
+# list
+let _ = [0, 1, 2];
+let _ = [
+    [1, 1, 1],
+    [2, 2, 2],
+    [3, 3, 3]
+]
+let _ = matrix"
+    1 1 1 1;
+    2 2 2 2;
+    3 3 3 3;
+    4 4 4 4;
+"
+# dict
+let _ = [
+    0: 0,
+    1: 1,
+    2: 2,
+]

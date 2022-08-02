@@ -22,13 +22,13 @@ extends[T] Ellipse[T] {
         _axis.0
     }
     set major_axis(mut self, value: T) {
-       _axis.0 = value
+        _axis.0 = value
     }
     get minor_axis(self): T {
         _axis.1
     }
     set minor_axis(mut self, value: T) {
-         _axis.1 = value
+        _axis.1 = value
     }
 }
 
