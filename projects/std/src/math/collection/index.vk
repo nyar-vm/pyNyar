@@ -10,7 +10,9 @@ using {
     matrix4.Matrix4
 };
 
-type vec2 = Vector2<f32>;
-type vec3 = Vector3<f32>;
-type vec4 = Vector4<f32>;
-type mat4 = Matrix4<f32>;
+@token_color(keyword) {
+    type vec2 = Vector2[f32];
+    type vec3 = Vector3[f32];
+    type vec4 = Vector4[f32];
+    type mat4 = Matrix4[f32];
+}

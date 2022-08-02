@@ -1,0 +1,20 @@
+namespace* depot::meter;
+
+class unit Meter(m: T = 1)
+
+let unit m = Meter(10^0)
+let unit km = Meter(10^3)
+
+let a = μm/(m*Ra)
+let time = mod(1hr+3minute+5s, 24s)
+let speed = 1`km/h`
+
+
+class Number {
+
+}
+
+class SIQuantity[T: Number]: Number {
+    m: T,
+    kg: T,s:T,A:T,K:T,mol:T,cd,rad,sr
+}

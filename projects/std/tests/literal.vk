@@ -5,9 +5,9 @@ let _ = false;
 let _ = 1;
 let _ = 2.0;
 let _ = 1km;
+let _ = 1 + i + j;
 # string
 let _ = "single line"
-#^ FIXME: Missing escape
 let _ = "
 multiline \\
 text      \n
@@ -20,7 +20,7 @@ text  \n
 #^ regex mode
 let _: Regex = re"#\d+[a-z]"
 #^ regex (?x) mode
-let _: Regex = rex"#\d+[a-z]"
+let _: Regex = re_x"#\d+[a-z]"
 #^ deserialize from json literal
 let _: Point = json"
 {
@@ -39,10 +39,9 @@ let _ = [
     [3, 3, 3]
 ]
 let _ = matrix"
-    1 1 1 1;
-    2 2 2 2;
-    3 3 3 3;
-    4 4 4 4;
+    1 1 1;
+    2 2 2;
+    3 3 3;
 "
 # dict
 let _ = [
