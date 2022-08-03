@@ -8,9 +8,26 @@ class A {
 
     }
 
-};
-
-class B {
-
-
 }
+
+
+class Point {
+    x: f32,
+    y: f32,
+    constructor() {
+
+    }
+    apply() {}
+    unapply() {}
+}
+
+
+
+class Point(x: f32, y: f32)
+
+
+
+
+
+[1, 2, 3](range(0,-1,2))
+[1,2,3]⟦0:-1:2⟧

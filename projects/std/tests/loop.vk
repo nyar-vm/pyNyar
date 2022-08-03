@@ -1,0 +1,39 @@
+#^ range('a', 'z')
+for i in 'a'..='z' {
+print(i)
+}
+
+#^ range('a', 'z').exclusive_tail()
+for i in 'a'..<'z' {
+print(i)
+}
+
+#^ range('a', 'z').step(3)
+for i in ⟦'a': 'z': 3⟧ {
+print(i)
+}
+
+for k, v in [a: 1, b: 2] {
+print(k);
+v += 1
+}
+
+for k, mut v in [a: 1, b: 2] {
+print(k);
+v += 1
+}
+
+# for mut (k, mut v) in [a: 1, b: 2] {
+# print(k);
+# v += 1
+# }
+
+# let r = range.filter { $i>0 }
+# if r.is_empty() {r.foreach(f)} else {g()}
+for i in range if i > 0 {
+f(i)
+}
+else {
+g()
+}
+
