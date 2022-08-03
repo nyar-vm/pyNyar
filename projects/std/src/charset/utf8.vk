@@ -1,13 +1,15 @@
-//+
-Represents a growable utf8 string literal
-//-
-@external
-class String: Eq {
-    inner : Vector<u8>
+
+
+@external class UTF8 {
+    _inner: u32
 }
 
-constructor String {
-    //+
+###^
+Represents a growable utf8 string literal
+###
+@external class UTF8String: AbstructString {
+    _inner: Vector[u8]
+    ###^
     Creates a new string literal
 
     @s: Types that allow lossless conversion to strings
@@ -16,64 +18,56 @@ constructor String {
     # Examples
     ```
     let c: char = '1';
-    @assert_eq(String(char), "1");
+    @assert_eq(c, "1");
     ```
-    //-
-    @external
-    def String(into s: String, capacity: Integer = 0) -> Self {
-
-    }
+    ###
+    constructor(into s: String, capacity: Integer = 0) {}
+    try_from(s: Vector[u8]): Self / [EncodeError] {}
 }
 
-extends String {
-    //+
+@external extends String {
+    ###^
     Returns `true` if [`Self`] has a length of zero bytes.
     
     # Examples
     ```
     let s = "";
-    assert!(s.is_empty());
+    @assert(s.is_empty());
     
     let s = "not empty";
-    assert!(!s.is_empty());
+    @assert(!s.is_empty());
     ```
     
     # Notice
     
     For zero-width space characters, visually empty, but still returns `false`
-    //-
-    @external
+    ###
     def is_empty(self, <, >) -> bool {
 
     }
 
-    //+ doc
+    ###^ doc
 
-    //-
-    @external
+    ###
     def concat(self, into ..other: String, <, >) -> String {
 
     }
 
-    //+ doc
+    ###^ doc
 
-    //-
-    @external
+    ###
     def take(self, <, min: Integer, max: Integer, >) -> String {
 
     }
 
-    @external
     def repeat(self, n: Integer, <, >) -> Self {
         @assert(n > 0);
     }
 
-    @external
     def pad(self, c: Character, <, >) {
 
     }
 
-    @external
     def pad_front(self, <, >) {
 
     }

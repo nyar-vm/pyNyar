@@ -10,18 +10,70 @@ let time = mod(1hr+3minute+5s, 24s)
 let speed = 1`km/h`
 
 
-class Number {
+class SIQuantity[T: Number]: Number
+# where T: Number
+{
+    meta common_name: Option[String] = None
+    meta m: Ratio[i8] = 0;
+    meta kg: Ratio[i8] = 0;
+    meta s: Ratio[i8] = 0;
+    meta A: Ratio[i8] = 0;
+    meta K: Ratio[i8] = 0;
+    meta mol: Ratio[i8] = 0;
+    meta cd: Ratio[i8] = 0;
+    meta rad: Ratio[i8] = 0;
+    meta sr: Ratio[i8] = 0;
+
+    value: T = T::one();
+    @inherit_operator(value)
+    inline infix `==`(rhs: Self) {
+        self.check_unit(rhs, "==");
+        self.value == rhs.value
+    }
+    inline infix `+`(rhs: Self) {
+        self.value + rhs.value
+    }
+    inline infix `+=`(rhs: Self) {
+        self.value += rhs.value
+    }
+    inline infix `-`(rhs: Self) {
+        self.value - rhs.value
+    }
+    inline infix `-=`(rhs: Self) {
+        self.value -= rhs.value
+    }
+}
+
+extends SIQuantity {
+    def meta check_unit(self, rhs: Self) {
+        # let compared = @all_true[
+        #     self.m == rhs.m,
+        #     self.kg == rhs.kg,
+        # ]
+        if not compared {
+            compile_error("{self.common_name} can not `{op}` with {rhs.common_name}")
+        }
+    }
+}
+
+let unit Meter = new SIQuantity[T] {
+    common_name: "m"
+    m: 1,
+}
+let unit Gram = new SIQuantity[T] {
+    common_name: "kg"
+    kg: 1,
+    value: T::One() / 1000
+}
+
+
+def meta test unit_check() {
+    1 * Meter == 1 * Kilogram
+}
+
+type SIQuantityUnit[T] = SIQuantity[T, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+class SIUnit[m, kg, s, A, K, mol, cd, rad, sr]: Number {
 
 }
 
-class SIQuantity[T: Number]: Number {
-    m: T,
-    kg: T,
-    s: T,
-    A: T,
-    K: T,
-    mol: T,
-    cd: T,
-    rad: T,
-    sr: T
-}

@@ -1,1 +1,5 @@
-class UTF16 {}
+namespace depot::charset;
+
+class UTF16: AbstructString {
+    _inner: Vector[u8]
+}

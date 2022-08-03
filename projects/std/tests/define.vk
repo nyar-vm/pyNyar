@@ -41,3 +41,81 @@ I.Item <: Default
 }
 
 first_or_default::(Default)([])
+
+def f(): T {};
+def mod.f(): T {};
+def mut f(macro type: T): T {};
+def macro mod.Class.a(): T {};
+def ext option::Option.get_or_default(mut self, type T, <, >) {
+    # if (T==bool) {
+    #
+    # }
+}
+
+###^
+AA
+###
+
+
+
+# extension A {
+# namespace {
+#
+# }
+#
+# }
+# @name.space
+# @von [+, -, *]
+#
+# @von {a, b, c}
+#
+# @map {
+#     a: 2,
+#     b: 3,
+# }
+
+re«'"»
+
+"""
+sss
+"""
+
+"123"
+
+1 in [1, 2, 3]
+1 not in [1, 2, 3]
+
+if T is bool {
+
+}
+else if T is number {
+
+}
+
+
+I.Item is not Default
+I.Item <! Default
+I.Item ⋢ Default
+
+I is Iterator I::Item is Default
+I ⊑ Iterator  I∷Item ⊑ Default
+I <: Iterator I::Item <: Default
+I < Iterator  I.Item < Default
+
+
+
+# new HashSet(i64) [1, 2, 3]
+# new Hashmap(i64) {
+#
+# }
+#
+# @list []
+# SortedMap(
+#     a -> 2
+# )
+# OrderedMap {
+#
+# {
+# a: 2,
+#     a->2,
+# }

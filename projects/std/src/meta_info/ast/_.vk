@@ -1,0 +1,31 @@
+
+class meta MetaContext {
+
+}
+
+class meta MetaClass: MetaContext {
+    name: String
+    fields: OrderedMap[String, MetaClassFields]
+}
+
+
+
+
+
+class meta MetaClassField {
+    name: String
+}
+
+#^ context: MetaContext
+#^ annotations: mut List[MetaAnnotation]
+#^ caller: MetaNode
+def annotation inherit() {
+
+}
+
+#^ context: MetaContext
+#^ annotations: mut List[Annotation]
+#^ caller: AST
+def macro inherit() {
+
+}
