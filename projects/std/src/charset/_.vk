@@ -3,4 +3,3 @@ namespace! depot::charset;
 @token_color(keyword) type char = UTF8
 @token_color(class)   type String = UTF8String
 @token_color(keyword) type string = UTF8String
-

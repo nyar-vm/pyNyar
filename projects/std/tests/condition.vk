@@ -1,0 +1,29 @@
+
+
+if a {
+
+}
+
+if a > 0 {
+
+}
+else {
+
+}
+
+if a > 0 {
+
+}
+else if b > 0 {
+
+}
+else {
+
+}
+
+# if case Some(A) = map.get(0) {
+#
+# }
+let mut a, b, c = (0, 0, 0)
+let mut (a, b, c) = (0, 0, 0)
+let mut (mut a, b, c) = (0, 0, 0)

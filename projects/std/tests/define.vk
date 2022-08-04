@@ -6,7 +6,7 @@ using {a}
 using a.{b};
 using a.b.{b as c}
 using a.{
-b::c as d, c::b as e
+    b::c as d, c::b as e
 }
 
 def a();
@@ -16,11 +16,11 @@ def get a(self) {}
 def set a(mut) {}
 def a a a.a(a): a
 def a a a.a(a) -> a
-def a a a<a::a>() {}
-def a a a.a<a::a>() {}
+def a a a[a::a]() {}
+def a a a.a[a::a]() {}
 
 
-def print<T>(t: T) {
+def print[T](t: T) {
 
 }
 
@@ -30,17 +30,6 @@ x point
 def distance(T, x: T, y: T) {
 
 }
-
-def first_or_default(type I, mut i: I) -> I::Item where I: Iterator, I::Item : Default
-
-def first_or_default(type I, mut i: I) -> I.Item {
-where {
-I <: Iterator
-I.Item <: Default
-}
-}
-
-first_or_default::(Default)([])
 
 def f(): T {};
 def mod.f(): T {};

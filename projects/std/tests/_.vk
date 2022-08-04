@@ -7,10 +7,9 @@ class A {
     infix `-=`(rhs: Self) {
 
     }
-
 }
 
-
+@native
 class Point {
     x: f32,
     y: f32,
@@ -19,15 +18,63 @@ class Point {
     }
     apply() {}
     unapply() {}
+    infix `-=`() {
+        block
+    }
+    infix `+`() {
+        block
+    }
+    infix `+=`() {
+        block
+    }
+    infix `-`() {
+        block
+    }
 }
-
 
 
 class Point(x: f32, y: f32)
 
+class Point {
+    x: f32, y: f32
+}
 
+extends Point {
+    infix `-`(rhs: Self) {
+        block
+    }
+}
+class Namespace {
+    Lkie
+}
 
+def say_hello() / Console {
+    print("hello world")
+}
 
+def pure() / [] {
+    say_hello()
+}
 
-[1, 2, 3](range(0,-1,2))
-[1,2,3]⟦0:-1:2⟧
+def print_lines(file: File) {
+    try {
+        file.lines.map {
+            if line.is_empty {
+                Break()
+            }
+            else {
+                print(line)
+            }
+        }
+    }
+    catch {
+
+    }
+}
+
+if line.is_empty {
+Break()
+}
+else {
+print(line)
+}
