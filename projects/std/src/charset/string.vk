@@ -1,0 +1,31 @@
+# General method of table-like structure
+@strict_parameters
+trait AbstractString
+    : From[bytes]
+    + Into[bytes]
+{
+    meta encoding: UTF8String;
+    is_empty(self) -> bool;
+    count(self) -> Integer {self.characters.count}
+    characters(self) -> Iterator[char];
+    lines(self) -> Iterator[Self];
+}
+
+#native class AsciiString {
+
+}
+
+extends String: CharacterEncoding {
+    def get_encodeing()
+}
+
+def get_encoding<T>() -> Option<T> {
+    if T < CharacterEncoding {
+        return
+    }
+}
+
+extends ctor A {
+
+}
+

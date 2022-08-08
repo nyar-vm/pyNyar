@@ -1,13 +1,13 @@
 
 
-@external class UTF8 {
-    _inner: u32
+@native class UTF8 {
+    _inner: Vector[u8]
 }
 
 ###^
 Represents a growable utf8 string literal
 ###
-@external class UTF8String: AbstructString {
+@external class UTF8: AbstructString {
     _inner: Vector[u8]
     ###^
     Creates a new string literal
@@ -25,7 +25,7 @@ Represents a growable utf8 string literal
     try_from(s: Vector[u8]): Self / [EncodeError] {}
 }
 
-@external extends String {
+@native extends String {
     ###^
     Returns `true` if [`Self`] has a length of zero bytes.
     

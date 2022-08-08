@@ -1,0 +1,17 @@
+type A = Point;
+
+forall[A, D]
+    A: TraitB + TraitC
+    D: TraitE + TraitF
+extend YourType: MyTrait[A, D] {
+
+}
+
+
+forall[T]
+    T: Debug
+class Point[T] {
+    x: T,
+    y: T,
+}
+

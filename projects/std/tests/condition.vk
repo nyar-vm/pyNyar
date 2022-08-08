@@ -1,29 +1,26 @@
 
 
 if a {
-
+    block
 }
 
 if a > 0 {
-
+    block
 }
 else {
-
+    block
 }
 
 if a > 0 {
-
+    block
 }
 else if b > 0 {
-
+    block
 }
 else {
-
+    block
 }
 
-# if case Some(A) = map.get(0) {
-#
-# }
-let mut a, b, c = (0, 0, 0)
-let mut (a, b, c) = (0, 0, 0)
-let mut (mut a, b, c) = (0, 0, 0)
+for item in iterable if item > 0 {
+    block
+}

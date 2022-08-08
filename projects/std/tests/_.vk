@@ -57,24 +57,17 @@ def pure() / [] {
 }
 
 def print_lines(file: File) {
-    try {
+    catch {
         file.lines.map {
             if line.is_empty {
-                Break()
+                raise Break()
             }
             else {
                 print(line)
             }
         }
     }
-    catch {
+    .match {
 
     }
-}
-
-if line.is_empty {
-Break()
-}
-else {
-print(line)
 }

@@ -1,7 +1,7 @@
 
 
-class Vector {
+@native class Vector {
 
 }
 
-
+type bytes = Vector[u8];

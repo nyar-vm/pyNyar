@@ -1,0 +1,18 @@
+@derive(Default, Debug, Serde)
+@native class Character {
+    _inner: u32
+}
+
+@token_color(keyword)
+type char = Character;
+
+#^ ASCII Related Methods
+@native extends Character {
+    is_ascii(self , <, >) {
+
+    }
+    is_ascii_whitespace(self, <, >) {
+
+    }
+}
+
