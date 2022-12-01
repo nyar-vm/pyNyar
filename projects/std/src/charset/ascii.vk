@@ -1,0 +1,8 @@
+@native class ASCII {
+    _inner: bytes
+}
+
+
+extends ASCII: AbstractString {
+
+}

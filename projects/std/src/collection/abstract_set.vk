@@ -1,6 +1,6 @@
 namespace std.collection;
 
-/// Fast but not safe
+# Fast but not safe
 trait AbstructSet<T>: Iterable {
     def contains(self, key: T) -> bool;
 

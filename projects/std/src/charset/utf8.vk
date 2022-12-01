@@ -1,6 +1,7 @@
 
 
-@native class UTF8 {
+@[native, final]
+class UTF8 {
     _inner: Vector[u8]
 }
 

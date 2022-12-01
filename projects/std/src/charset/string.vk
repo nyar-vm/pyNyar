@@ -1,25 +1,74 @@
 # General method of table-like structure
 @strict_parameters
 trait AbstractString
-    : From[bytes]
-    + Into[bytes]
+    : From[bytes] + Into[bytes]
+    + From[UTF8] + Into[UTF8]
+    + Concat[Self]
 {
-    meta encoding: UTF8String;
+    ###^
+    ```
+    let text = "112233"
+    @assert_eq(text.encoding, "UTF8")
+    ```
+    ###
+    constant encoding: UTF8;
+    ###^
+    ```
+    let text = "112233"
+    @assert_eq(text.encoding, "UTF8")
+    ```
+    ###
     is_empty(self) -> bool;
-    count(self) -> Integer {self.characters.count}
-    characters(self) -> Iterator[char];
-    lines(self) -> Iterator[Self];
-}
-
-#native class AsciiString {
-
+    ###^
+    ```
+    let text = "112233"
+    @assert_eq(text.encoding, "UTF8")
+    ```
+    ###
+    count(self) -> Integer {self.characters.count};
+    ###^
+    ```
+    let text = "112233"
+    @assert_eq(text.encoding, "UTF8")
+    ```
+    ###
+    characters(self): Iterator[char];
+    ###^
+    ```
+    let text = "112233"
+    @assert_eq(text.encoding, "UTF8")
+    ```
+    ###
+    lines(self): Iterator[Self];
+    ###^
+    ```
+    let text = "112233"
+    @assert_eq(text.encoding, "UTF8")
+    ```
+    ###
+    take(self, <, start: Integer, end: Integer, >);
+    ###^
+    ```
+    let text = "123456"
+    @assert_eq(text.capacity, 6)
+    ```
+    ###
+    capacity(): Integer;
+    ###^
+    ```
+    let t1 = "first"
+    let t2 = "last"
+    t1 ++ t2
+    ```
+    ###
+    `++`(rhs: Self);
 }
 
 extends String: CharacterEncoding {
     def get_encodeing()
 }
 
-def get_encoding<T>() -> Option<T> {
+def get_encoding[T]() -> Option[T] {
     if T < CharacterEncoding {
         return
     }

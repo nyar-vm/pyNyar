@@ -8,10 +8,11 @@ let _ = 1km;
 let _ = 1 + i + j;
 # string
 let _ = "single line"
-let _ = "
+let _ = """""
 multiline \\
 text      \n
-"
+${text}
+"""""
 #^ raw mode
 let _ = r"""
 raw   \\
@@ -28,6 +29,7 @@ let _: Point = json"
     y: 2
 }
 "
+let path = jp"x.store.book[0].title"
 # option
 let _: Option[u32] = Some(0)
 let _: Option[u32] = None

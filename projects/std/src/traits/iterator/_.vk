@@ -1,9 +1,12 @@
+namespace depot::traits::iterator;
+
 trait Iterator {
-    def has_next(self);
-    def next(mut self);
+    let Item;
+    has_next(self);
+    next(mut self);
 }
 
 trait Iterable {
-    def into_iterator(self) -> Iterator<T>;
+    def iterator(self) -> Iterator[T];
 }
 

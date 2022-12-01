@@ -1,26 +1,27 @@
 @external(rust)
-tagged Json {
-    ///
+variant Json {
+    #
     Null,
-    ///
+    #
     Boolean(bool),
-    ///
+    #
     Number(Number),
-    ///
+    #
     String(String),
-    ///
-    Array(Vector<Json>),
-    ///
-    Object(OrderedMap<String, Json>),
+    #
+    Array(Vector[Json]),
+    #
+    Object(OrderedMap[String, Json]),
 }
 
 @external(rust)
-tagged Number {
-    /// Always larger than zero.
+variant Number {
+    # Always larger than zero.
     Postive(u64),
-    /// Always less than zero.
+    # Always less than zero.
     Negtive(i64),
-    /// Always finite.
+    # Always finite.
     Float(f64),
 }
+
 

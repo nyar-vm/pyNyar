@@ -1,6 +1,6 @@
 using {depot::traits::Default};
 
-/// Fast but not safe
+# Fast but not safe
 class native HashSet<K, V> {
     map: HashMap<T, ()>
 }

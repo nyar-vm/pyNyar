@@ -1,4 +1,4 @@
-///
+#
 trait From<T> {
     def default() -> Self;
 }

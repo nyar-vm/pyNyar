@@ -1,0 +1,61 @@
+namespace depot::meta_info::bitset;
+
+
+trait Bitset {
+    infix `|`() {
+        block
+    }
+    infix `&`() {
+        block
+    }
+    # Returns an empty set of flags.
+    empty(): Self;
+    # Returns `true` if no flags are currently stored.
+    is_empty(self): bool;
+    # Returns the set containing all flags.
+    all(): Self;
+
+    iterator(): Iterator;
+
+    from(bits: bytes): Self {
+        # Self { bits: bits & Self::all().bits }
+    };
+    into(self): bytes {
+
+    };
+    # Returns `true` if all of the flags in `other` are contained within `self`.
+    contains(self, into bits: Self): bool {
+        # (self.bits & other.bits) == other.bits
+    };
+
+    # Returns `true` if there are flags common to both `self` and `other`.
+    intersects(into bits: Self): bool {
+        # !(Self { bits: self.bits & other.bits }).is_empty()
+    };
+
+    toggle(mut self) {
+        # self.bits ^= other.bits;
+    }
+
+    set_flag(mut self, into other: Self, toggle: bool) {
+        # if toggle {
+        #     case true: self += other
+        #     case false: self -= other
+        # }
+    }
+    complement(self): Self {
+
+    }
+}
+
+
+
+# @derive(Debug, Serde)
+# bitflag ReadWrite {
+#     Read = 000000
+# }
+#
+# extends ReadWrite {
+#     functions
+# }
+#
